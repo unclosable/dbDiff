@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itiaoling.dbdiff.mappers.MerchantDeliverFeeMapper" >
+  <resultMap id="BaseResultMap" type="com.itiaoling.dbdiff.models.MerchantDeliverFee" >
+    <id column="FEEID" property="feeid" jdbcType="DECIMAL" />
+    <result column="MERCHANTID" property="merchantid" jdbcType="DECIMAL" />
+    <result column="PAYMENTTYPE" property="paymenttype" jdbcType="DECIMAL" />
+    <result column="PAYMENTPERIOD" property="paymentperiod" jdbcType="DECIMAL" />
+    <result column="DELIVERFEETYPE" property="deliverfeetype" jdbcType="DECIMAL" />
+    <result column="DELIVERFEEPERIOD" property="deliverfeeperiod" jdbcType="DECIMAL" />
+    <result column="FEEFACTORS" property="feefactors" jdbcType="VARCHAR" />
+    <result column="ISUNIFORMEDFEE" property="isuniformedfee" jdbcType="DECIMAL" />
+    <result column="BASICDELIVERFEE" property="basicdeliverfee" jdbcType="DECIMAL" />
+    <result column="FORMULAID" property="formulaid" jdbcType="DECIMAL" />
+    <result column="FORMULAPARAMTERS" property="formulaparamters" jdbcType="VARCHAR" />
+    <result column="UPDATEBY" property="updateby" jdbcType="DECIMAL" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="UPDATECODE" property="updatecode" jdbcType="VARCHAR" />
+    <result column="AUDITBY" property="auditby" jdbcType="DECIMAL" />
+    <result column="AUDITTIME" property="audittime" jdbcType="TIMESTAMP" />
+    <result column="AUDITCODE" property="auditcode" jdbcType="VARCHAR" />
+    <result column="AUDITRESULT" property="auditresult" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+    <result column="REFUSEFEERATE" property="refusefeerate" jdbcType="DECIMAL" />
+    <result column="RECEIVEFEERATE" property="receivefeerate" jdbcType="DECIMAL" />
+    <result column="PAYMENTPERIODDATE" property="paymentperioddate" jdbcType="TIMESTAMP" />
+    <result column="DELIVERFEEPERIODDATE" property="deliverfeeperioddate" jdbcType="TIMESTAMP" />
+    <result column="FIRSTWEIGHT" property="firstweight" jdbcType="DECIMAL" />
+    <result column="STATPRAMER" property="statpramer" jdbcType="DECIMAL" />
+    <result column="ADDWEIGHTPRICE" property="addweightprice" jdbcType="DECIMAL" />
+    <result column="FIRSTWEIGHTPRICE" property="firstweightprice" jdbcType="DECIMAL" />
+    <result column="VOLUMEPARMER" property="volumeparmer" jdbcType="DECIMAL" />
+    <result column="PROTECTEDPARMER" property="protectedparmer" jdbcType="DECIMAL" />
+    <result column="VISITRETURNSFEE" property="visitreturnsfee" jdbcType="DECIMAL" />
+    <result column="VISITCHANGEFEE" property="visitchangefee" jdbcType="DECIMAL" />
+    <result column="RECEIVEPOSFEERATE" property="receiveposfeerate" jdbcType="DECIMAL" />
+    <result column="CREATEBY" property="createby" jdbcType="DECIMAL" />
+    <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="VISITRETURNSVFEE" property="visitreturnsvfee" jdbcType="DECIMAL" />
+    <result column="CASHSERVICEFEE" property="cashservicefee" jdbcType="DECIMAL" />
+    <result column="POSSERVICEFEE" property="posservicefee" jdbcType="DECIMAL" />
+    <result column="RECEIVEFEETYPE" property="receivefeetype" jdbcType="DECIMAL" />
+    <result column="RECEIVEPOSFEETYPE" property="receiveposfeetype" jdbcType="DECIMAL" />
+    <result column="CASHSERVICETYPE" property="cashservicetype" jdbcType="DECIMAL" />
+    <result column="POSSERVICETYPE" property="posservicetype" jdbcType="DECIMAL" />
+    <result column="WEIGHTTYPE" property="weighttype" jdbcType="DECIMAL" />
+    <result column="WEIGHTVALUERULE" property="weightvaluerule" jdbcType="DECIMAL" />
+    <result column="DISTRIBUTIONCODE" property="distributioncode" jdbcType="VARCHAR" />
+    <result column="ISCHANGE" property="ischange" jdbcType="DECIMAL" />
+    <result column="EXTRAPROTECTED" property="extraprotected" jdbcType="DECIMAL" />
+    <result column="EXTRAREFUSEFEERATE" property="extrarefusefeerate" jdbcType="DECIMAL" />
+    <result column="EXTRAVISITRETURNSFEE" property="extravisitreturnsfee" jdbcType="DECIMAL" />
+    <result column="EXTRAVISITCHANGEFEE" property="extravisitchangefee" jdbcType="DECIMAL" />
+    <result column="EXTRAVISITRETURNSVFEE" property="extravisitreturnsvfee" jdbcType="DECIMAL" />
+    <result column="EXTRACASHSERVICEFEE" property="extracashservicefee" jdbcType="DECIMAL" />
+    <result column="EXTRARECEIVEFEERATE" property="extrareceivefeerate" jdbcType="DECIMAL" />
+    <result column="EXTRAPOSSERVICEFEE" property="extraposservicefee" jdbcType="DECIMAL" />
+    <result column="EXTRARECEIVEPOSFEERATE" property="extrareceiveposfeerate" jdbcType="DECIMAL" />
+    <result column="ISCATEGORY" property="iscategory" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FEEID, MERCHANTID, PAYMENTTYPE, PAYMENTPERIOD, DELIVERFEETYPE, DELIVERFEEPERIOD, 
+    FEEFACTORS, ISUNIFORMEDFEE, BASICDELIVERFEE, FORMULAID, FORMULAPARAMTERS, UPDATEBY, 
+    UPDATETIME, UPDATECODE, AUDITBY, AUDITTIME, AUDITCODE, AUDITRESULT, STATUS, REFUSEFEERATE, 
+    RECEIVEFEERATE, PAYMENTPERIODDATE, DELIVERFEEPERIODDATE, FIRSTWEIGHT, STATPRAMER, 
+    ADDWEIGHTPRICE, FIRSTWEIGHTPRICE, VOLUMEPARMER, PROTECTEDPARMER, VISITRETURNSFEE, 
+    VISITCHANGEFEE, RECEIVEPOSFEERATE, CREATEBY, CREATETIME, VISITRETURNSVFEE, CASHSERVICEFEE, 
+    POSSERVICEFEE, RECEIVEFEETYPE, RECEIVEPOSFEETYPE, CASHSERVICETYPE, POSSERVICETYPE, 
+    WEIGHTTYPE, WEIGHTVALUERULE, DISTRIBUTIONCODE, ISCHANGE, EXTRAPROTECTED, EXTRAREFUSEFEERATE, 
+    EXTRAVISITRETURNSFEE, EXTRAVISITCHANGEFEE, EXTRAVISITRETURNSVFEE, EXTRACASHSERVICEFEE, 
+    EXTRARECEIVEFEERATE, EXTRAPOSSERVICEFEE, EXTRARECEIVEPOSFEERATE, ISCATEGORY
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itiaoling.dbdiff.models.MerchantDeliverFeeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from RFD_FMS.FMS_MERCHANTDELIVERFEE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from RFD_FMS.FMS_MERCHANTDELIVERFEE
+    where FEEID = #{feeid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from RFD_FMS.FMS_MERCHANTDELIVERFEE
+    where FEEID = #{feeid,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itiaoling.dbdiff.models.MerchantDeliverFeeExample" >
+    delete from RFD_FMS.FMS_MERCHANTDELIVERFEE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itiaoling.dbdiff.models.MerchantDeliverFee" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="feeid" order="BEFORE" >
+      select RFD_FMS.SEQ_FMS_MERCHANTDELIVERFEE.nextval from dual
+    </selectKey>
+    insert into RFD_FMS.FMS_MERCHANTDELIVERFEE (FEEID, MERCHANTID, PAYMENTTYPE, 
+      PAYMENTPERIOD, DELIVERFEETYPE, DELIVERFEEPERIOD, 
+      FEEFACTORS, ISUNIFORMEDFEE, BASICDELIVERFEE, 
+      FORMULAID, FORMULAPARAMTERS, UPDATEBY, 
+      UPDATETIME, UPDATECODE, AUDITBY, 
+      AUDITTIME, AUDITCODE, AUDITRESULT, 
+      STATUS, REFUSEFEERATE, RECEIVEFEERATE, 
+      PAYMENTPERIODDATE, DELIVERFEEPERIODDATE, 
+      FIRSTWEIGHT, STATPRAMER, ADDWEIGHTPRICE, 
+      FIRSTWEIGHTPRICE, VOLUMEPARMER, PROTECTEDPARMER, 
+      VISITRETURNSFEE, VISITCHANGEFEE, RECEIVEPOSFEERATE, 
+      CREATEBY, CREATETIME, VISITRETURNSVFEE, 
+      CASHSERVICEFEE, POSSERVICEFEE, RECEIVEFEETYPE, 
+      RECEIVEPOSFEETYPE, CASHSERVICETYPE, POSSERVICETYPE, 
+      WEIGHTTYPE, WEIGHTVALUERULE, DISTRIBUTIONCODE, 
+      ISCHANGE, EXTRAPROTECTED, EXTRAREFUSEFEERATE, 
+      EXTRAVISITRETURNSFEE, EXTRAVISITCHANGEFEE, 
+      EXTRAVISITRETURNSVFEE, EXTRACASHSERVICEFEE, 
+      EXTRARECEIVEFEERATE, EXTRAPOSSERVICEFEE, 
+      EXTRARECEIVEPOSFEERATE, ISCATEGORY)
+    values (#{feeid,jdbcType=DECIMAL}, #{merchantid,jdbcType=DECIMAL}, #{paymenttype,jdbcType=DECIMAL}, 
+      #{paymentperiod,jdbcType=DECIMAL}, #{deliverfeetype,jdbcType=DECIMAL}, #{deliverfeeperiod,jdbcType=DECIMAL}, 
+      #{feefactors,jdbcType=VARCHAR}, #{isuniformedfee,jdbcType=DECIMAL}, #{basicdeliverfee,jdbcType=DECIMAL}, 
+      #{formulaid,jdbcType=DECIMAL}, #{formulaparamters,jdbcType=VARCHAR}, #{updateby,jdbcType=DECIMAL}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{updatecode,jdbcType=VARCHAR}, #{auditby,jdbcType=DECIMAL}, 
+      #{audittime,jdbcType=TIMESTAMP}, #{auditcode,jdbcType=VARCHAR}, #{auditresult,jdbcType=DECIMAL}, 
+      #{status,jdbcType=CHAR}, #{refusefeerate,jdbcType=DECIMAL}, #{receivefeerate,jdbcType=DECIMAL}, 
+      #{paymentperioddate,jdbcType=TIMESTAMP}, #{deliverfeeperioddate,jdbcType=TIMESTAMP}, 
+      #{firstweight,jdbcType=DECIMAL}, #{statpramer,jdbcType=DECIMAL}, #{addweightprice,jdbcType=DECIMAL}, 
+      #{firstweightprice,jdbcType=DECIMAL}, #{volumeparmer,jdbcType=DECIMAL}, #{protectedparmer,jdbcType=DECIMAL}, 
+      #{visitreturnsfee,jdbcType=DECIMAL}, #{visitchangefee,jdbcType=DECIMAL}, #{receiveposfeerate,jdbcType=DECIMAL}, 
+      #{createby,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, #{visitreturnsvfee,jdbcType=DECIMAL}, 
+      #{cashservicefee,jdbcType=DECIMAL}, #{posservicefee,jdbcType=DECIMAL}, #{receivefeetype,jdbcType=DECIMAL}, 
+      #{receiveposfeetype,jdbcType=DECIMAL}, #{cashservicetype,jdbcType=DECIMAL}, #{posservicetype,jdbcType=DECIMAL}, 
+      #{weighttype,jdbcType=DECIMAL}, #{weightvaluerule,jdbcType=DECIMAL}, #{distributioncode,jdbcType=VARCHAR}, 
+      #{ischange,jdbcType=DECIMAL}, #{extraprotected,jdbcType=DECIMAL}, #{extrarefusefeerate,jdbcType=DECIMAL}, 
+      #{extravisitreturnsfee,jdbcType=DECIMAL}, #{extravisitchangefee,jdbcType=DECIMAL}, 
+      #{extravisitreturnsvfee,jdbcType=DECIMAL}, #{extracashservicefee,jdbcType=DECIMAL}, 
+      #{extrareceivefeerate,jdbcType=DECIMAL}, #{extraposservicefee,jdbcType=DECIMAL}, 
+      #{extrareceiveposfeerate,jdbcType=DECIMAL}, #{iscategory,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itiaoling.dbdiff.models.MerchantDeliverFee" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="feeid" order="BEFORE" >
+      select RFD_FMS.SEQ_FMS_MERCHANTDELIVERFEE.nextval from dual
+    </selectKey>
+    insert into RFD_FMS.FMS_MERCHANTDELIVERFEE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      FEEID,
+      <if test="merchantid != null" >
+        MERCHANTID,
+      </if>
+      <if test="paymenttype != null" >
+        PAYMENTTYPE,
+      </if>
+      <if test="paymentperiod != null" >
+        PAYMENTPERIOD,
+      </if>
+      <if test="deliverfeetype != null" >
+        DELIVERFEETYPE,
+      </if>
+      <if test="deliverfeeperiod != null" >
+        DELIVERFEEPERIOD,
+      </if>
+      <if test="feefactors != null" >
+        FEEFACTORS,
+      </if>
+      <if test="isuniformedfee != null" >
+        ISUNIFORMEDFEE,
+      </if>
+      <if test="basicdeliverfee != null" >
+        BASICDELIVERFEE,
+      </if>
+      <if test="formulaid != null" >
+        FORMULAID,
+      </if>
+      <if test="formulaparamters != null" >
+        FORMULAPARAMTERS,
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+      <if test="updatecode != null" >
+        UPDATECODE,
+      </if>
+      <if test="auditby != null" >
+        AUDITBY,
+      </if>
+      <if test="audittime != null" >
+        AUDITTIME,
+      </if>
+      <if test="auditcode != null" >
+        AUDITCODE,
+      </if>
+      <if test="auditresult != null" >
+        AUDITRESULT,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="refusefeerate != null" >
+        REFUSEFEERATE,
+      </if>
+      <if test="receivefeerate != null" >
+        RECEIVEFEERATE,
+      </if>
+      <if test="paymentperioddate != null" >
+        PAYMENTPERIODDATE,
+      </if>
+      <if test="deliverfeeperioddate != null" >
+        DELIVERFEEPERIODDATE,
+      </if>
+      <if test="firstweight != null" >
+        FIRSTWEIGHT,
+      </if>
+      <if test="statpramer != null" >
+        STATPRAMER,
+      </if>
+      <if test="addweightprice != null" >
+        ADDWEIGHTPRICE,
+      </if>
+      <if test="firstweightprice != null" >
+        FIRSTWEIGHTPRICE,
+      </if>
+      <if test="volumeparmer != null" >
+        VOLUMEPARMER,
+      </if>
+      <if test="protectedparmer != null" >
+        PROTECTEDPARMER,
+      </if>
+      <if test="visitreturnsfee != null" >
+        VISITRETURNSFEE,
+      </if>
+      <if test="visitchangefee != null" >
+        VISITCHANGEFEE,
+      </if>
+      <if test="receiveposfeerate != null" >
+        RECEIVEPOSFEERATE,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="visitreturnsvfee != null" >
+        VISITRETURNSVFEE,
+      </if>
+      <if test="cashservicefee != null" >
+        CASHSERVICEFEE,
+      </if>
+      <if test="posservicefee != null" >
+        POSSERVICEFEE,
+      </if>
+      <if test="receivefeetype != null" >
+        RECEIVEFEETYPE,
+      </if>
+      <if test="receiveposfeetype != null" >
+        RECEIVEPOSFEETYPE,
+      </if>
+      <if test="cashservicetype != null" >
+        CASHSERVICETYPE,
+      </if>
+      <if test="posservicetype != null" >
+        POSSERVICETYPE,
+      </if>
+      <if test="weighttype != null" >
+        WEIGHTTYPE,
+      </if>
+      <if test="weightvaluerule != null" >
+        WEIGHTVALUERULE,
+      </if>
+      <if test="distributioncode != null" >
+        DISTRIBUTIONCODE,
+      </if>
+      <if test="ischange != null" >
+        ISCHANGE,
+      </if>
+      <if test="extraprotected != null" >
+        EXTRAPROTECTED,
+      </if>
+      <if test="extrarefusefeerate != null" >
+        EXTRAREFUSEFEERATE,
+      </if>
+      <if test="extravisitreturnsfee != null" >
+        EXTRAVISITRETURNSFEE,
+      </if>
+      <if test="extravisitchangefee != null" >
+        EXTRAVISITCHANGEFEE,
+      </if>
+      <if test="extravisitreturnsvfee != null" >
+        EXTRAVISITRETURNSVFEE,
+      </if>
+      <if test="extracashservicefee != null" >
+        EXTRACASHSERVICEFEE,
+      </if>
+      <if test="extrareceivefeerate != null" >
+        EXTRARECEIVEFEERATE,
+      </if>
+      <if test="extraposservicefee != null" >
+        EXTRAPOSSERVICEFEE,
+      </if>
+      <if test="extrareceiveposfeerate != null" >
+        EXTRARECEIVEPOSFEERATE,
+      </if>
+      <if test="iscategory != null" >
+        ISCATEGORY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{feeid,jdbcType=DECIMAL},
+      <if test="merchantid != null" >
+        #{merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="paymenttype != null" >
+        #{paymenttype,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentperiod != null" >
+        #{paymentperiod,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverfeetype != null" >
+        #{deliverfeetype,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverfeeperiod != null" >
+        #{deliverfeeperiod,jdbcType=DECIMAL},
+      </if>
+      <if test="feefactors != null" >
+        #{feefactors,jdbcType=VARCHAR},
+      </if>
+      <if test="isuniformedfee != null" >
+        #{isuniformedfee,jdbcType=DECIMAL},
+      </if>
+      <if test="basicdeliverfee != null" >
+        #{basicdeliverfee,jdbcType=DECIMAL},
+      </if>
+      <if test="formulaid != null" >
+        #{formulaid,jdbcType=DECIMAL},
+      </if>
+      <if test="formulaparamters != null" >
+        #{formulaparamters,jdbcType=VARCHAR},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatecode != null" >
+        #{updatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="auditby != null" >
+        #{auditby,jdbcType=DECIMAL},
+      </if>
+      <if test="audittime != null" >
+        #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditcode != null" >
+        #{auditcode,jdbcType=VARCHAR},
+      </if>
+      <if test="auditresult != null" >
+        #{auditresult,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="refusefeerate != null" >
+        #{refusefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="receivefeerate != null" >
+        #{receivefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentperioddate != null" >
+        #{paymentperioddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliverfeeperioddate != null" >
+        #{deliverfeeperioddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstweight != null" >
+        #{firstweight,jdbcType=DECIMAL},
+      </if>
+      <if test="statpramer != null" >
+        #{statpramer,jdbcType=DECIMAL},
+      </if>
+      <if test="addweightprice != null" >
+        #{addweightprice,jdbcType=DECIMAL},
+      </if>
+      <if test="firstweightprice != null" >
+        #{firstweightprice,jdbcType=DECIMAL},
+      </if>
+      <if test="volumeparmer != null" >
+        #{volumeparmer,jdbcType=DECIMAL},
+      </if>
+      <if test="protectedparmer != null" >
+        #{protectedparmer,jdbcType=DECIMAL},
+      </if>
+      <if test="visitreturnsfee != null" >
+        #{visitreturnsfee,jdbcType=DECIMAL},
+      </if>
+      <if test="visitchangefee != null" >
+        #{visitchangefee,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveposfeerate != null" >
+        #{receiveposfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="visitreturnsvfee != null" >
+        #{visitreturnsvfee,jdbcType=DECIMAL},
+      </if>
+      <if test="cashservicefee != null" >
+        #{cashservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="posservicefee != null" >
+        #{posservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="receivefeetype != null" >
+        #{receivefeetype,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveposfeetype != null" >
+        #{receiveposfeetype,jdbcType=DECIMAL},
+      </if>
+      <if test="cashservicetype != null" >
+        #{cashservicetype,jdbcType=DECIMAL},
+      </if>
+      <if test="posservicetype != null" >
+        #{posservicetype,jdbcType=DECIMAL},
+      </if>
+      <if test="weighttype != null" >
+        #{weighttype,jdbcType=DECIMAL},
+      </if>
+      <if test="weightvaluerule != null" >
+        #{weightvaluerule,jdbcType=DECIMAL},
+      </if>
+      <if test="distributioncode != null" >
+        #{distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="ischange != null" >
+        #{ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="extraprotected != null" >
+        #{extraprotected,jdbcType=DECIMAL},
+      </if>
+      <if test="extrarefusefeerate != null" >
+        #{extrarefusefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="extravisitreturnsfee != null" >
+        #{extravisitreturnsfee,jdbcType=DECIMAL},
+      </if>
+      <if test="extravisitchangefee != null" >
+        #{extravisitchangefee,jdbcType=DECIMAL},
+      </if>
+      <if test="extravisitreturnsvfee != null" >
+        #{extravisitreturnsvfee,jdbcType=DECIMAL},
+      </if>
+      <if test="extracashservicefee != null" >
+        #{extracashservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="extrareceivefeerate != null" >
+        #{extrareceivefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="extraposservicefee != null" >
+        #{extraposservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="extrareceiveposfeerate != null" >
+        #{extrareceiveposfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="iscategory != null" >
+        #{iscategory,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itiaoling.dbdiff.models.MerchantDeliverFeeExample" resultType="java.lang.Integer" >
+    select count(*) from RFD_FMS.FMS_MERCHANTDELIVERFEE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update RFD_FMS.FMS_MERCHANTDELIVERFEE
+    <set >
+      <if test="record.feeid != null" >
+        FEEID = #{record.feeid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.merchantid != null" >
+        MERCHANTID = #{record.merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.paymenttype != null" >
+        PAYMENTTYPE = #{record.paymenttype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.paymentperiod != null" >
+        PAYMENTPERIOD = #{record.paymentperiod,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deliverfeetype != null" >
+        DELIVERFEETYPE = #{record.deliverfeetype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deliverfeeperiod != null" >
+        DELIVERFEEPERIOD = #{record.deliverfeeperiod,jdbcType=DECIMAL},
+      </if>
+      <if test="record.feefactors != null" >
+        FEEFACTORS = #{record.feefactors,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isuniformedfee != null" >
+        ISUNIFORMEDFEE = #{record.isuniformedfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.basicdeliverfee != null" >
+        BASICDELIVERFEE = #{record.basicdeliverfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.formulaid != null" >
+        FORMULAID = #{record.formulaid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.formulaparamters != null" >
+        FORMULAPARAMTERS = #{record.formulaparamters,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateby != null" >
+        UPDATEBY = #{record.updateby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.updatetime != null" >
+        UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatecode != null" >
+        UPDATECODE = #{record.updatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.auditby != null" >
+        AUDITBY = #{record.auditby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.audittime != null" >
+        AUDITTIME = #{record.audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.auditcode != null" >
+        AUDITCODE = #{record.auditcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.auditresult != null" >
+        AUDITRESULT = #{record.auditresult,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=CHAR},
+      </if>
+      <if test="record.refusefeerate != null" >
+        REFUSEFEERATE = #{record.refusefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receivefeerate != null" >
+        RECEIVEFEERATE = #{record.receivefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.paymentperioddate != null" >
+        PAYMENTPERIODDATE = #{record.paymentperioddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deliverfeeperioddate != null" >
+        DELIVERFEEPERIODDATE = #{record.deliverfeeperioddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.firstweight != null" >
+        FIRSTWEIGHT = #{record.firstweight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.statpramer != null" >
+        STATPRAMER = #{record.statpramer,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addweightprice != null" >
+        ADDWEIGHTPRICE = #{record.addweightprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.firstweightprice != null" >
+        FIRSTWEIGHTPRICE = #{record.firstweightprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.volumeparmer != null" >
+        VOLUMEPARMER = #{record.volumeparmer,jdbcType=DECIMAL},
+      </if>
+      <if test="record.protectedparmer != null" >
+        PROTECTEDPARMER = #{record.protectedparmer,jdbcType=DECIMAL},
+      </if>
+      <if test="record.visitreturnsfee != null" >
+        VISITRETURNSFEE = #{record.visitreturnsfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.visitchangefee != null" >
+        VISITCHANGEFEE = #{record.visitchangefee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receiveposfeerate != null" >
+        RECEIVEPOSFEERATE = #{record.receiveposfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createby != null" >
+        CREATEBY = #{record.createby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createtime != null" >
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.visitreturnsvfee != null" >
+        VISITRETURNSVFEE = #{record.visitreturnsvfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cashservicefee != null" >
+        CASHSERVICEFEE = #{record.cashservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.posservicefee != null" >
+        POSSERVICEFEE = #{record.posservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receivefeetype != null" >
+        RECEIVEFEETYPE = #{record.receivefeetype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receiveposfeetype != null" >
+        RECEIVEPOSFEETYPE = #{record.receiveposfeetype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cashservicetype != null" >
+        CASHSERVICETYPE = #{record.cashservicetype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.posservicetype != null" >
+        POSSERVICETYPE = #{record.posservicetype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.weighttype != null" >
+        WEIGHTTYPE = #{record.weighttype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.weightvaluerule != null" >
+        WEIGHTVALUERULE = #{record.weightvaluerule,jdbcType=DECIMAL},
+      </if>
+      <if test="record.distributioncode != null" >
+        DISTRIBUTIONCODE = #{record.distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ischange != null" >
+        ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="record.extraprotected != null" >
+        EXTRAPROTECTED = #{record.extraprotected,jdbcType=DECIMAL},
+      </if>
+      <if test="record.extrarefusefeerate != null" >
+        EXTRAREFUSEFEERATE = #{record.extrarefusefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.extravisitreturnsfee != null" >
+        EXTRAVISITRETURNSFEE = #{record.extravisitreturnsfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.extravisitchangefee != null" >
+        EXTRAVISITCHANGEFEE = #{record.extravisitchangefee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.extravisitreturnsvfee != null" >
+        EXTRAVISITRETURNSVFEE = #{record.extravisitreturnsvfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.extracashservicefee != null" >
+        EXTRACASHSERVICEFEE = #{record.extracashservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.extrareceivefeerate != null" >
+        EXTRARECEIVEFEERATE = #{record.extrareceivefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.extraposservicefee != null" >
+        EXTRAPOSSERVICEFEE = #{record.extraposservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.extrareceiveposfeerate != null" >
+        EXTRARECEIVEPOSFEERATE = #{record.extrareceiveposfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.iscategory != null" >
+        ISCATEGORY = #{record.iscategory,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update RFD_FMS.FMS_MERCHANTDELIVERFEE
+    set FEEID = #{record.feeid,jdbcType=DECIMAL},
+      MERCHANTID = #{record.merchantid,jdbcType=DECIMAL},
+      PAYMENTTYPE = #{record.paymenttype,jdbcType=DECIMAL},
+      PAYMENTPERIOD = #{record.paymentperiod,jdbcType=DECIMAL},
+      DELIVERFEETYPE = #{record.deliverfeetype,jdbcType=DECIMAL},
+      DELIVERFEEPERIOD = #{record.deliverfeeperiod,jdbcType=DECIMAL},
+      FEEFACTORS = #{record.feefactors,jdbcType=VARCHAR},
+      ISUNIFORMEDFEE = #{record.isuniformedfee,jdbcType=DECIMAL},
+      BASICDELIVERFEE = #{record.basicdeliverfee,jdbcType=DECIMAL},
+      FORMULAID = #{record.formulaid,jdbcType=DECIMAL},
+      FORMULAPARAMTERS = #{record.formulaparamters,jdbcType=VARCHAR},
+      UPDATEBY = #{record.updateby,jdbcType=DECIMAL},
+      UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      UPDATECODE = #{record.updatecode,jdbcType=VARCHAR},
+      AUDITBY = #{record.auditby,jdbcType=DECIMAL},
+      AUDITTIME = #{record.audittime,jdbcType=TIMESTAMP},
+      AUDITCODE = #{record.auditcode,jdbcType=VARCHAR},
+      AUDITRESULT = #{record.auditresult,jdbcType=DECIMAL},
+      STATUS = #{record.status,jdbcType=CHAR},
+      REFUSEFEERATE = #{record.refusefeerate,jdbcType=DECIMAL},
+      RECEIVEFEERATE = #{record.receivefeerate,jdbcType=DECIMAL},
+      PAYMENTPERIODDATE = #{record.paymentperioddate,jdbcType=TIMESTAMP},
+      DELIVERFEEPERIODDATE = #{record.deliverfeeperioddate,jdbcType=TIMESTAMP},
+      FIRSTWEIGHT = #{record.firstweight,jdbcType=DECIMAL},
+      STATPRAMER = #{record.statpramer,jdbcType=DECIMAL},
+      ADDWEIGHTPRICE = #{record.addweightprice,jdbcType=DECIMAL},
+      FIRSTWEIGHTPRICE = #{record.firstweightprice,jdbcType=DECIMAL},
+      VOLUMEPARMER = #{record.volumeparmer,jdbcType=DECIMAL},
+      PROTECTEDPARMER = #{record.protectedparmer,jdbcType=DECIMAL},
+      VISITRETURNSFEE = #{record.visitreturnsfee,jdbcType=DECIMAL},
+      VISITCHANGEFEE = #{record.visitchangefee,jdbcType=DECIMAL},
+      RECEIVEPOSFEERATE = #{record.receiveposfeerate,jdbcType=DECIMAL},
+      CREATEBY = #{record.createby,jdbcType=DECIMAL},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      VISITRETURNSVFEE = #{record.visitreturnsvfee,jdbcType=DECIMAL},
+      CASHSERVICEFEE = #{record.cashservicefee,jdbcType=DECIMAL},
+      POSSERVICEFEE = #{record.posservicefee,jdbcType=DECIMAL},
+      RECEIVEFEETYPE = #{record.receivefeetype,jdbcType=DECIMAL},
+      RECEIVEPOSFEETYPE = #{record.receiveposfeetype,jdbcType=DECIMAL},
+      CASHSERVICETYPE = #{record.cashservicetype,jdbcType=DECIMAL},
+      POSSERVICETYPE = #{record.posservicetype,jdbcType=DECIMAL},
+      WEIGHTTYPE = #{record.weighttype,jdbcType=DECIMAL},
+      WEIGHTVALUERULE = #{record.weightvaluerule,jdbcType=DECIMAL},
+      DISTRIBUTIONCODE = #{record.distributioncode,jdbcType=VARCHAR},
+      ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      EXTRAPROTECTED = #{record.extraprotected,jdbcType=DECIMAL},
+      EXTRAREFUSEFEERATE = #{record.extrarefusefeerate,jdbcType=DECIMAL},
+      EXTRAVISITRETURNSFEE = #{record.extravisitreturnsfee,jdbcType=DECIMAL},
+      EXTRAVISITCHANGEFEE = #{record.extravisitchangefee,jdbcType=DECIMAL},
+      EXTRAVISITRETURNSVFEE = #{record.extravisitreturnsvfee,jdbcType=DECIMAL},
+      EXTRACASHSERVICEFEE = #{record.extracashservicefee,jdbcType=DECIMAL},
+      EXTRARECEIVEFEERATE = #{record.extrareceivefeerate,jdbcType=DECIMAL},
+      EXTRAPOSSERVICEFEE = #{record.extraposservicefee,jdbcType=DECIMAL},
+      EXTRARECEIVEPOSFEERATE = #{record.extrareceiveposfeerate,jdbcType=DECIMAL},
+      ISCATEGORY = #{record.iscategory,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itiaoling.dbdiff.models.MerchantDeliverFee" >
+    update RFD_FMS.FMS_MERCHANTDELIVERFEE
+    <set >
+      <if test="merchantid != null" >
+        MERCHANTID = #{merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="paymenttype != null" >
+        PAYMENTTYPE = #{paymenttype,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentperiod != null" >
+        PAYMENTPERIOD = #{paymentperiod,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverfeetype != null" >
+        DELIVERFEETYPE = #{deliverfeetype,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverfeeperiod != null" >
+        DELIVERFEEPERIOD = #{deliverfeeperiod,jdbcType=DECIMAL},
+      </if>
+      <if test="feefactors != null" >
+        FEEFACTORS = #{feefactors,jdbcType=VARCHAR},
+      </if>
+      <if test="isuniformedfee != null" >
+        ISUNIFORMEDFEE = #{isuniformedfee,jdbcType=DECIMAL},
+      </if>
+      <if test="basicdeliverfee != null" >
+        BASICDELIVERFEE = #{basicdeliverfee,jdbcType=DECIMAL},
+      </if>
+      <if test="formulaid != null" >
+        FORMULAID = #{formulaid,jdbcType=DECIMAL},
+      </if>
+      <if test="formulaparamters != null" >
+        FORMULAPARAMTERS = #{formulaparamters,jdbcType=VARCHAR},
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY = #{updateby,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatecode != null" >
+        UPDATECODE = #{updatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="auditby != null" >
+        AUDITBY = #{auditby,jdbcType=DECIMAL},
+      </if>
+      <if test="audittime != null" >
+        AUDITTIME = #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditcode != null" >
+        AUDITCODE = #{auditcode,jdbcType=VARCHAR},
+      </if>
+      <if test="auditresult != null" >
+        AUDITRESULT = #{auditresult,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="refusefeerate != null" >
+        REFUSEFEERATE = #{refusefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="receivefeerate != null" >
+        RECEIVEFEERATE = #{receivefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentperioddate != null" >
+        PAYMENTPERIODDATE = #{paymentperioddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliverfeeperioddate != null" >
+        DELIVERFEEPERIODDATE = #{deliverfeeperioddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstweight != null" >
+        FIRSTWEIGHT = #{firstweight,jdbcType=DECIMAL},
+      </if>
+      <if test="statpramer != null" >
+        STATPRAMER = #{statpramer,jdbcType=DECIMAL},
+      </if>
+      <if test="addweightprice != null" >
+        ADDWEIGHTPRICE = #{addweightprice,jdbcType=DECIMAL},
+      </if>
+      <if test="firstweightprice != null" >
+        FIRSTWEIGHTPRICE = #{firstweightprice,jdbcType=DECIMAL},
+      </if>
+      <if test="volumeparmer != null" >
+        VOLUMEPARMER = #{volumeparmer,jdbcType=DECIMAL},
+      </if>
+      <if test="protectedparmer != null" >
+        PROTECTEDPARMER = #{protectedparmer,jdbcType=DECIMAL},
+      </if>
+      <if test="visitreturnsfee != null" >
+        VISITRETURNSFEE = #{visitreturnsfee,jdbcType=DECIMAL},
+      </if>
+      <if test="visitchangefee != null" >
+        VISITCHANGEFEE = #{visitchangefee,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveposfeerate != null" >
+        RECEIVEPOSFEERATE = #{receiveposfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null" >
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="visitreturnsvfee != null" >
+        VISITRETURNSVFEE = #{visitreturnsvfee,jdbcType=DECIMAL},
+      </if>
+      <if test="cashservicefee != null" >
+        CASHSERVICEFEE = #{cashservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="posservicefee != null" >
+        POSSERVICEFEE = #{posservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="receivefeetype != null" >
+        RECEIVEFEETYPE = #{receivefeetype,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveposfeetype != null" >
+        RECEIVEPOSFEETYPE = #{receiveposfeetype,jdbcType=DECIMAL},
+      </if>
+      <if test="cashservicetype != null" >
+        CASHSERVICETYPE = #{cashservicetype,jdbcType=DECIMAL},
+      </if>
+      <if test="posservicetype != null" >
+        POSSERVICETYPE = #{posservicetype,jdbcType=DECIMAL},
+      </if>
+      <if test="weighttype != null" >
+        WEIGHTTYPE = #{weighttype,jdbcType=DECIMAL},
+      </if>
+      <if test="weightvaluerule != null" >
+        WEIGHTVALUERULE = #{weightvaluerule,jdbcType=DECIMAL},
+      </if>
+      <if test="distributioncode != null" >
+        DISTRIBUTIONCODE = #{distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="ischange != null" >
+        ISCHANGE = #{ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="extraprotected != null" >
+        EXTRAPROTECTED = #{extraprotected,jdbcType=DECIMAL},
+      </if>
+      <if test="extrarefusefeerate != null" >
+        EXTRAREFUSEFEERATE = #{extrarefusefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="extravisitreturnsfee != null" >
+        EXTRAVISITRETURNSFEE = #{extravisitreturnsfee,jdbcType=DECIMAL},
+      </if>
+      <if test="extravisitchangefee != null" >
+        EXTRAVISITCHANGEFEE = #{extravisitchangefee,jdbcType=DECIMAL},
+      </if>
+      <if test="extravisitreturnsvfee != null" >
+        EXTRAVISITRETURNSVFEE = #{extravisitreturnsvfee,jdbcType=DECIMAL},
+      </if>
+      <if test="extracashservicefee != null" >
+        EXTRACASHSERVICEFEE = #{extracashservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="extrareceivefeerate != null" >
+        EXTRARECEIVEFEERATE = #{extrareceivefeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="extraposservicefee != null" >
+        EXTRAPOSSERVICEFEE = #{extraposservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="extrareceiveposfeerate != null" >
+        EXTRARECEIVEPOSFEERATE = #{extrareceiveposfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="iscategory != null" >
+        ISCATEGORY = #{iscategory,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where FEEID = #{feeid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itiaoling.dbdiff.models.MerchantDeliverFee" >
+    update RFD_FMS.FMS_MERCHANTDELIVERFEE
+    set MERCHANTID = #{merchantid,jdbcType=DECIMAL},
+      PAYMENTTYPE = #{paymenttype,jdbcType=DECIMAL},
+      PAYMENTPERIOD = #{paymentperiod,jdbcType=DECIMAL},
+      DELIVERFEETYPE = #{deliverfeetype,jdbcType=DECIMAL},
+      DELIVERFEEPERIOD = #{deliverfeeperiod,jdbcType=DECIMAL},
+      FEEFACTORS = #{feefactors,jdbcType=VARCHAR},
+      ISUNIFORMEDFEE = #{isuniformedfee,jdbcType=DECIMAL},
+      BASICDELIVERFEE = #{basicdeliverfee,jdbcType=DECIMAL},
+      FORMULAID = #{formulaid,jdbcType=DECIMAL},
+      FORMULAPARAMTERS = #{formulaparamters,jdbcType=VARCHAR},
+      UPDATEBY = #{updateby,jdbcType=DECIMAL},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      UPDATECODE = #{updatecode,jdbcType=VARCHAR},
+      AUDITBY = #{auditby,jdbcType=DECIMAL},
+      AUDITTIME = #{audittime,jdbcType=TIMESTAMP},
+      AUDITCODE = #{auditcode,jdbcType=VARCHAR},
+      AUDITRESULT = #{auditresult,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=CHAR},
+      REFUSEFEERATE = #{refusefeerate,jdbcType=DECIMAL},
+      RECEIVEFEERATE = #{receivefeerate,jdbcType=DECIMAL},
+      PAYMENTPERIODDATE = #{paymentperioddate,jdbcType=TIMESTAMP},
+      DELIVERFEEPERIODDATE = #{deliverfeeperioddate,jdbcType=TIMESTAMP},
+      FIRSTWEIGHT = #{firstweight,jdbcType=DECIMAL},
+      STATPRAMER = #{statpramer,jdbcType=DECIMAL},
+      ADDWEIGHTPRICE = #{addweightprice,jdbcType=DECIMAL},
+      FIRSTWEIGHTPRICE = #{firstweightprice,jdbcType=DECIMAL},
+      VOLUMEPARMER = #{volumeparmer,jdbcType=DECIMAL},
+      PROTECTEDPARMER = #{protectedparmer,jdbcType=DECIMAL},
+      VISITRETURNSFEE = #{visitreturnsfee,jdbcType=DECIMAL},
+      VISITCHANGEFEE = #{visitchangefee,jdbcType=DECIMAL},
+      RECEIVEPOSFEERATE = #{receiveposfeerate,jdbcType=DECIMAL},
+      CREATEBY = #{createby,jdbcType=DECIMAL},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      VISITRETURNSVFEE = #{visitreturnsvfee,jdbcType=DECIMAL},
+      CASHSERVICEFEE = #{cashservicefee,jdbcType=DECIMAL},
+      POSSERVICEFEE = #{posservicefee,jdbcType=DECIMAL},
+      RECEIVEFEETYPE = #{receivefeetype,jdbcType=DECIMAL},
+      RECEIVEPOSFEETYPE = #{receiveposfeetype,jdbcType=DECIMAL},
+      CASHSERVICETYPE = #{cashservicetype,jdbcType=DECIMAL},
+      POSSERVICETYPE = #{posservicetype,jdbcType=DECIMAL},
+      WEIGHTTYPE = #{weighttype,jdbcType=DECIMAL},
+      WEIGHTVALUERULE = #{weightvaluerule,jdbcType=DECIMAL},
+      DISTRIBUTIONCODE = #{distributioncode,jdbcType=VARCHAR},
+      ISCHANGE = #{ischange,jdbcType=DECIMAL},
+      EXTRAPROTECTED = #{extraprotected,jdbcType=DECIMAL},
+      EXTRAREFUSEFEERATE = #{extrarefusefeerate,jdbcType=DECIMAL},
+      EXTRAVISITRETURNSFEE = #{extravisitreturnsfee,jdbcType=DECIMAL},
+      EXTRAVISITCHANGEFEE = #{extravisitchangefee,jdbcType=DECIMAL},
+      EXTRAVISITRETURNSVFEE = #{extravisitreturnsvfee,jdbcType=DECIMAL},
+      EXTRACASHSERVICEFEE = #{extracashservicefee,jdbcType=DECIMAL},
+      EXTRARECEIVEFEERATE = #{extrareceivefeerate,jdbcType=DECIMAL},
+      EXTRAPOSSERVICEFEE = #{extraposservicefee,jdbcType=DECIMAL},
+      EXTRARECEIVEPOSFEERATE = #{extrareceiveposfeerate,jdbcType=DECIMAL},
+      ISCATEGORY = #{iscategory,jdbcType=DECIMAL}
+    where FEEID = #{feeid,jdbcType=DECIMAL}
+  </update>
+</mapper>

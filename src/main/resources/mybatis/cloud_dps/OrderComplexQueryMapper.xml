@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itiaoling.dbdiff.mappers.OrderComplexQueryMapper" >
+  <resultMap id="BaseResultMap" type="com.itiaoling.dbdiff.models.OrderComplexQuery" >
+    <id column="WAYBILLNO" property="waybillno" jdbcType="DECIMAL" />
+    <id column="DISTRIBUTIONCODE" property="distributioncode" jdbcType="VARCHAR" />
+    <id column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="FORMCODE" property="formcode" jdbcType="VARCHAR" />
+    <result column="DELIVERCODE" property="delivercode" jdbcType="VARCHAR" />
+    <result column="SORTINGCENTERID" property="sortingcenterid" jdbcType="DECIMAL" />
+    <result column="CURDEPTID" property="curdeptid" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="BACKSTATUS" property="backstatus" jdbcType="DECIMAL" />
+    <result column="REPLACETYPE" property="replacetype" jdbcType="VARCHAR" />
+    <result column="MARCHARTID" property="marchartid" jdbcType="DECIMAL" />
+    <result column="MERCHANTHOUSECODE" property="merchanthousecode" jdbcType="VARCHAR" />
+    <result column="TOPROVINCE" property="toprovince" jdbcType="VARCHAR" />
+    <result column="TOCITY" property="tocity" jdbcType="VARCHAR" />
+    <result column="TOAREA" property="toarea" jdbcType="VARCHAR" />
+    <result column="TOADDRESS" property="toaddress" jdbcType="VARCHAR" />
+    <result column="EXPRESSCOMPANYID" property="expresscompanyid" jdbcType="DECIMAL" />
+    <result column="DELIVERMANID" property="delivermanid" jdbcType="DECIMAL" />
+    <result column="MERCHANTWEIGHT" property="merchantweight" jdbcType="DECIMAL" />
+    <result column="WEIGHT" property="weight" jdbcType="DECIMAL" />
+    <result column="FINANCIALWEIGHT" property="financialweight" jdbcType="DECIMAL" />
+    <result column="VOLUMETRICWEIGHT" property="volumetricweight" jdbcType="DECIMAL" />
+    <result column="NEEDFUND" property="needfund" jdbcType="DECIMAL" />
+    <result column="BACKFUND" property="backfund" jdbcType="DECIMAL" />
+    <result column="PROTECTEDPRICE" property="protectedprice" jdbcType="DECIMAL" />
+    <result column="REASON" property="reason" jdbcType="VARCHAR" />
+    <result column="RECEIVEDATE" property="receivedate" jdbcType="TIMESTAMP" />
+    <result column="ASSIGNTIME" property="assigntime" jdbcType="TIMESTAMP" />
+    <result column="LASTINBOUNDTIME" property="lastinboundtime" jdbcType="TIMESTAMP" />
+    <result column="LASTINBOXTIME" property="lastinboxtime" jdbcType="TIMESTAMP" />
+    <result column="LASTOUTBOUNDTIME" property="lastoutboundtime" jdbcType="TIMESTAMP" />
+    <result column="PICKUPINTOSTATIONTIME" property="pickupintostationtime" jdbcType="TIMESTAMP" />
+    <result column="PICKUPOUTSTATIONTIME" property="pickupoutstationtime" jdbcType="TIMESTAMP" />
+    <result column="DELIVERYINTOSTATIONTIME" property="deliveryintostationtime" jdbcType="TIMESTAMP" />
+    <result column="DELIVERYOUTSTATIONTIME" property="deliveryoutstationtime" jdbcType="TIMESTAMP" />
+    <result column="DELIVERYBACKSTATIONTIME" property="deliverybackstationtime" jdbcType="TIMESTAMP" />
+    <result column="REUTURNINSTATIONTIME" property="reuturninstationtime" jdbcType="TIMESTAMP" />
+    <result column="REUTURNOUTSTATIONTIME" property="reuturnoutstationtime" jdbcType="TIMESTAMP" />
+    <result column="REUTURNINBOUNDTIME" property="reuturninboundtime" jdbcType="TIMESTAMP" />
+    <result column="REUTURNOUTBOUNDTIME" property="reuturnoutboundtime" jdbcType="TIMESTAMP" />
+    <result column="MERCHANTCONFIMTIME" property="merchantconfimtime" jdbcType="TIMESTAMP" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="PERFORMCODE" property="performcode" jdbcType="VARCHAR" />
+    <result column="EXPRESSWAYBILLNO" property="expresswaybillno" jdbcType="VARCHAR" />
+    <result column="GOODSPROPERTY" property="goodsproperty" jdbcType="VARCHAR" />
+    <result column="GOODSCATEGORY" property="goodscategory" jdbcType="VARCHAR" />
+    <result column="FROMPROVINCE" property="fromprovince" jdbcType="VARCHAR" />
+    <result column="FROMCITY" property="fromcity" jdbcType="VARCHAR" />
+    <result column="FROMAREA" property="fromarea" jdbcType="VARCHAR" />
+    <result column="FROMADDRESS" property="fromaddress" jdbcType="VARCHAR" />
+    <result column="PICKUPDISTRIBUTIONCODE" property="pickupdistributioncode" jdbcType="VARCHAR" />
+    <result column="PICKUPEXPRESSCOMPANYID" property="pickupexpresscompanyid" jdbcType="DECIMAL" />
+    <result column="PICKUPMANID" property="pickupmanid" jdbcType="DECIMAL" />
+    <result column="DELIVERYFEETYPE" property="deliveryfeetype" jdbcType="DECIMAL" />
+    <result column="DELIVERYFEE" property="deliveryfee" jdbcType="DECIMAL" />
+    <result column="PROTECTFEE" property="protectfee" jdbcType="DECIMAL" />
+    <result column="ADDITIONALSERVICE" property="additionalservice" jdbcType="VARCHAR" />
+    <result column="ADDITIONALFEE" property="additionalfee" jdbcType="DECIMAL" />
+    <result column="FACTORAGE" property="factorage" jdbcType="DECIMAL" />
+    <result column="TOTALFEE" property="totalfee" jdbcType="DECIMAL" />
+    <result column="GOODSTYPE" property="goodstype" jdbcType="VARCHAR" />
+    <result column="GOODSNUM" property="goodsnum" jdbcType="DECIMAL" />
+    <result column="FETCHORDERNO" property="fetchorderno" jdbcType="VARCHAR" />
+    <result column="FETCHCREATETIME" property="fetchcreatetime" jdbcType="TIMESTAMP" />
+    <result column="CUSTOMERLEVEL" property="customerlevel" jdbcType="VARCHAR" />
+    <result column="ORDERCOMMENT" property="ordercomment" jdbcType="VARCHAR" />
+    <result column="CREATEBY" property="createby" jdbcType="DECIMAL" />
+    <result column="UPDATEBY" property="updateby" jdbcType="DECIMAL" />
+    <result column="ISDELETED" property="isdeleted" jdbcType="DECIMAL" />
+    <result column="BUSINESSTYPE" property="businesstype" jdbcType="DECIMAL" />
+    <result column="ADDRESSEE" property="addressee" jdbcType="VARCHAR" />
+    <result column="MOBILEPHONE" property="mobilephone" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="RECEIVETEL" property="receivetel" jdbcType="VARCHAR" />
+    <result column="CURRENTDISTRIBUTIONCODE" property="currentdistributioncode" jdbcType="VARCHAR" />
+    <result column="FROMDISTRIBUTIONCODE" property="fromdistributioncode" jdbcType="VARCHAR" />
+    <result column="SENDPHONE" property="sendphone" jdbcType="VARCHAR" />
+    <result column="SENDTELEPHONE" property="sendtelephone" jdbcType="VARCHAR" />
+    <result column="SENDNAME" property="sendname" jdbcType="VARCHAR" />
+    <result column="ACCEPTTYPE" property="accepttype" jdbcType="VARCHAR" />
+    <result column="SIGNTYPE" property="signtype" jdbcType="DECIMAL" />
+    <result column="SIGNCUSTOMER" property="signcustomer" jdbcType="VARCHAR" />
+    <result column="ASSIGNSTATUS" property="assignstatus" jdbcType="DECIMAL" />
+    <result column="REASONREMARK" property="reasonremark" jdbcType="VARCHAR" />
+    <result column="REASONDESCRIPTION" property="reasondescription" jdbcType="VARCHAR" />
+    <result column="ISSYNUSER" property="issynuser" jdbcType="DECIMAL" />
+    <result column="BOXCOUNT" property="boxcount" jdbcType="DECIMAL" />
+    <result column="EXPRESSORDERPAYMENTTYPE" property="expressorderpaymenttype" jdbcType="VARCHAR" />
+    <result column="QUERYSTATUS" property="querystatus" jdbcType="DECIMAL" />
+    <result column="SUBTYPE" property="subtype" jdbcType="DECIMAL" />
+    <result column="POSCODE" property="poscode" jdbcType="VARCHAR" />
+    <result column="EXPRESSORDERACCOUNTTYPE" property="expressorderaccounttype" jdbcType="DECIMAL" />
+    <result column="DISTRIBUTIONRECEIVEDTIME" property="distributionreceivedtime" jdbcType="TIMESTAMP" />
+    <result column="REALMERCHANTID" property="realmerchantid" jdbcType="DECIMAL" />
+    <result column="RETURNSORTINGCENTERID" property="returnsortingcenterid" jdbcType="DECIMAL" />
+    <result column="BOXNO" property="boxno" jdbcType="VARCHAR" />
+    <result column="MAINCODE" property="maincode" jdbcType="VARCHAR" />
+    <result column="DELIVERYDATE" property="deliverydate" jdbcType="TIMESTAMP" />
+    <result column="PAYREASONCODE" property="payreasoncode" jdbcType="VARCHAR" />
+    <result column="LASTSORTINGCENTERID" property="lastsortingcenterid" jdbcType="DECIMAL" />
+    <result column="LOADINGTIME" property="loadingtime" jdbcType="TIMESTAMP" />
+    <result column="UNLOADINGTIME" property="unloadingtime" jdbcType="TIMESTAMP" />
+    <result column="PICKUPGOODSTIME" property="pickupgoodstime" jdbcType="TIMESTAMP" />
+    <result column="BANKCARDNUMBER" property="bankcardnumber" jdbcType="VARCHAR" />
+    <result column="BANKCARDNAME" property="bankcardname" jdbcType="VARCHAR" />
+    <result column="COUNTRY" property="country" jdbcType="VARCHAR" />
+    <result column="GOODSPAYMENT" property="goodspayment" jdbcType="DECIMAL" />
+    <result column="ORDERREALSOURCE" property="orderrealsource" jdbcType="VARCHAR" />
+    <result column="REALBACKSTATIONTIME" property="realbackstationtime" jdbcType="TIMESTAMP" />
+    <result column="ISSENDHUODONGSMS" property="issendhuodongsms" jdbcType="DECIMAL" />
+    <result column="SENDHUODONGSMSDATE" property="sendhuodongsmsdate" jdbcType="TIMESTAMP" />
+    <result column="DIGITALSIGNATUREURL" property="digitalsignatureurl" jdbcType="VARCHAR" />
+    <result column="TOTOWNSHIP" property="totownship" jdbcType="VARCHAR" />
+    <result column="FROMTOWNSHIP" property="fromtownship" jdbcType="VARCHAR" />
+    <result column="FIRSTINSTORESTATIONID" property="firstinstorestationid" jdbcType="DECIMAL" />
+    <result column="FIRSTINSTORETIME" property="firstinstoretime" jdbcType="TIMESTAMP" />
+    <result column="FIRSTOUTSTORETIME" property="firstoutstoretime" jdbcType="TIMESTAMP" />
+    <result column="SUBABNORMAL" property="subabnormal" jdbcType="DECIMAL" />
+    <result column="EXPRESSSERVICEFEE" property="expressservicefee" jdbcType="DECIMAL" />
+    <result column="PICKUPCAR" property="pickupcar" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WAYBILLNO, DISTRIBUTIONCODE, CREATETIME, FORMCODE, DELIVERCODE, SORTINGCENTERID, 
+    CURDEPTID, STATUS, BACKSTATUS, REPLACETYPE, MARCHARTID, MERCHANTHOUSECODE, TOPROVINCE, 
+    TOCITY, TOAREA, TOADDRESS, EXPRESSCOMPANYID, DELIVERMANID, MERCHANTWEIGHT, WEIGHT, 
+    FINANCIALWEIGHT, VOLUMETRICWEIGHT, NEEDFUND, BACKFUND, PROTECTEDPRICE, REASON, RECEIVEDATE, 
+    ASSIGNTIME, LASTINBOUNDTIME, LASTINBOXTIME, LASTOUTBOUNDTIME, PICKUPINTOSTATIONTIME, 
+    PICKUPOUTSTATIONTIME, DELIVERYINTOSTATIONTIME, DELIVERYOUTSTATIONTIME, DELIVERYBACKSTATIONTIME, 
+    REUTURNINSTATIONTIME, REUTURNOUTSTATIONTIME, REUTURNINBOUNDTIME, REUTURNOUTBOUNDTIME, 
+    MERCHANTCONFIMTIME, UPDATETIME, PERFORMCODE, EXPRESSWAYBILLNO, GOODSPROPERTY, GOODSCATEGORY, 
+    FROMPROVINCE, FROMCITY, FROMAREA, FROMADDRESS, PICKUPDISTRIBUTIONCODE, PICKUPEXPRESSCOMPANYID, 
+    PICKUPMANID, DELIVERYFEETYPE, DELIVERYFEE, PROTECTFEE, ADDITIONALSERVICE, ADDITIONALFEE, 
+    FACTORAGE, TOTALFEE, GOODSTYPE, GOODSNUM, FETCHORDERNO, FETCHCREATETIME, CUSTOMERLEVEL, 
+    ORDERCOMMENT, CREATEBY, UPDATEBY, ISDELETED, BUSINESSTYPE, ADDRESSEE, MOBILEPHONE, 
+    USERNAME, EMAIL, RECEIVETEL, CURRENTDISTRIBUTIONCODE, FROMDISTRIBUTIONCODE, SENDPHONE, 
+    SENDTELEPHONE, SENDNAME, ACCEPTTYPE, SIGNTYPE, SIGNCUSTOMER, ASSIGNSTATUS, REASONREMARK, 
+    REASONDESCRIPTION, ISSYNUSER, BOXCOUNT, EXPRESSORDERPAYMENTTYPE, QUERYSTATUS, SUBTYPE, 
+    POSCODE, EXPRESSORDERACCOUNTTYPE, DISTRIBUTIONRECEIVEDTIME, REALMERCHANTID, RETURNSORTINGCENTERID, 
+    BOXNO, MAINCODE, DELIVERYDATE, PAYREASONCODE, LASTSORTINGCENTERID, LOADINGTIME, UNLOADINGTIME, 
+    PICKUPGOODSTIME, BANKCARDNUMBER, BANKCARDNAME, COUNTRY, GOODSPAYMENT, ORDERREALSOURCE, 
+    REALBACKSTATIONTIME, ISSENDHUODONGSMS, SENDHUODONGSMSDATE, DIGITALSIGNATUREURL, TOTOWNSHIP, 
+    FROMTOWNSHIP, FIRSTINSTORESTATIONID, FIRSTINSTORETIME, FIRSTOUTSTORETIME, SUBABNORMAL, 
+    EXPRESSSERVICEFEE, PICKUPCAR
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itiaoling.dbdiff.models.OrderComplexQueryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CLOUD_DPS.ORDERCOMPLEXQUERY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="countByExample" parameterType="com.itiaoling.dbdiff.models.OrderComplexQueryExample" resultType="java.lang.Integer" >
+    select count(*) from CLOUD_DPS.ORDERCOMPLEXQUERY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

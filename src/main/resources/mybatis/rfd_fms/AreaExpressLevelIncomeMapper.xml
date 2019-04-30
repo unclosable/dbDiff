@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itiaoling.dbdiff.mappers.AreaExpressLevelIncomeMapper" >
+  <resultMap id="BaseResultMap" type="com.itiaoling.dbdiff.models.AreaExpressLevelIncome" >
+    <id column="AUTOID" property="autoid" jdbcType="DECIMAL" />
+    <result column="AREAID" property="areaid" jdbcType="VARCHAR" />
+    <result column="MERCHANTID" property="merchantid" jdbcType="DECIMAL" />
+    <result column="WAREHOUSEID" property="warehouseid" jdbcType="VARCHAR" />
+    <result column="AREATYPE" property="areatype" jdbcType="DECIMAL" />
+    <result column="ISENABLE" property="isenable" jdbcType="DECIMAL" />
+    <result column="EFFECTAREATYPE" property="effectareatype" jdbcType="DECIMAL" />
+    <result column="DODATE" property="dodate" jdbcType="TIMESTAMP" />
+    <result column="CREATEBY" property="createby" jdbcType="DECIMAL" />
+    <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="UPDATEBY" property="updateby" jdbcType="DECIMAL" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="AUDITSTATUS" property="auditstatus" jdbcType="DECIMAL" />
+    <result column="AUDITBY" property="auditby" jdbcType="DECIMAL" />
+    <result column="AUDITTIME" property="audittime" jdbcType="TIMESTAMP" />
+    <result column="EXPRESSCOMPANYID" property="expresscompanyid" jdbcType="DECIMAL" />
+    <result column="DISTRIBUTIONCODE" property="distributioncode" jdbcType="VARCHAR" />
+    <result column="ISCHANGE" property="ischange" jdbcType="DECIMAL" />
+    <result column="GOODSCATEGORYCODE" property="goodscategorycode" jdbcType="VARCHAR" />
+    <result column="ISEXPRESS" property="isexpress" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    AUTOID, AREAID, MERCHANTID, WAREHOUSEID, AREATYPE, ISENABLE, EFFECTAREATYPE, DODATE, 
+    CREATEBY, CREATETIME, UPDATEBY, UPDATETIME, AUDITSTATUS, AUDITBY, AUDITTIME, EXPRESSCOMPANYID, 
+    DISTRIBUTIONCODE, ISCHANGE, GOODSCATEGORYCODE, ISEXPRESS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itiaoling.dbdiff.models.AreaExpressLevelIncomeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from RFD_FMS.AREAEXPRESSLEVELINCOME
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from RFD_FMS.AREAEXPRESSLEVELINCOME
+    where AUTOID = #{autoid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from RFD_FMS.AREAEXPRESSLEVELINCOME
+    where AUTOID = #{autoid,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itiaoling.dbdiff.models.AreaExpressLevelIncomeExample" >
+    delete from RFD_FMS.AREAEXPRESSLEVELINCOME
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itiaoling.dbdiff.models.AreaExpressLevelIncome" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="autoid" order="BEFORE" >
+      select RFD_FMS.SEQ_AREAEXPRESSLEVELINCOME.nextval from dual
+    </selectKey>
+    insert into RFD_FMS.AREAEXPRESSLEVELINCOME (AUTOID, AREAID, MERCHANTID, 
+      WAREHOUSEID, AREATYPE, ISENABLE, 
+      EFFECTAREATYPE, DODATE, CREATEBY, 
+      CREATETIME, UPDATEBY, UPDATETIME, 
+      AUDITSTATUS, AUDITBY, AUDITTIME, 
+      EXPRESSCOMPANYID, DISTRIBUTIONCODE, ISCHANGE, 
+      GOODSCATEGORYCODE, ISEXPRESS)
+    values (#{autoid,jdbcType=DECIMAL}, #{areaid,jdbcType=VARCHAR}, #{merchantid,jdbcType=DECIMAL}, 
+      #{warehouseid,jdbcType=VARCHAR}, #{areatype,jdbcType=DECIMAL}, #{isenable,jdbcType=DECIMAL}, 
+      #{effectareatype,jdbcType=DECIMAL}, #{dodate,jdbcType=TIMESTAMP}, #{createby,jdbcType=DECIMAL}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=DECIMAL}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{auditstatus,jdbcType=DECIMAL}, #{auditby,jdbcType=DECIMAL}, #{audittime,jdbcType=TIMESTAMP}, 
+      #{expresscompanyid,jdbcType=DECIMAL}, #{distributioncode,jdbcType=VARCHAR}, #{ischange,jdbcType=DECIMAL}, 
+      #{goodscategorycode,jdbcType=VARCHAR}, #{isexpress,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itiaoling.dbdiff.models.AreaExpressLevelIncome" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="autoid" order="BEFORE" >
+      select RFD_FMS.SEQ_AREAEXPRESSLEVELINCOME.nextval from dual
+    </selectKey>
+    insert into RFD_FMS.AREAEXPRESSLEVELINCOME
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      AUTOID,
+      <if test="areaid != null" >
+        AREAID,
+      </if>
+      <if test="merchantid != null" >
+        MERCHANTID,
+      </if>
+      <if test="warehouseid != null" >
+        WAREHOUSEID,
+      </if>
+      <if test="areatype != null" >
+        AREATYPE,
+      </if>
+      <if test="isenable != null" >
+        ISENABLE,
+      </if>
+      <if test="effectareatype != null" >
+        EFFECTAREATYPE,
+      </if>
+      <if test="dodate != null" >
+        DODATE,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+      <if test="auditstatus != null" >
+        AUDITSTATUS,
+      </if>
+      <if test="auditby != null" >
+        AUDITBY,
+      </if>
+      <if test="audittime != null" >
+        AUDITTIME,
+      </if>
+      <if test="expresscompanyid != null" >
+        EXPRESSCOMPANYID,
+      </if>
+      <if test="distributioncode != null" >
+        DISTRIBUTIONCODE,
+      </if>
+      <if test="ischange != null" >
+        ISCHANGE,
+      </if>
+      <if test="goodscategorycode != null" >
+        GOODSCATEGORYCODE,
+      </if>
+      <if test="isexpress != null" >
+        ISEXPRESS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{autoid,jdbcType=DECIMAL},
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantid != null" >
+        #{merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseid != null" >
+        #{warehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="areatype != null" >
+        #{areatype,jdbcType=DECIMAL},
+      </if>
+      <if test="isenable != null" >
+        #{isenable,jdbcType=DECIMAL},
+      </if>
+      <if test="effectareatype != null" >
+        #{effectareatype,jdbcType=DECIMAL},
+      </if>
+      <if test="dodate != null" >
+        #{dodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditstatus != null" >
+        #{auditstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="auditby != null" >
+        #{auditby,jdbcType=DECIMAL},
+      </if>
+      <if test="audittime != null" >
+        #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expresscompanyid != null" >
+        #{expresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="distributioncode != null" >
+        #{distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="ischange != null" >
+        #{ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="goodscategorycode != null" >
+        #{goodscategorycode,jdbcType=VARCHAR},
+      </if>
+      <if test="isexpress != null" >
+        #{isexpress,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itiaoling.dbdiff.models.AreaExpressLevelIncomeExample" resultType="java.lang.Integer" >
+    select count(*) from RFD_FMS.AREAEXPRESSLEVELINCOME
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update RFD_FMS.AREAEXPRESSLEVELINCOME
+    <set >
+      <if test="record.autoid != null" >
+        AUTOID = #{record.autoid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.areaid != null" >
+        AREAID = #{record.areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchantid != null" >
+        MERCHANTID = #{record.merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.warehouseid != null" >
+        WAREHOUSEID = #{record.warehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areatype != null" >
+        AREATYPE = #{record.areatype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isenable != null" >
+        ISENABLE = #{record.isenable,jdbcType=DECIMAL},
+      </if>
+      <if test="record.effectareatype != null" >
+        EFFECTAREATYPE = #{record.effectareatype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dodate != null" >
+        DODATE = #{record.dodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CREATEBY = #{record.createby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createtime != null" >
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateby != null" >
+        UPDATEBY = #{record.updateby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.updatetime != null" >
+        UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.auditstatus != null" >
+        AUDITSTATUS = #{record.auditstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="record.auditby != null" >
+        AUDITBY = #{record.auditby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.audittime != null" >
+        AUDITTIME = #{record.audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.expresscompanyid != null" >
+        EXPRESSCOMPANYID = #{record.expresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.distributioncode != null" >
+        DISTRIBUTIONCODE = #{record.distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ischange != null" >
+        ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="record.goodscategorycode != null" >
+        GOODSCATEGORYCODE = #{record.goodscategorycode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isexpress != null" >
+        ISEXPRESS = #{record.isexpress,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update RFD_FMS.AREAEXPRESSLEVELINCOME
+    set AUTOID = #{record.autoid,jdbcType=DECIMAL},
+      AREAID = #{record.areaid,jdbcType=VARCHAR},
+      MERCHANTID = #{record.merchantid,jdbcType=DECIMAL},
+      WAREHOUSEID = #{record.warehouseid,jdbcType=VARCHAR},
+      AREATYPE = #{record.areatype,jdbcType=DECIMAL},
+      ISENABLE = #{record.isenable,jdbcType=DECIMAL},
+      EFFECTAREATYPE = #{record.effectareatype,jdbcType=DECIMAL},
+      DODATE = #{record.dodate,jdbcType=TIMESTAMP},
+      CREATEBY = #{record.createby,jdbcType=DECIMAL},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      UPDATEBY = #{record.updateby,jdbcType=DECIMAL},
+      UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      AUDITSTATUS = #{record.auditstatus,jdbcType=DECIMAL},
+      AUDITBY = #{record.auditby,jdbcType=DECIMAL},
+      AUDITTIME = #{record.audittime,jdbcType=TIMESTAMP},
+      EXPRESSCOMPANYID = #{record.expresscompanyid,jdbcType=DECIMAL},
+      DISTRIBUTIONCODE = #{record.distributioncode,jdbcType=VARCHAR},
+      ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      GOODSCATEGORYCODE = #{record.goodscategorycode,jdbcType=VARCHAR},
+      ISEXPRESS = #{record.isexpress,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itiaoling.dbdiff.models.AreaExpressLevelIncome" >
+    update RFD_FMS.AREAEXPRESSLEVELINCOME
+    <set >
+      <if test="areaid != null" >
+        AREAID = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantid != null" >
+        MERCHANTID = #{merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseid != null" >
+        WAREHOUSEID = #{warehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="areatype != null" >
+        AREATYPE = #{areatype,jdbcType=DECIMAL},
+      </if>
+      <if test="isenable != null" >
+        ISENABLE = #{isenable,jdbcType=DECIMAL},
+      </if>
+      <if test="effectareatype != null" >
+        EFFECTAREATYPE = #{effectareatype,jdbcType=DECIMAL},
+      </if>
+      <if test="dodate != null" >
+        DODATE = #{dodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null" >
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY = #{updateby,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditstatus != null" >
+        AUDITSTATUS = #{auditstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="auditby != null" >
+        AUDITBY = #{auditby,jdbcType=DECIMAL},
+      </if>
+      <if test="audittime != null" >
+        AUDITTIME = #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expresscompanyid != null" >
+        EXPRESSCOMPANYID = #{expresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="distributioncode != null" >
+        DISTRIBUTIONCODE = #{distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="ischange != null" >
+        ISCHANGE = #{ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="goodscategorycode != null" >
+        GOODSCATEGORYCODE = #{goodscategorycode,jdbcType=VARCHAR},
+      </if>
+      <if test="isexpress != null" >
+        ISEXPRESS = #{isexpress,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where AUTOID = #{autoid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itiaoling.dbdiff.models.AreaExpressLevelIncome" >
+    update RFD_FMS.AREAEXPRESSLEVELINCOME
+    set AREAID = #{areaid,jdbcType=VARCHAR},
+      MERCHANTID = #{merchantid,jdbcType=DECIMAL},
+      WAREHOUSEID = #{warehouseid,jdbcType=VARCHAR},
+      AREATYPE = #{areatype,jdbcType=DECIMAL},
+      ISENABLE = #{isenable,jdbcType=DECIMAL},
+      EFFECTAREATYPE = #{effectareatype,jdbcType=DECIMAL},
+      DODATE = #{dodate,jdbcType=TIMESTAMP},
+      CREATEBY = #{createby,jdbcType=DECIMAL},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=DECIMAL},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      AUDITSTATUS = #{auditstatus,jdbcType=DECIMAL},
+      AUDITBY = #{auditby,jdbcType=DECIMAL},
+      AUDITTIME = #{audittime,jdbcType=TIMESTAMP},
+      EXPRESSCOMPANYID = #{expresscompanyid,jdbcType=DECIMAL},
+      DISTRIBUTIONCODE = #{distributioncode,jdbcType=VARCHAR},
+      ISCHANGE = #{ischange,jdbcType=DECIMAL},
+      GOODSCATEGORYCODE = #{goodscategorycode,jdbcType=VARCHAR},
+      ISEXPRESS = #{isexpress,jdbcType=DECIMAL}
+    where AUTOID = #{autoid,jdbcType=DECIMAL}
+  </update>
+</mapper>

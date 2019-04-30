@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itiaoling.dbdiff.mappers.BaseInfoMapper">
+	<select id="getWaybillIDS" resultType="DECIMAL">
+		SELECT cbi.WAYBILLNO
+		FROM RFD_FMS.FMS_CODBASEINFO cbi JOIN RFD_FMS.FMS_INCOMEBASEINFO ibi ON cbi.WAYBILLNO = ibi.WAYBILLNO AND cbi.ISLAST = 0
+		WHERE (cbi.NEEDBACKAMOUNT != ibi.NEEDBACKAMOUNT OR cbi.NEEDPAYAMOUNT != ibi.NEEDPAYAMOUNT OR cbi.PAIDAMOUNT != ibi.PAIDAMOUNT)
+		AND cbi.CREATETIME > TO_DATE('2017-10-12','yyyy-MM-dd')
+	</select>
+</mapper>

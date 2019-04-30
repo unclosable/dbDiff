@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<timestamp key="today" datePattern="yyyy-MM-dd" />
+	<property name="log_dir" value="logs" />
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{ISO8601} %-5p [%c].%M - %m%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<appender name="baseinfo"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log_dir}/baseinfo.%d{yyyy-MM-dd~HH}.log
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%m%n</pattern>
+		</layout>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印INFO日志 -->
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+	<appender name="codinfo"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log_dir}/codinfo.%d{yyyy-MM-dd~HH}.log
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%m%n</pattern>
+		</layout>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印INFO日志 -->
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+	<appender name="feeinfo"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log_dir}/feeinfo.%d{yyyy-MM-dd~HH}.log
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%m%n</pattern>
+		</layout>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印INFO日志 -->
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+	<appender name="TESTINFO"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log_dir}/TESTINFO.%d{yyyy-MM-dd~HH}.log
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%m%n</pattern>
+		</layout>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印INFO日志 -->
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+	<logger name="TESTINFO" level="INFO" additivity="false">
+		<appender-ref ref="TESTINFO" />
+		<appender-ref ref="stdout" />
+	</logger>
+	<logger name="feeinfo" level="INFO" additivity="false">
+		<appender-ref ref="feeinfo" />
+	</logger>
+	<logger name="codinfo" level="INFO" additivity="false">
+		<appender-ref ref="codinfo" />
+	</logger>
+	<logger name="baseinfo" level="INFO" additivity="false">
+		<appender-ref ref="baseinfo" />
+	</logger>
+	<!-- <logger name="com.xiaojiuwo.rabbitmq.mappers" level="DEBUG" additivity="true" 
+		/> <logger name="druid.sql.Statement" level="DEBUG" additivity="true" /> -->
+
+	<root level="INFO">
+		<appender-ref ref="stdout" />
+	</root>
+
+</configuration>

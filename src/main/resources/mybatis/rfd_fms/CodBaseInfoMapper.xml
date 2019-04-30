@@ -1,0 +1,1171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itiaoling.dbdiff.mappers.CodBaseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.itiaoling.dbdiff.models.CodBaseInfo" >
+    <id column="INFOID" property="infoid" jdbcType="DECIMAL" />
+    <id column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="MEDIUMID" property="mediumid" jdbcType="DECIMAL" />
+    <result column="WAYBILLNO" property="waybillno" jdbcType="DECIMAL" />
+    <result column="MERCHANTID" property="merchantid" jdbcType="DECIMAL" />
+    <result column="WAYBILLTYPE" property="waybilltype" jdbcType="VARCHAR" />
+    <result column="FLAG" property="flag" jdbcType="DECIMAL" />
+    <result column="DELIVERSTATIONID" property="deliverstationid" jdbcType="DECIMAL" />
+    <result column="TOPCODCOMPANYID" property="topcodcompanyid" jdbcType="DECIMAL" />
+    <result column="WAREHOUSEID" property="warehouseid" jdbcType="VARCHAR" />
+    <result column="EXPRESSCOMPANYID" property="expresscompanyid" jdbcType="DECIMAL" />
+    <result column="RFDACCEPTTIME" property="rfdaccepttime" jdbcType="TIMESTAMP" />
+    <result column="RFDACCEPTDATE" property="rfdacceptdate" jdbcType="TIMESTAMP" />
+    <result column="FINALEXPRESSCOMPANYID" property="finalexpresscompanyid" jdbcType="DECIMAL" />
+    <result column="DELIVERTIME" property="delivertime" jdbcType="TIMESTAMP" />
+    <result column="DELIVERDATE" property="deliverdate" jdbcType="TIMESTAMP" />
+    <result column="RETURNWAREHOUSEID" property="returnwarehouseid" jdbcType="VARCHAR" />
+    <result column="RETURNEXPRESSCOMPANYID" property="returnexpresscompanyid" jdbcType="DECIMAL" />
+    <result column="TOTALAMOUNT" property="totalamount" jdbcType="DECIMAL" />
+    <result column="PAIDAMOUNT" property="paidamount" jdbcType="DECIMAL" />
+    <result column="NEEDPAYAMOUNT" property="needpayamount" jdbcType="DECIMAL" />
+    <result column="BACKAMOUNT" property="backamount" jdbcType="DECIMAL" />
+    <result column="NEEDBACKAMOUNT" property="needbackamount" jdbcType="DECIMAL" />
+    <result column="ACCOUNTWEIGHT" property="accountweight" jdbcType="DECIMAL" />
+    <result column="AREAID" property="areaid" jdbcType="VARCHAR" />
+    <result column="AREATYPE" property="areatype" jdbcType="DECIMAL" />
+    <result column="BOXSNO" property="boxsno" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="ISDELETED" property="isdeleted" jdbcType="DECIMAL" />
+    <result column="RETURNTIME" property="returntime" jdbcType="TIMESTAMP" />
+    <result column="RETURNDATE" property="returndate" jdbcType="TIMESTAMP" />
+    <result column="ISFARE" property="isfare" jdbcType="DECIMAL" />
+    <result column="FARE" property="fare" jdbcType="DECIMAL" />
+    <result column="FAREFORMULA" property="fareformula" jdbcType="VARCHAR" />
+    <result column="OPERATETYPE" property="operatetype" jdbcType="DECIMAL" />
+    <result column="PROTECTEDPRICE" property="protectedprice" jdbcType="DECIMAL" />
+    <result column="DISTRIBUTIONCODE" property="distributioncode" jdbcType="VARCHAR" />
+    <result column="CURRENTDISTRIBUTIONCODE" property="currentdistributioncode" jdbcType="VARCHAR" />
+    <result column="ISCHANGE" property="ischange" jdbcType="DECIMAL" />
+    <result column="COMEFROM" property="comefrom" jdbcType="DECIMAL" />
+    <result column="ISCOD" property="iscod" jdbcType="DECIMAL" />
+    <result column="ACCOUNTORDERNO" property="accountorderno" jdbcType="VARCHAR" />
+    <result column="ISLAST" property="islast" jdbcType="DECIMAL" />
+    <result column="SENDPROVINCE" property="sendprovince" jdbcType="VARCHAR" />
+    <result column="SENDCITY" property="sendcity" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="AREA" property="area" jdbcType="VARCHAR" />
+    <result column="COUNTRY" property="country" jdbcType="VARCHAR" />
+    <result column="FAREFORJAVA" property="fareforjava" jdbcType="DECIMAL" />
+    <result column="FAREFORMULAIDFORJAVA" property="fareformulaidforjava" jdbcType="DECIMAL" />
+    <result column="AREAIDFORJAVA" property="areaidforjava" jdbcType="DECIMAL" />
+    <result column="ISSYNFAREFORJAVA" property="issynfareforjava" jdbcType="DECIMAL" />
+    <result column="BACKSTATIONSTATUS" property="backstationstatus" jdbcType="DECIMAL" />
+    <result column="BACKSTATIONTIME" property="backstationtime" jdbcType="TIMESTAMP" />
+    <result column="RECEIVEBY" property="receiveby" jdbcType="VARCHAR" />
+    <result column="CUSTOMERORDER" property="customerorder" jdbcType="VARCHAR" />
+    <result column="WAYBILLCATEGORY" property="waybillcategory" jdbcType="VARCHAR" />
+    <result column="PACKAGECOUNT" property="packagecount" jdbcType="DECIMAL" />
+    <result column="MERCHANTWEIGHT" property="merchantweight" jdbcType="DECIMAL" />
+    <result column="WAYBILLINFOWEIGHT" property="waybillinfoweight" jdbcType="DECIMAL" />
+    <result column="MSGFORJAVA" property="msgforjava" jdbcType="VARCHAR" />
+    <result column="MERCHANTCATEGORY" property="merchantcategory" jdbcType="VARCHAR" />
+    <result column="CODPOUNDAGE" property="codpoundage" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    INFOID, CREATETIME, MEDIUMID, WAYBILLNO, MERCHANTID, WAYBILLTYPE, FLAG, DELIVERSTATIONID, 
+    TOPCODCOMPANYID, WAREHOUSEID, EXPRESSCOMPANYID, RFDACCEPTTIME, RFDACCEPTDATE, FINALEXPRESSCOMPANYID, 
+    DELIVERTIME, DELIVERDATE, RETURNWAREHOUSEID, RETURNEXPRESSCOMPANYID, TOTALAMOUNT, 
+    PAIDAMOUNT, NEEDPAYAMOUNT, BACKAMOUNT, NEEDBACKAMOUNT, ACCOUNTWEIGHT, AREAID, AREATYPE, 
+    BOXSNO, ADDRESS, UPDATETIME, ISDELETED, RETURNTIME, RETURNDATE, ISFARE, FARE, FAREFORMULA, 
+    OPERATETYPE, PROTECTEDPRICE, DISTRIBUTIONCODE, CURRENTDISTRIBUTIONCODE, ISCHANGE, 
+    COMEFROM, ISCOD, ACCOUNTORDERNO, ISLAST, SENDPROVINCE, SENDCITY, PROVINCE, CITY, 
+    AREA, COUNTRY, FAREFORJAVA, FAREFORMULAIDFORJAVA, AREAIDFORJAVA, ISSYNFAREFORJAVA, 
+    BACKSTATIONSTATUS, BACKSTATIONTIME, RECEIVEBY, CUSTOMERORDER, WAYBILLCATEGORY, PACKAGECOUNT, 
+    MERCHANTWEIGHT, WAYBILLINFOWEIGHT, MSGFORJAVA, MERCHANTCATEGORY, CODPOUNDAGE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itiaoling.dbdiff.models.CodBaseInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from RFD_FMS.FMS_CODBASEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from RFD_FMS.FMS_CODBASEINFO
+    where INFOID = #{infoid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from RFD_FMS.FMS_CODBASEINFO
+    where INFOID = #{infoid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itiaoling.dbdiff.models.CodBaseInfoExample" >
+    delete from RFD_FMS.FMS_CODBASEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itiaoling.dbdiff.models.CodBaseInfo" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="infoid" order="BEFORE" >
+      select RFD_FMS.SEQ_FMS_CODBASEINFO.nextval from dual
+    </selectKey>
+    insert into RFD_FMS.FMS_CODBASEINFO (INFOID, CREATETIME, MEDIUMID, 
+      WAYBILLNO, MERCHANTID, WAYBILLTYPE, 
+      FLAG, DELIVERSTATIONID, TOPCODCOMPANYID, 
+      WAREHOUSEID, EXPRESSCOMPANYID, RFDACCEPTTIME, 
+      RFDACCEPTDATE, FINALEXPRESSCOMPANYID, 
+      DELIVERTIME, DELIVERDATE, RETURNWAREHOUSEID, 
+      RETURNEXPRESSCOMPANYID, TOTALAMOUNT, PAIDAMOUNT, 
+      NEEDPAYAMOUNT, BACKAMOUNT, NEEDBACKAMOUNT, 
+      ACCOUNTWEIGHT, AREAID, AREATYPE, 
+      BOXSNO, ADDRESS, UPDATETIME, 
+      ISDELETED, RETURNTIME, RETURNDATE, 
+      ISFARE, FARE, FAREFORMULA, 
+      OPERATETYPE, PROTECTEDPRICE, DISTRIBUTIONCODE, 
+      CURRENTDISTRIBUTIONCODE, ISCHANGE, COMEFROM, 
+      ISCOD, ACCOUNTORDERNO, ISLAST, 
+      SENDPROVINCE, SENDCITY, PROVINCE, 
+      CITY, AREA, COUNTRY, 
+      FAREFORJAVA, FAREFORMULAIDFORJAVA, AREAIDFORJAVA, 
+      ISSYNFAREFORJAVA, BACKSTATIONSTATUS, BACKSTATIONTIME, 
+      RECEIVEBY, CUSTOMERORDER, WAYBILLCATEGORY, 
+      PACKAGECOUNT, MERCHANTWEIGHT, WAYBILLINFOWEIGHT, 
+      MSGFORJAVA, MERCHANTCATEGORY, CODPOUNDAGE
+      )
+    values (#{infoid,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, #{mediumid,jdbcType=DECIMAL}, 
+      #{waybillno,jdbcType=DECIMAL}, #{merchantid,jdbcType=DECIMAL}, #{waybilltype,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=DECIMAL}, #{deliverstationid,jdbcType=DECIMAL}, #{topcodcompanyid,jdbcType=DECIMAL}, 
+      #{warehouseid,jdbcType=VARCHAR}, #{expresscompanyid,jdbcType=DECIMAL}, #{rfdaccepttime,jdbcType=TIMESTAMP}, 
+      #{rfdacceptdate,jdbcType=TIMESTAMP}, #{finalexpresscompanyid,jdbcType=DECIMAL}, 
+      #{delivertime,jdbcType=TIMESTAMP}, #{deliverdate,jdbcType=TIMESTAMP}, #{returnwarehouseid,jdbcType=VARCHAR}, 
+      #{returnexpresscompanyid,jdbcType=DECIMAL}, #{totalamount,jdbcType=DECIMAL}, #{paidamount,jdbcType=DECIMAL}, 
+      #{needpayamount,jdbcType=DECIMAL}, #{backamount,jdbcType=DECIMAL}, #{needbackamount,jdbcType=DECIMAL}, 
+      #{accountweight,jdbcType=DECIMAL}, #{areaid,jdbcType=VARCHAR}, #{areatype,jdbcType=DECIMAL}, 
+      #{boxsno,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{isdeleted,jdbcType=DECIMAL}, #{returntime,jdbcType=TIMESTAMP}, #{returndate,jdbcType=TIMESTAMP}, 
+      #{isfare,jdbcType=DECIMAL}, #{fare,jdbcType=DECIMAL}, #{fareformula,jdbcType=VARCHAR}, 
+      #{operatetype,jdbcType=DECIMAL}, #{protectedprice,jdbcType=DECIMAL}, #{distributioncode,jdbcType=VARCHAR}, 
+      #{currentdistributioncode,jdbcType=VARCHAR}, #{ischange,jdbcType=DECIMAL}, #{comefrom,jdbcType=DECIMAL}, 
+      #{iscod,jdbcType=DECIMAL}, #{accountorderno,jdbcType=VARCHAR}, #{islast,jdbcType=DECIMAL}, 
+      #{sendprovince,jdbcType=VARCHAR}, #{sendcity,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, 
+      #{fareforjava,jdbcType=DECIMAL}, #{fareformulaidforjava,jdbcType=DECIMAL}, #{areaidforjava,jdbcType=DECIMAL}, 
+      #{issynfareforjava,jdbcType=DECIMAL}, #{backstationstatus,jdbcType=DECIMAL}, #{backstationtime,jdbcType=TIMESTAMP}, 
+      #{receiveby,jdbcType=VARCHAR}, #{customerorder,jdbcType=VARCHAR}, #{waybillcategory,jdbcType=VARCHAR}, 
+      #{packagecount,jdbcType=DECIMAL}, #{merchantweight,jdbcType=DECIMAL}, #{waybillinfoweight,jdbcType=DECIMAL}, 
+      #{msgforjava,jdbcType=VARCHAR}, #{merchantcategory,jdbcType=VARCHAR}, #{codpoundage,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.itiaoling.dbdiff.models.CodBaseInfo" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="infoid" order="BEFORE" >
+      select RFD_FMS.SEQ_FMS_CODBASEINFO.nextval from dual
+    </selectKey>
+    insert into RFD_FMS.FMS_CODBASEINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      INFOID,
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="mediumid != null" >
+        MEDIUMID,
+      </if>
+      <if test="waybillno != null" >
+        WAYBILLNO,
+      </if>
+      <if test="merchantid != null" >
+        MERCHANTID,
+      </if>
+      <if test="waybilltype != null" >
+        WAYBILLTYPE,
+      </if>
+      <if test="flag != null" >
+        FLAG,
+      </if>
+      <if test="deliverstationid != null" >
+        DELIVERSTATIONID,
+      </if>
+      <if test="topcodcompanyid != null" >
+        TOPCODCOMPANYID,
+      </if>
+      <if test="warehouseid != null" >
+        WAREHOUSEID,
+      </if>
+      <if test="expresscompanyid != null" >
+        EXPRESSCOMPANYID,
+      </if>
+      <if test="rfdaccepttime != null" >
+        RFDACCEPTTIME,
+      </if>
+      <if test="rfdacceptdate != null" >
+        RFDACCEPTDATE,
+      </if>
+      <if test="finalexpresscompanyid != null" >
+        FINALEXPRESSCOMPANYID,
+      </if>
+      <if test="delivertime != null" >
+        DELIVERTIME,
+      </if>
+      <if test="deliverdate != null" >
+        DELIVERDATE,
+      </if>
+      <if test="returnwarehouseid != null" >
+        RETURNWAREHOUSEID,
+      </if>
+      <if test="returnexpresscompanyid != null" >
+        RETURNEXPRESSCOMPANYID,
+      </if>
+      <if test="totalamount != null" >
+        TOTALAMOUNT,
+      </if>
+      <if test="paidamount != null" >
+        PAIDAMOUNT,
+      </if>
+      <if test="needpayamount != null" >
+        NEEDPAYAMOUNT,
+      </if>
+      <if test="backamount != null" >
+        BACKAMOUNT,
+      </if>
+      <if test="needbackamount != null" >
+        NEEDBACKAMOUNT,
+      </if>
+      <if test="accountweight != null" >
+        ACCOUNTWEIGHT,
+      </if>
+      <if test="areaid != null" >
+        AREAID,
+      </if>
+      <if test="areatype != null" >
+        AREATYPE,
+      </if>
+      <if test="boxsno != null" >
+        BOXSNO,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+      <if test="isdeleted != null" >
+        ISDELETED,
+      </if>
+      <if test="returntime != null" >
+        RETURNTIME,
+      </if>
+      <if test="returndate != null" >
+        RETURNDATE,
+      </if>
+      <if test="isfare != null" >
+        ISFARE,
+      </if>
+      <if test="fare != null" >
+        FARE,
+      </if>
+      <if test="fareformula != null" >
+        FAREFORMULA,
+      </if>
+      <if test="operatetype != null" >
+        OPERATETYPE,
+      </if>
+      <if test="protectedprice != null" >
+        PROTECTEDPRICE,
+      </if>
+      <if test="distributioncode != null" >
+        DISTRIBUTIONCODE,
+      </if>
+      <if test="currentdistributioncode != null" >
+        CURRENTDISTRIBUTIONCODE,
+      </if>
+      <if test="ischange != null" >
+        ISCHANGE,
+      </if>
+      <if test="comefrom != null" >
+        COMEFROM,
+      </if>
+      <if test="iscod != null" >
+        ISCOD,
+      </if>
+      <if test="accountorderno != null" >
+        ACCOUNTORDERNO,
+      </if>
+      <if test="islast != null" >
+        ISLAST,
+      </if>
+      <if test="sendprovince != null" >
+        SENDPROVINCE,
+      </if>
+      <if test="sendcity != null" >
+        SENDCITY,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="area != null" >
+        AREA,
+      </if>
+      <if test="country != null" >
+        COUNTRY,
+      </if>
+      <if test="fareforjava != null" >
+        FAREFORJAVA,
+      </if>
+      <if test="fareformulaidforjava != null" >
+        FAREFORMULAIDFORJAVA,
+      </if>
+      <if test="areaidforjava != null" >
+        AREAIDFORJAVA,
+      </if>
+      <if test="issynfareforjava != null" >
+        ISSYNFAREFORJAVA,
+      </if>
+      <if test="backstationstatus != null" >
+        BACKSTATIONSTATUS,
+      </if>
+      <if test="backstationtime != null" >
+        BACKSTATIONTIME,
+      </if>
+      <if test="receiveby != null" >
+        RECEIVEBY,
+      </if>
+      <if test="customerorder != null" >
+        CUSTOMERORDER,
+      </if>
+      <if test="waybillcategory != null" >
+        WAYBILLCATEGORY,
+      </if>
+      <if test="packagecount != null" >
+        PACKAGECOUNT,
+      </if>
+      <if test="merchantweight != null" >
+        MERCHANTWEIGHT,
+      </if>
+      <if test="waybillinfoweight != null" >
+        WAYBILLINFOWEIGHT,
+      </if>
+      <if test="msgforjava != null" >
+        MSGFORJAVA,
+      </if>
+      <if test="merchantcategory != null" >
+        MERCHANTCATEGORY,
+      </if>
+      <if test="codpoundage != null" >
+        CODPOUNDAGE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{infoid,jdbcType=DECIMAL},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mediumid != null" >
+        #{mediumid,jdbcType=DECIMAL},
+      </if>
+      <if test="waybillno != null" >
+        #{waybillno,jdbcType=DECIMAL},
+      </if>
+      <if test="merchantid != null" >
+        #{merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="waybilltype != null" >
+        #{waybilltype,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverstationid != null" >
+        #{deliverstationid,jdbcType=DECIMAL},
+      </if>
+      <if test="topcodcompanyid != null" >
+        #{topcodcompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseid != null" >
+        #{warehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="expresscompanyid != null" >
+        #{expresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="rfdaccepttime != null" >
+        #{rfdaccepttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rfdacceptdate != null" >
+        #{rfdacceptdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finalexpresscompanyid != null" >
+        #{finalexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="delivertime != null" >
+        #{delivertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliverdate != null" >
+        #{deliverdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnwarehouseid != null" >
+        #{returnwarehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="returnexpresscompanyid != null" >
+        #{returnexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="totalamount != null" >
+        #{totalamount,jdbcType=DECIMAL},
+      </if>
+      <if test="paidamount != null" >
+        #{paidamount,jdbcType=DECIMAL},
+      </if>
+      <if test="needpayamount != null" >
+        #{needpayamount,jdbcType=DECIMAL},
+      </if>
+      <if test="backamount != null" >
+        #{backamount,jdbcType=DECIMAL},
+      </if>
+      <if test="needbackamount != null" >
+        #{needbackamount,jdbcType=DECIMAL},
+      </if>
+      <if test="accountweight != null" >
+        #{accountweight,jdbcType=DECIMAL},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="areatype != null" >
+        #{areatype,jdbcType=DECIMAL},
+      </if>
+      <if test="boxsno != null" >
+        #{boxsno,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null" >
+        #{isdeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="returntime != null" >
+        #{returntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returndate != null" >
+        #{returndate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isfare != null" >
+        #{isfare,jdbcType=DECIMAL},
+      </if>
+      <if test="fare != null" >
+        #{fare,jdbcType=DECIMAL},
+      </if>
+      <if test="fareformula != null" >
+        #{fareformula,jdbcType=VARCHAR},
+      </if>
+      <if test="operatetype != null" >
+        #{operatetype,jdbcType=DECIMAL},
+      </if>
+      <if test="protectedprice != null" >
+        #{protectedprice,jdbcType=DECIMAL},
+      </if>
+      <if test="distributioncode != null" >
+        #{distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="currentdistributioncode != null" >
+        #{currentdistributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="ischange != null" >
+        #{ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="comefrom != null" >
+        #{comefrom,jdbcType=DECIMAL},
+      </if>
+      <if test="iscod != null" >
+        #{iscod,jdbcType=DECIMAL},
+      </if>
+      <if test="accountorderno != null" >
+        #{accountorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="islast != null" >
+        #{islast,jdbcType=DECIMAL},
+      </if>
+      <if test="sendprovince != null" >
+        #{sendprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="sendcity != null" >
+        #{sendcity,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="fareforjava != null" >
+        #{fareforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="fareformulaidforjava != null" >
+        #{fareformulaidforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="areaidforjava != null" >
+        #{areaidforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="issynfareforjava != null" >
+        #{issynfareforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="backstationstatus != null" >
+        #{backstationstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="backstationtime != null" >
+        #{backstationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveby != null" >
+        #{receiveby,jdbcType=VARCHAR},
+      </if>
+      <if test="customerorder != null" >
+        #{customerorder,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcategory != null" >
+        #{waybillcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="packagecount != null" >
+        #{packagecount,jdbcType=DECIMAL},
+      </if>
+      <if test="merchantweight != null" >
+        #{merchantweight,jdbcType=DECIMAL},
+      </if>
+      <if test="waybillinfoweight != null" >
+        #{waybillinfoweight,jdbcType=DECIMAL},
+      </if>
+      <if test="msgforjava != null" >
+        #{msgforjava,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantcategory != null" >
+        #{merchantcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="codpoundage != null" >
+        #{codpoundage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itiaoling.dbdiff.models.CodBaseInfoExample" resultType="java.lang.Integer" >
+    select count(*) from RFD_FMS.FMS_CODBASEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update RFD_FMS.FMS_CODBASEINFO
+    <set >
+      <if test="record.infoid != null" >
+        INFOID = #{record.infoid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createtime != null" >
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mediumid != null" >
+        MEDIUMID = #{record.mediumid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.waybillno != null" >
+        WAYBILLNO = #{record.waybillno,jdbcType=DECIMAL},
+      </if>
+      <if test="record.merchantid != null" >
+        MERCHANTID = #{record.merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.waybilltype != null" >
+        WAYBILLTYPE = #{record.waybilltype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flag != null" >
+        FLAG = #{record.flag,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deliverstationid != null" >
+        DELIVERSTATIONID = #{record.deliverstationid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.topcodcompanyid != null" >
+        TOPCODCOMPANYID = #{record.topcodcompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.warehouseid != null" >
+        WAREHOUSEID = #{record.warehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expresscompanyid != null" >
+        EXPRESSCOMPANYID = #{record.expresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rfdaccepttime != null" >
+        RFDACCEPTTIME = #{record.rfdaccepttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rfdacceptdate != null" >
+        RFDACCEPTDATE = #{record.rfdacceptdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.finalexpresscompanyid != null" >
+        FINALEXPRESSCOMPANYID = #{record.finalexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.delivertime != null" >
+        DELIVERTIME = #{record.delivertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deliverdate != null" >
+        DELIVERDATE = #{record.deliverdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.returnwarehouseid != null" >
+        RETURNWAREHOUSEID = #{record.returnwarehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnexpresscompanyid != null" >
+        RETURNEXPRESSCOMPANYID = #{record.returnexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.totalamount != null" >
+        TOTALAMOUNT = #{record.totalamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.paidamount != null" >
+        PAIDAMOUNT = #{record.paidamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.needpayamount != null" >
+        NEEDPAYAMOUNT = #{record.needpayamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.backamount != null" >
+        BACKAMOUNT = #{record.backamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.needbackamount != null" >
+        NEEDBACKAMOUNT = #{record.needbackamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.accountweight != null" >
+        ACCOUNTWEIGHT = #{record.accountweight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.areaid != null" >
+        AREAID = #{record.areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areatype != null" >
+        AREATYPE = #{record.areatype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.boxsno != null" >
+        BOXSNO = #{record.boxsno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatetime != null" >
+        UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isdeleted != null" >
+        ISDELETED = #{record.isdeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="record.returntime != null" >
+        RETURNTIME = #{record.returntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.returndate != null" >
+        RETURNDATE = #{record.returndate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isfare != null" >
+        ISFARE = #{record.isfare,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fare != null" >
+        FARE = #{record.fare,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fareformula != null" >
+        FAREFORMULA = #{record.fareformula,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operatetype != null" >
+        OPERATETYPE = #{record.operatetype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.protectedprice != null" >
+        PROTECTEDPRICE = #{record.protectedprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.distributioncode != null" >
+        DISTRIBUTIONCODE = #{record.distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currentdistributioncode != null" >
+        CURRENTDISTRIBUTIONCODE = #{record.currentdistributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ischange != null" >
+        ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="record.comefrom != null" >
+        COMEFROM = #{record.comefrom,jdbcType=DECIMAL},
+      </if>
+      <if test="record.iscod != null" >
+        ISCOD = #{record.iscod,jdbcType=DECIMAL},
+      </if>
+      <if test="record.accountorderno != null" >
+        ACCOUNTORDERNO = #{record.accountorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.islast != null" >
+        ISLAST = #{record.islast,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sendprovince != null" >
+        SENDPROVINCE = #{record.sendprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendcity != null" >
+        SENDCITY = #{record.sendcity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null" >
+        PROVINCE = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        CITY = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null" >
+        AREA = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null" >
+        COUNTRY = #{record.country,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fareforjava != null" >
+        FAREFORJAVA = #{record.fareforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fareformulaidforjava != null" >
+        FAREFORMULAIDFORJAVA = #{record.fareformulaidforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="record.areaidforjava != null" >
+        AREAIDFORJAVA = #{record.areaidforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issynfareforjava != null" >
+        ISSYNFAREFORJAVA = #{record.issynfareforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="record.backstationstatus != null" >
+        BACKSTATIONSTATUS = #{record.backstationstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="record.backstationtime != null" >
+        BACKSTATIONTIME = #{record.backstationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.receiveby != null" >
+        RECEIVEBY = #{record.receiveby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerorder != null" >
+        CUSTOMERORDER = #{record.customerorder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.waybillcategory != null" >
+        WAYBILLCATEGORY = #{record.waybillcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.packagecount != null" >
+        PACKAGECOUNT = #{record.packagecount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.merchantweight != null" >
+        MERCHANTWEIGHT = #{record.merchantweight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.waybillinfoweight != null" >
+        WAYBILLINFOWEIGHT = #{record.waybillinfoweight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.msgforjava != null" >
+        MSGFORJAVA = #{record.msgforjava,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchantcategory != null" >
+        MERCHANTCATEGORY = #{record.merchantcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codpoundage != null" >
+        CODPOUNDAGE = #{record.codpoundage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update RFD_FMS.FMS_CODBASEINFO
+    set INFOID = #{record.infoid,jdbcType=DECIMAL},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      MEDIUMID = #{record.mediumid,jdbcType=DECIMAL},
+      WAYBILLNO = #{record.waybillno,jdbcType=DECIMAL},
+      MERCHANTID = #{record.merchantid,jdbcType=DECIMAL},
+      WAYBILLTYPE = #{record.waybilltype,jdbcType=VARCHAR},
+      FLAG = #{record.flag,jdbcType=DECIMAL},
+      DELIVERSTATIONID = #{record.deliverstationid,jdbcType=DECIMAL},
+      TOPCODCOMPANYID = #{record.topcodcompanyid,jdbcType=DECIMAL},
+      WAREHOUSEID = #{record.warehouseid,jdbcType=VARCHAR},
+      EXPRESSCOMPANYID = #{record.expresscompanyid,jdbcType=DECIMAL},
+      RFDACCEPTTIME = #{record.rfdaccepttime,jdbcType=TIMESTAMP},
+      RFDACCEPTDATE = #{record.rfdacceptdate,jdbcType=TIMESTAMP},
+      FINALEXPRESSCOMPANYID = #{record.finalexpresscompanyid,jdbcType=DECIMAL},
+      DELIVERTIME = #{record.delivertime,jdbcType=TIMESTAMP},
+      DELIVERDATE = #{record.deliverdate,jdbcType=TIMESTAMP},
+      RETURNWAREHOUSEID = #{record.returnwarehouseid,jdbcType=VARCHAR},
+      RETURNEXPRESSCOMPANYID = #{record.returnexpresscompanyid,jdbcType=DECIMAL},
+      TOTALAMOUNT = #{record.totalamount,jdbcType=DECIMAL},
+      PAIDAMOUNT = #{record.paidamount,jdbcType=DECIMAL},
+      NEEDPAYAMOUNT = #{record.needpayamount,jdbcType=DECIMAL},
+      BACKAMOUNT = #{record.backamount,jdbcType=DECIMAL},
+      NEEDBACKAMOUNT = #{record.needbackamount,jdbcType=DECIMAL},
+      ACCOUNTWEIGHT = #{record.accountweight,jdbcType=DECIMAL},
+      AREAID = #{record.areaid,jdbcType=VARCHAR},
+      AREATYPE = #{record.areatype,jdbcType=DECIMAL},
+      BOXSNO = #{record.boxsno,jdbcType=VARCHAR},
+      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      ISDELETED = #{record.isdeleted,jdbcType=DECIMAL},
+      RETURNTIME = #{record.returntime,jdbcType=TIMESTAMP},
+      RETURNDATE = #{record.returndate,jdbcType=TIMESTAMP},
+      ISFARE = #{record.isfare,jdbcType=DECIMAL},
+      FARE = #{record.fare,jdbcType=DECIMAL},
+      FAREFORMULA = #{record.fareformula,jdbcType=VARCHAR},
+      OPERATETYPE = #{record.operatetype,jdbcType=DECIMAL},
+      PROTECTEDPRICE = #{record.protectedprice,jdbcType=DECIMAL},
+      DISTRIBUTIONCODE = #{record.distributioncode,jdbcType=VARCHAR},
+      CURRENTDISTRIBUTIONCODE = #{record.currentdistributioncode,jdbcType=VARCHAR},
+      ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      COMEFROM = #{record.comefrom,jdbcType=DECIMAL},
+      ISCOD = #{record.iscod,jdbcType=DECIMAL},
+      ACCOUNTORDERNO = #{record.accountorderno,jdbcType=VARCHAR},
+      ISLAST = #{record.islast,jdbcType=DECIMAL},
+      SENDPROVINCE = #{record.sendprovince,jdbcType=VARCHAR},
+      SENDCITY = #{record.sendcity,jdbcType=VARCHAR},
+      PROVINCE = #{record.province,jdbcType=VARCHAR},
+      CITY = #{record.city,jdbcType=VARCHAR},
+      AREA = #{record.area,jdbcType=VARCHAR},
+      COUNTRY = #{record.country,jdbcType=VARCHAR},
+      FAREFORJAVA = #{record.fareforjava,jdbcType=DECIMAL},
+      FAREFORMULAIDFORJAVA = #{record.fareformulaidforjava,jdbcType=DECIMAL},
+      AREAIDFORJAVA = #{record.areaidforjava,jdbcType=DECIMAL},
+      ISSYNFAREFORJAVA = #{record.issynfareforjava,jdbcType=DECIMAL},
+      BACKSTATIONSTATUS = #{record.backstationstatus,jdbcType=DECIMAL},
+      BACKSTATIONTIME = #{record.backstationtime,jdbcType=TIMESTAMP},
+      RECEIVEBY = #{record.receiveby,jdbcType=VARCHAR},
+      CUSTOMERORDER = #{record.customerorder,jdbcType=VARCHAR},
+      WAYBILLCATEGORY = #{record.waybillcategory,jdbcType=VARCHAR},
+      PACKAGECOUNT = #{record.packagecount,jdbcType=DECIMAL},
+      MERCHANTWEIGHT = #{record.merchantweight,jdbcType=DECIMAL},
+      WAYBILLINFOWEIGHT = #{record.waybillinfoweight,jdbcType=DECIMAL},
+      MSGFORJAVA = #{record.msgforjava,jdbcType=VARCHAR},
+      MERCHANTCATEGORY = #{record.merchantcategory,jdbcType=VARCHAR},
+      CODPOUNDAGE = #{record.codpoundage,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itiaoling.dbdiff.models.CodBaseInfo" >
+    update RFD_FMS.FMS_CODBASEINFO
+    <set >
+      <if test="mediumid != null" >
+        MEDIUMID = #{mediumid,jdbcType=DECIMAL},
+      </if>
+      <if test="waybillno != null" >
+        WAYBILLNO = #{waybillno,jdbcType=DECIMAL},
+      </if>
+      <if test="merchantid != null" >
+        MERCHANTID = #{merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="waybilltype != null" >
+        WAYBILLTYPE = #{waybilltype,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        FLAG = #{flag,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverstationid != null" >
+        DELIVERSTATIONID = #{deliverstationid,jdbcType=DECIMAL},
+      </if>
+      <if test="topcodcompanyid != null" >
+        TOPCODCOMPANYID = #{topcodcompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseid != null" >
+        WAREHOUSEID = #{warehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="expresscompanyid != null" >
+        EXPRESSCOMPANYID = #{expresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="rfdaccepttime != null" >
+        RFDACCEPTTIME = #{rfdaccepttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rfdacceptdate != null" >
+        RFDACCEPTDATE = #{rfdacceptdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finalexpresscompanyid != null" >
+        FINALEXPRESSCOMPANYID = #{finalexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="delivertime != null" >
+        DELIVERTIME = #{delivertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliverdate != null" >
+        DELIVERDATE = #{deliverdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnwarehouseid != null" >
+        RETURNWAREHOUSEID = #{returnwarehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="returnexpresscompanyid != null" >
+        RETURNEXPRESSCOMPANYID = #{returnexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="totalamount != null" >
+        TOTALAMOUNT = #{totalamount,jdbcType=DECIMAL},
+      </if>
+      <if test="paidamount != null" >
+        PAIDAMOUNT = #{paidamount,jdbcType=DECIMAL},
+      </if>
+      <if test="needpayamount != null" >
+        NEEDPAYAMOUNT = #{needpayamount,jdbcType=DECIMAL},
+      </if>
+      <if test="backamount != null" >
+        BACKAMOUNT = #{backamount,jdbcType=DECIMAL},
+      </if>
+      <if test="needbackamount != null" >
+        NEEDBACKAMOUNT = #{needbackamount,jdbcType=DECIMAL},
+      </if>
+      <if test="accountweight != null" >
+        ACCOUNTWEIGHT = #{accountweight,jdbcType=DECIMAL},
+      </if>
+      <if test="areaid != null" >
+        AREAID = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="areatype != null" >
+        AREATYPE = #{areatype,jdbcType=DECIMAL},
+      </if>
+      <if test="boxsno != null" >
+        BOXSNO = #{boxsno,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null" >
+        ISDELETED = #{isdeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="returntime != null" >
+        RETURNTIME = #{returntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returndate != null" >
+        RETURNDATE = #{returndate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isfare != null" >
+        ISFARE = #{isfare,jdbcType=DECIMAL},
+      </if>
+      <if test="fare != null" >
+        FARE = #{fare,jdbcType=DECIMAL},
+      </if>
+      <if test="fareformula != null" >
+        FAREFORMULA = #{fareformula,jdbcType=VARCHAR},
+      </if>
+      <if test="operatetype != null" >
+        OPERATETYPE = #{operatetype,jdbcType=DECIMAL},
+      </if>
+      <if test="protectedprice != null" >
+        PROTECTEDPRICE = #{protectedprice,jdbcType=DECIMAL},
+      </if>
+      <if test="distributioncode != null" >
+        DISTRIBUTIONCODE = #{distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="currentdistributioncode != null" >
+        CURRENTDISTRIBUTIONCODE = #{currentdistributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="ischange != null" >
+        ISCHANGE = #{ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="comefrom != null" >
+        COMEFROM = #{comefrom,jdbcType=DECIMAL},
+      </if>
+      <if test="iscod != null" >
+        ISCOD = #{iscod,jdbcType=DECIMAL},
+      </if>
+      <if test="accountorderno != null" >
+        ACCOUNTORDERNO = #{accountorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="islast != null" >
+        ISLAST = #{islast,jdbcType=DECIMAL},
+      </if>
+      <if test="sendprovince != null" >
+        SENDPROVINCE = #{sendprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="sendcity != null" >
+        SENDCITY = #{sendcity,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        AREA = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        COUNTRY = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="fareforjava != null" >
+        FAREFORJAVA = #{fareforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="fareformulaidforjava != null" >
+        FAREFORMULAIDFORJAVA = #{fareformulaidforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="areaidforjava != null" >
+        AREAIDFORJAVA = #{areaidforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="issynfareforjava != null" >
+        ISSYNFAREFORJAVA = #{issynfareforjava,jdbcType=DECIMAL},
+      </if>
+      <if test="backstationstatus != null" >
+        BACKSTATIONSTATUS = #{backstationstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="backstationtime != null" >
+        BACKSTATIONTIME = #{backstationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveby != null" >
+        RECEIVEBY = #{receiveby,jdbcType=VARCHAR},
+      </if>
+      <if test="customerorder != null" >
+        CUSTOMERORDER = #{customerorder,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcategory != null" >
+        WAYBILLCATEGORY = #{waybillcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="packagecount != null" >
+        PACKAGECOUNT = #{packagecount,jdbcType=DECIMAL},
+      </if>
+      <if test="merchantweight != null" >
+        MERCHANTWEIGHT = #{merchantweight,jdbcType=DECIMAL},
+      </if>
+      <if test="waybillinfoweight != null" >
+        WAYBILLINFOWEIGHT = #{waybillinfoweight,jdbcType=DECIMAL},
+      </if>
+      <if test="msgforjava != null" >
+        MSGFORJAVA = #{msgforjava,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantcategory != null" >
+        MERCHANTCATEGORY = #{merchantcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="codpoundage != null" >
+        CODPOUNDAGE = #{codpoundage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where INFOID = #{infoid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itiaoling.dbdiff.models.CodBaseInfo" >
+    update RFD_FMS.FMS_CODBASEINFO
+    set MEDIUMID = #{mediumid,jdbcType=DECIMAL},
+      WAYBILLNO = #{waybillno,jdbcType=DECIMAL},
+      MERCHANTID = #{merchantid,jdbcType=DECIMAL},
+      WAYBILLTYPE = #{waybilltype,jdbcType=VARCHAR},
+      FLAG = #{flag,jdbcType=DECIMAL},
+      DELIVERSTATIONID = #{deliverstationid,jdbcType=DECIMAL},
+      TOPCODCOMPANYID = #{topcodcompanyid,jdbcType=DECIMAL},
+      WAREHOUSEID = #{warehouseid,jdbcType=VARCHAR},
+      EXPRESSCOMPANYID = #{expresscompanyid,jdbcType=DECIMAL},
+      RFDACCEPTTIME = #{rfdaccepttime,jdbcType=TIMESTAMP},
+      RFDACCEPTDATE = #{rfdacceptdate,jdbcType=TIMESTAMP},
+      FINALEXPRESSCOMPANYID = #{finalexpresscompanyid,jdbcType=DECIMAL},
+      DELIVERTIME = #{delivertime,jdbcType=TIMESTAMP},
+      DELIVERDATE = #{deliverdate,jdbcType=TIMESTAMP},
+      RETURNWAREHOUSEID = #{returnwarehouseid,jdbcType=VARCHAR},
+      RETURNEXPRESSCOMPANYID = #{returnexpresscompanyid,jdbcType=DECIMAL},
+      TOTALAMOUNT = #{totalamount,jdbcType=DECIMAL},
+      PAIDAMOUNT = #{paidamount,jdbcType=DECIMAL},
+      NEEDPAYAMOUNT = #{needpayamount,jdbcType=DECIMAL},
+      BACKAMOUNT = #{backamount,jdbcType=DECIMAL},
+      NEEDBACKAMOUNT = #{needbackamount,jdbcType=DECIMAL},
+      ACCOUNTWEIGHT = #{accountweight,jdbcType=DECIMAL},
+      AREAID = #{areaid,jdbcType=VARCHAR},
+      AREATYPE = #{areatype,jdbcType=DECIMAL},
+      BOXSNO = #{boxsno,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      ISDELETED = #{isdeleted,jdbcType=DECIMAL},
+      RETURNTIME = #{returntime,jdbcType=TIMESTAMP},
+      RETURNDATE = #{returndate,jdbcType=TIMESTAMP},
+      ISFARE = #{isfare,jdbcType=DECIMAL},
+      FARE = #{fare,jdbcType=DECIMAL},
+      FAREFORMULA = #{fareformula,jdbcType=VARCHAR},
+      OPERATETYPE = #{operatetype,jdbcType=DECIMAL},
+      PROTECTEDPRICE = #{protectedprice,jdbcType=DECIMAL},
+      DISTRIBUTIONCODE = #{distributioncode,jdbcType=VARCHAR},
+      CURRENTDISTRIBUTIONCODE = #{currentdistributioncode,jdbcType=VARCHAR},
+      ISCHANGE = #{ischange,jdbcType=DECIMAL},
+      COMEFROM = #{comefrom,jdbcType=DECIMAL},
+      ISCOD = #{iscod,jdbcType=DECIMAL},
+      ACCOUNTORDERNO = #{accountorderno,jdbcType=VARCHAR},
+      ISLAST = #{islast,jdbcType=DECIMAL},
+      SENDPROVINCE = #{sendprovince,jdbcType=VARCHAR},
+      SENDCITY = #{sendcity,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      AREA = #{area,jdbcType=VARCHAR},
+      COUNTRY = #{country,jdbcType=VARCHAR},
+      FAREFORJAVA = #{fareforjava,jdbcType=DECIMAL},
+      FAREFORMULAIDFORJAVA = #{fareformulaidforjava,jdbcType=DECIMAL},
+      AREAIDFORJAVA = #{areaidforjava,jdbcType=DECIMAL},
+      ISSYNFAREFORJAVA = #{issynfareforjava,jdbcType=DECIMAL},
+      BACKSTATIONSTATUS = #{backstationstatus,jdbcType=DECIMAL},
+      BACKSTATIONTIME = #{backstationtime,jdbcType=TIMESTAMP},
+      RECEIVEBY = #{receiveby,jdbcType=VARCHAR},
+      CUSTOMERORDER = #{customerorder,jdbcType=VARCHAR},
+      WAYBILLCATEGORY = #{waybillcategory,jdbcType=VARCHAR},
+      PACKAGECOUNT = #{packagecount,jdbcType=DECIMAL},
+      MERCHANTWEIGHT = #{merchantweight,jdbcType=DECIMAL},
+      WAYBILLINFOWEIGHT = #{waybillinfoweight,jdbcType=DECIMAL},
+      MSGFORJAVA = #{msgforjava,jdbcType=VARCHAR},
+      MERCHANTCATEGORY = #{merchantcategory,jdbcType=VARCHAR},
+      CODPOUNDAGE = #{codpoundage,jdbcType=DECIMAL}
+    where INFOID = #{infoid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </update>
+  <select id="selectDirtyData" parameterType="map" resultMap="BaseResultMap">
+  	SELECT <include refid="Base_Column_List"></include>
+  	FROM RFD_FMS.FMS_CODBASEINFO 
+  	WHERE 
+  	CREATETIME BETWEEN #{start,jdbcType=TIMESTAMP}
+  	AND #{end,jdbcType=TIMESTAMP}
+  </select>
+</mapper>

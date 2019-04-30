@@ -1,0 +1,13 @@
+ORACLE: 
+  TEST:
+      url: jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.3.47.70)(PORT=10001))(CONNECT_DATA=(SERVICE_NAME=dev02)))
+      username: rfd_fms_read
+      password: ZLqvzSWs+OrjxrW4fLc+s64SQXPz5zzN2+8gy8Nm40lJIFVXRWhpxTwKXzEGrnNu64RxBJm9D9Z7r6DKZovivw==
+  PROD:  
+      url: jdbc:oracle:thin:@ (DESCRIPTION =(CONNECT_TIMEOUT = 5)(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = oracle-rl-01.rfddc.com)(PORT = 10001))(ADDRESS = (PROTOCOL = TCP)(HOST = oracle-rl-02.rfddc.com)(PORT = 10001))(ADDRESS = (PROTOCOL = TCP)(HOST = oracle-rl-03.rfddc.com)(PORT = 10001))(ADDRESS = (PROTOCOL = TCP)(HOST = oracle-rl-04.rfddc.com)(PORT = 10001)))(CONNECT_DATA =(SERVER=DEDICATED)(SERVICE_NAME = rfd01_rl)))
+      username: rfd_fms_read
+      password: ZLqvzSWs+OrjxrW4fLc+s64SQXPz5zzN2+8gy8Nm40lJIFVXRWhpxTwKXzEGrnNu64RxBJm9D9Z7r6DKZovivw==
+  PROD_W:    
+      url: jdbc:oracle:thin:@ (DESCRIPTION =(CONNECT_TIMEOUT = 5)(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = oracle-rw-01.rfddc.com)(PORT = 10001))(ADDRESS = (PROTOCOL = TCP)(HOST = oracle-rw-02.rfddc.com)(PORT = 10001)))(CONNECT_DATA =(SERVER=DEDICATED)(SERVICE_NAME = rfd01_rw)))
+      username: rfd_fms_prog
+      password: XpRJtaZglWKZOg2pWK1GYvHM8COWU3vpjvqvDZP/HaA8ch0ROYtCKZnBNZH0kTM0LqkQQHtTi05QO4fKUoBcHQ==

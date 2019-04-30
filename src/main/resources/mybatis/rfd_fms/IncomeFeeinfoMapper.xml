@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itiaoling.dbdiff.mappers.IncomeFeeinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.itiaoling.dbdiff.models.IncomeFeeinfo" >
+    <id column="INCOMEFEEID" property="incomefeeid" jdbcType="DECIMAL" />
+    <id column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="WAYBILLNO" property="waybillno" jdbcType="DECIMAL" />
+    <result column="ISACCOUNT" property="isaccount" jdbcType="DECIMAL" />
+    <result column="ACCOUNTSTANDARD" property="accountstandard" jdbcType="VARCHAR" />
+    <result column="ACCOUNTFARE" property="accountfare" jdbcType="DECIMAL" />
+    <result column="ISPROTECTED" property="isprotected" jdbcType="DECIMAL" />
+    <result column="PROTECTEDSTANDARD" property="protectedstandard" jdbcType="DECIMAL" />
+    <result column="PROTECTEDFEE" property="protectedfee" jdbcType="DECIMAL" />
+    <result column="ISRECEIVE" property="isreceive" jdbcType="DECIMAL" />
+    <result column="RECEIVESTANDARD" property="receivestandard" jdbcType="DECIMAL" />
+    <result column="RECEIVEFEE" property="receivefee" jdbcType="DECIMAL" />
+    <result column="CREATEBY" property="createby" jdbcType="DECIMAL" />
+    <result column="UPDATEBY" property="updateby" jdbcType="DECIMAL" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="ISDELETED" property="isdeleted" jdbcType="DECIMAL" />
+    <result column="TRANSFERPAYTYPE" property="transferpaytype" jdbcType="DECIMAL" />
+    <result column="DEPUTIZEAMOUNT" property="deputizeamount" jdbcType="DECIMAL" />
+    <result column="POSRECEIVESTANDARD" property="posreceivestandard" jdbcType="DECIMAL" />
+    <result column="POSRECEIVEFEE" property="posreceivefee" jdbcType="DECIMAL" />
+    <result column="CASHRECEIVESERVICESTANDARD" property="cashreceiveservicestandard" jdbcType="DECIMAL" />
+    <result column="CASHRECEIVESERVICEFEE" property="cashreceiveservicefee" jdbcType="DECIMAL" />
+    <result column="POSRECEIVESERVICESTANDARD" property="posreceiveservicestandard" jdbcType="DECIMAL" />
+    <result column="POSRECEIVESERVICEFEE" property="posreceiveservicefee" jdbcType="DECIMAL" />
+    <result column="EXPRESSRECEIVEBASICDEDUCT" property="expressreceivebasicdeduct" jdbcType="DECIMAL" />
+    <result column="EXPRESSSENDBASICDEDUCT" property="expresssendbasicdeduct" jdbcType="DECIMAL" />
+    <result column="EXPRESSAREADEDUCT" property="expressareadeduct" jdbcType="DECIMAL" />
+    <result column="EXPRESSWEIGHTDEDUCT" property="expressweightdeduct" jdbcType="DECIMAL" />
+    <result column="PROGRAMRECEIVEBASICDEDUCT" property="programreceivebasicdeduct" jdbcType="DECIMAL" />
+    <result column="PROGRAMSENDBASICDEDUCT" property="programsendbasicdeduct" jdbcType="DECIMAL" />
+    <result column="PROGRAMAREADEDUCT" property="programareadeduct" jdbcType="DECIMAL" />
+    <result column="PROGRAMWEIGHTDEDUCT" property="programweightdeduct" jdbcType="DECIMAL" />
+    <result column="ISDEDUCTACOUNT" property="isdeductacount" jdbcType="DECIMAL" />
+    <result column="ISCHANGE" property="ischange" jdbcType="DECIMAL" />
+    <result column="AREATYPE" property="areatype" jdbcType="DECIMAL" />
+    <result column="ISCOD" property="iscod" jdbcType="DECIMAL" />
+    <result column="ISPREACCOUNT" property="ispreaccount" jdbcType="DECIMAL" />
+    <result column="PREUPDATE" property="preupdate" jdbcType="TIMESTAMP" />
+    <result column="PREACCOUNTFARE" property="preaccountfare" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    INCOMEFEEID, CREATETIME, WAYBILLNO, ISACCOUNT, ACCOUNTSTANDARD, ACCOUNTFARE, ISPROTECTED, 
+    PROTECTEDSTANDARD, PROTECTEDFEE, ISRECEIVE, RECEIVESTANDARD, RECEIVEFEE, CREATEBY, 
+    UPDATEBY, UPDATETIME, ISDELETED, TRANSFERPAYTYPE, DEPUTIZEAMOUNT, POSRECEIVESTANDARD, 
+    POSRECEIVEFEE, CASHRECEIVESERVICESTANDARD, CASHRECEIVESERVICEFEE, POSRECEIVESERVICESTANDARD, 
+    POSRECEIVESERVICEFEE, EXPRESSRECEIVEBASICDEDUCT, EXPRESSSENDBASICDEDUCT, EXPRESSAREADEDUCT, 
+    EXPRESSWEIGHTDEDUCT, PROGRAMRECEIVEBASICDEDUCT, PROGRAMSENDBASICDEDUCT, PROGRAMAREADEDUCT, 
+    PROGRAMWEIGHTDEDUCT, ISDEDUCTACOUNT, ISCHANGE, AREATYPE, ISCOD, ISPREACCOUNT, PREUPDATE, 
+    PREACCOUNTFARE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itiaoling.dbdiff.models.IncomeFeeinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from RFD_FMS.FMS_INCOMEFEEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from RFD_FMS.FMS_INCOMEFEEINFO
+    where INCOMEFEEID = #{incomefeeid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from RFD_FMS.FMS_INCOMEFEEINFO
+    where INCOMEFEEID = #{incomefeeid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itiaoling.dbdiff.models.IncomeFeeinfoExample" >
+    delete from RFD_FMS.FMS_INCOMEFEEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itiaoling.dbdiff.models.IncomeFeeinfo" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="incomefeeid" order="BEFORE" >
+      select RFD_FMS.SEQ_FMS_INCOMEFEEINFO.nextval from dual
+    </selectKey>
+    insert into RFD_FMS.FMS_INCOMEFEEINFO (INCOMEFEEID, CREATETIME, WAYBILLNO, 
+      ISACCOUNT, ACCOUNTSTANDARD, ACCOUNTFARE, 
+      ISPROTECTED, PROTECTEDSTANDARD, PROTECTEDFEE, 
+      ISRECEIVE, RECEIVESTANDARD, RECEIVEFEE, 
+      CREATEBY, UPDATEBY, UPDATETIME, 
+      ISDELETED, TRANSFERPAYTYPE, DEPUTIZEAMOUNT, 
+      POSRECEIVESTANDARD, POSRECEIVEFEE, CASHRECEIVESERVICESTANDARD, 
+      CASHRECEIVESERVICEFEE, POSRECEIVESERVICESTANDARD, 
+      POSRECEIVESERVICEFEE, EXPRESSRECEIVEBASICDEDUCT, 
+      EXPRESSSENDBASICDEDUCT, EXPRESSAREADEDUCT, 
+      EXPRESSWEIGHTDEDUCT, PROGRAMRECEIVEBASICDEDUCT, 
+      PROGRAMSENDBASICDEDUCT, PROGRAMAREADEDUCT, 
+      PROGRAMWEIGHTDEDUCT, ISDEDUCTACOUNT, ISCHANGE, 
+      AREATYPE, ISCOD, ISPREACCOUNT, 
+      PREUPDATE, PREACCOUNTFARE)
+    values (#{incomefeeid,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, #{waybillno,jdbcType=DECIMAL}, 
+      #{isaccount,jdbcType=DECIMAL}, #{accountstandard,jdbcType=VARCHAR}, #{accountfare,jdbcType=DECIMAL}, 
+      #{isprotected,jdbcType=DECIMAL}, #{protectedstandard,jdbcType=DECIMAL}, #{protectedfee,jdbcType=DECIMAL}, 
+      #{isreceive,jdbcType=DECIMAL}, #{receivestandard,jdbcType=DECIMAL}, #{receivefee,jdbcType=DECIMAL}, 
+      #{createby,jdbcType=DECIMAL}, #{updateby,jdbcType=DECIMAL}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{isdeleted,jdbcType=DECIMAL}, #{transferpaytype,jdbcType=DECIMAL}, #{deputizeamount,jdbcType=DECIMAL}, 
+      #{posreceivestandard,jdbcType=DECIMAL}, #{posreceivefee,jdbcType=DECIMAL}, #{cashreceiveservicestandard,jdbcType=DECIMAL}, 
+      #{cashreceiveservicefee,jdbcType=DECIMAL}, #{posreceiveservicestandard,jdbcType=DECIMAL}, 
+      #{posreceiveservicefee,jdbcType=DECIMAL}, #{expressreceivebasicdeduct,jdbcType=DECIMAL}, 
+      #{expresssendbasicdeduct,jdbcType=DECIMAL}, #{expressareadeduct,jdbcType=DECIMAL}, 
+      #{expressweightdeduct,jdbcType=DECIMAL}, #{programreceivebasicdeduct,jdbcType=DECIMAL}, 
+      #{programsendbasicdeduct,jdbcType=DECIMAL}, #{programareadeduct,jdbcType=DECIMAL}, 
+      #{programweightdeduct,jdbcType=DECIMAL}, #{isdeductacount,jdbcType=DECIMAL}, #{ischange,jdbcType=DECIMAL}, 
+      #{areatype,jdbcType=DECIMAL}, #{iscod,jdbcType=DECIMAL}, #{ispreaccount,jdbcType=DECIMAL}, 
+      #{preupdate,jdbcType=TIMESTAMP}, #{preaccountfare,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itiaoling.dbdiff.models.IncomeFeeinfo" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="incomefeeid" order="BEFORE" >
+      select RFD_FMS.SEQ_FMS_INCOMEFEEINFO.nextval from dual
+    </selectKey>
+    insert into RFD_FMS.FMS_INCOMEFEEINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      INCOMEFEEID,
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="waybillno != null" >
+        WAYBILLNO,
+      </if>
+      <if test="isaccount != null" >
+        ISACCOUNT,
+      </if>
+      <if test="accountstandard != null" >
+        ACCOUNTSTANDARD,
+      </if>
+      <if test="accountfare != null" >
+        ACCOUNTFARE,
+      </if>
+      <if test="isprotected != null" >
+        ISPROTECTED,
+      </if>
+      <if test="protectedstandard != null" >
+        PROTECTEDSTANDARD,
+      </if>
+      <if test="protectedfee != null" >
+        PROTECTEDFEE,
+      </if>
+      <if test="isreceive != null" >
+        ISRECEIVE,
+      </if>
+      <if test="receivestandard != null" >
+        RECEIVESTANDARD,
+      </if>
+      <if test="receivefee != null" >
+        RECEIVEFEE,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+      <if test="isdeleted != null" >
+        ISDELETED,
+      </if>
+      <if test="transferpaytype != null" >
+        TRANSFERPAYTYPE,
+      </if>
+      <if test="deputizeamount != null" >
+        DEPUTIZEAMOUNT,
+      </if>
+      <if test="posreceivestandard != null" >
+        POSRECEIVESTANDARD,
+      </if>
+      <if test="posreceivefee != null" >
+        POSRECEIVEFEE,
+      </if>
+      <if test="cashreceiveservicestandard != null" >
+        CASHRECEIVESERVICESTANDARD,
+      </if>
+      <if test="cashreceiveservicefee != null" >
+        CASHRECEIVESERVICEFEE,
+      </if>
+      <if test="posreceiveservicestandard != null" >
+        POSRECEIVESERVICESTANDARD,
+      </if>
+      <if test="posreceiveservicefee != null" >
+        POSRECEIVESERVICEFEE,
+      </if>
+      <if test="expressreceivebasicdeduct != null" >
+        EXPRESSRECEIVEBASICDEDUCT,
+      </if>
+      <if test="expresssendbasicdeduct != null" >
+        EXPRESSSENDBASICDEDUCT,
+      </if>
+      <if test="expressareadeduct != null" >
+        EXPRESSAREADEDUCT,
+      </if>
+      <if test="expressweightdeduct != null" >
+        EXPRESSWEIGHTDEDUCT,
+      </if>
+      <if test="programreceivebasicdeduct != null" >
+        PROGRAMRECEIVEBASICDEDUCT,
+      </if>
+      <if test="programsendbasicdeduct != null" >
+        PROGRAMSENDBASICDEDUCT,
+      </if>
+      <if test="programareadeduct != null" >
+        PROGRAMAREADEDUCT,
+      </if>
+      <if test="programweightdeduct != null" >
+        PROGRAMWEIGHTDEDUCT,
+      </if>
+      <if test="isdeductacount != null" >
+        ISDEDUCTACOUNT,
+      </if>
+      <if test="ischange != null" >
+        ISCHANGE,
+      </if>
+      <if test="areatype != null" >
+        AREATYPE,
+      </if>
+      <if test="iscod != null" >
+        ISCOD,
+      </if>
+      <if test="ispreaccount != null" >
+        ISPREACCOUNT,
+      </if>
+      <if test="preupdate != null" >
+        PREUPDATE,
+      </if>
+      <if test="preaccountfare != null" >
+        PREACCOUNTFARE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{incomefeeid,jdbcType=DECIMAL},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="waybillno != null" >
+        #{waybillno,jdbcType=DECIMAL},
+      </if>
+      <if test="isaccount != null" >
+        #{isaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="accountstandard != null" >
+        #{accountstandard,jdbcType=VARCHAR},
+      </if>
+      <if test="accountfare != null" >
+        #{accountfare,jdbcType=DECIMAL},
+      </if>
+      <if test="isprotected != null" >
+        #{isprotected,jdbcType=DECIMAL},
+      </if>
+      <if test="protectedstandard != null" >
+        #{protectedstandard,jdbcType=DECIMAL},
+      </if>
+      <if test="protectedfee != null" >
+        #{protectedfee,jdbcType=DECIMAL},
+      </if>
+      <if test="isreceive != null" >
+        #{isreceive,jdbcType=DECIMAL},
+      </if>
+      <if test="receivestandard != null" >
+        #{receivestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="receivefee != null" >
+        #{receivefee,jdbcType=DECIMAL},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=DECIMAL},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null" >
+        #{isdeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="transferpaytype != null" >
+        #{transferpaytype,jdbcType=DECIMAL},
+      </if>
+      <if test="deputizeamount != null" >
+        #{deputizeamount,jdbcType=DECIMAL},
+      </if>
+      <if test="posreceivestandard != null" >
+        #{posreceivestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="posreceivefee != null" >
+        #{posreceivefee,jdbcType=DECIMAL},
+      </if>
+      <if test="cashreceiveservicestandard != null" >
+        #{cashreceiveservicestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="cashreceiveservicefee != null" >
+        #{cashreceiveservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="posreceiveservicestandard != null" >
+        #{posreceiveservicestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="posreceiveservicefee != null" >
+        #{posreceiveservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="expressreceivebasicdeduct != null" >
+        #{expressreceivebasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="expresssendbasicdeduct != null" >
+        #{expresssendbasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="expressareadeduct != null" >
+        #{expressareadeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="expressweightdeduct != null" >
+        #{expressweightdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="programreceivebasicdeduct != null" >
+        #{programreceivebasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="programsendbasicdeduct != null" >
+        #{programsendbasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="programareadeduct != null" >
+        #{programareadeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="programweightdeduct != null" >
+        #{programweightdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="isdeductacount != null" >
+        #{isdeductacount,jdbcType=DECIMAL},
+      </if>
+      <if test="ischange != null" >
+        #{ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="areatype != null" >
+        #{areatype,jdbcType=DECIMAL},
+      </if>
+      <if test="iscod != null" >
+        #{iscod,jdbcType=DECIMAL},
+      </if>
+      <if test="ispreaccount != null" >
+        #{ispreaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="preupdate != null" >
+        #{preupdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preaccountfare != null" >
+        #{preaccountfare,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itiaoling.dbdiff.models.IncomeFeeinfoExample" resultType="java.lang.Integer" >
+    select count(*) from RFD_FMS.FMS_INCOMEFEEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update RFD_FMS.FMS_INCOMEFEEINFO
+    <set >
+      <if test="record.incomefeeid != null" >
+        INCOMEFEEID = #{record.incomefeeid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createtime != null" >
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.waybillno != null" >
+        WAYBILLNO = #{record.waybillno,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isaccount != null" >
+        ISACCOUNT = #{record.isaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.accountstandard != null" >
+        ACCOUNTSTANDARD = #{record.accountstandard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountfare != null" >
+        ACCOUNTFARE = #{record.accountfare,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isprotected != null" >
+        ISPROTECTED = #{record.isprotected,jdbcType=DECIMAL},
+      </if>
+      <if test="record.protectedstandard != null" >
+        PROTECTEDSTANDARD = #{record.protectedstandard,jdbcType=DECIMAL},
+      </if>
+      <if test="record.protectedfee != null" >
+        PROTECTEDFEE = #{record.protectedfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isreceive != null" >
+        ISRECEIVE = #{record.isreceive,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receivestandard != null" >
+        RECEIVESTANDARD = #{record.receivestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receivefee != null" >
+        RECEIVEFEE = #{record.receivefee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createby != null" >
+        CREATEBY = #{record.createby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.updateby != null" >
+        UPDATEBY = #{record.updateby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.updatetime != null" >
+        UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isdeleted != null" >
+        ISDELETED = #{record.isdeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="record.transferpaytype != null" >
+        TRANSFERPAYTYPE = #{record.transferpaytype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deputizeamount != null" >
+        DEPUTIZEAMOUNT = #{record.deputizeamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.posreceivestandard != null" >
+        POSRECEIVESTANDARD = #{record.posreceivestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="record.posreceivefee != null" >
+        POSRECEIVEFEE = #{record.posreceivefee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cashreceiveservicestandard != null" >
+        CASHRECEIVESERVICESTANDARD = #{record.cashreceiveservicestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cashreceiveservicefee != null" >
+        CASHRECEIVESERVICEFEE = #{record.cashreceiveservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.posreceiveservicestandard != null" >
+        POSRECEIVESERVICESTANDARD = #{record.posreceiveservicestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="record.posreceiveservicefee != null" >
+        POSRECEIVESERVICEFEE = #{record.posreceiveservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.expressreceivebasicdeduct != null" >
+        EXPRESSRECEIVEBASICDEDUCT = #{record.expressreceivebasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="record.expresssendbasicdeduct != null" >
+        EXPRESSSENDBASICDEDUCT = #{record.expresssendbasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="record.expressareadeduct != null" >
+        EXPRESSAREADEDUCT = #{record.expressareadeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="record.expressweightdeduct != null" >
+        EXPRESSWEIGHTDEDUCT = #{record.expressweightdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="record.programreceivebasicdeduct != null" >
+        PROGRAMRECEIVEBASICDEDUCT = #{record.programreceivebasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="record.programsendbasicdeduct != null" >
+        PROGRAMSENDBASICDEDUCT = #{record.programsendbasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="record.programareadeduct != null" >
+        PROGRAMAREADEDUCT = #{record.programareadeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="record.programweightdeduct != null" >
+        PROGRAMWEIGHTDEDUCT = #{record.programweightdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isdeductacount != null" >
+        ISDEDUCTACOUNT = #{record.isdeductacount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ischange != null" >
+        ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="record.areatype != null" >
+        AREATYPE = #{record.areatype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.iscod != null" >
+        ISCOD = #{record.iscod,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ispreaccount != null" >
+        ISPREACCOUNT = #{record.ispreaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.preupdate != null" >
+        PREUPDATE = #{record.preupdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.preaccountfare != null" >
+        PREACCOUNTFARE = #{record.preaccountfare,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update RFD_FMS.FMS_INCOMEFEEINFO
+    set INCOMEFEEID = #{record.incomefeeid,jdbcType=DECIMAL},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      WAYBILLNO = #{record.waybillno,jdbcType=DECIMAL},
+      ISACCOUNT = #{record.isaccount,jdbcType=DECIMAL},
+      ACCOUNTSTANDARD = #{record.accountstandard,jdbcType=VARCHAR},
+      ACCOUNTFARE = #{record.accountfare,jdbcType=DECIMAL},
+      ISPROTECTED = #{record.isprotected,jdbcType=DECIMAL},
+      PROTECTEDSTANDARD = #{record.protectedstandard,jdbcType=DECIMAL},
+      PROTECTEDFEE = #{record.protectedfee,jdbcType=DECIMAL},
+      ISRECEIVE = #{record.isreceive,jdbcType=DECIMAL},
+      RECEIVESTANDARD = #{record.receivestandard,jdbcType=DECIMAL},
+      RECEIVEFEE = #{record.receivefee,jdbcType=DECIMAL},
+      CREATEBY = #{record.createby,jdbcType=DECIMAL},
+      UPDATEBY = #{record.updateby,jdbcType=DECIMAL},
+      UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      ISDELETED = #{record.isdeleted,jdbcType=DECIMAL},
+      TRANSFERPAYTYPE = #{record.transferpaytype,jdbcType=DECIMAL},
+      DEPUTIZEAMOUNT = #{record.deputizeamount,jdbcType=DECIMAL},
+      POSRECEIVESTANDARD = #{record.posreceivestandard,jdbcType=DECIMAL},
+      POSRECEIVEFEE = #{record.posreceivefee,jdbcType=DECIMAL},
+      CASHRECEIVESERVICESTANDARD = #{record.cashreceiveservicestandard,jdbcType=DECIMAL},
+      CASHRECEIVESERVICEFEE = #{record.cashreceiveservicefee,jdbcType=DECIMAL},
+      POSRECEIVESERVICESTANDARD = #{record.posreceiveservicestandard,jdbcType=DECIMAL},
+      POSRECEIVESERVICEFEE = #{record.posreceiveservicefee,jdbcType=DECIMAL},
+      EXPRESSRECEIVEBASICDEDUCT = #{record.expressreceivebasicdeduct,jdbcType=DECIMAL},
+      EXPRESSSENDBASICDEDUCT = #{record.expresssendbasicdeduct,jdbcType=DECIMAL},
+      EXPRESSAREADEDUCT = #{record.expressareadeduct,jdbcType=DECIMAL},
+      EXPRESSWEIGHTDEDUCT = #{record.expressweightdeduct,jdbcType=DECIMAL},
+      PROGRAMRECEIVEBASICDEDUCT = #{record.programreceivebasicdeduct,jdbcType=DECIMAL},
+      PROGRAMSENDBASICDEDUCT = #{record.programsendbasicdeduct,jdbcType=DECIMAL},
+      PROGRAMAREADEDUCT = #{record.programareadeduct,jdbcType=DECIMAL},
+      PROGRAMWEIGHTDEDUCT = #{record.programweightdeduct,jdbcType=DECIMAL},
+      ISDEDUCTACOUNT = #{record.isdeductacount,jdbcType=DECIMAL},
+      ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      AREATYPE = #{record.areatype,jdbcType=DECIMAL},
+      ISCOD = #{record.iscod,jdbcType=DECIMAL},
+      ISPREACCOUNT = #{record.ispreaccount,jdbcType=DECIMAL},
+      PREUPDATE = #{record.preupdate,jdbcType=TIMESTAMP},
+      PREACCOUNTFARE = #{record.preaccountfare,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itiaoling.dbdiff.models.IncomeFeeinfo" >
+    update RFD_FMS.FMS_INCOMEFEEINFO
+    <set >
+      <if test="waybillno != null" >
+        WAYBILLNO = #{waybillno,jdbcType=DECIMAL},
+      </if>
+      <if test="isaccount != null" >
+        ISACCOUNT = #{isaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="accountstandard != null" >
+        ACCOUNTSTANDARD = #{accountstandard,jdbcType=VARCHAR},
+      </if>
+      <if test="accountfare != null" >
+        ACCOUNTFARE = #{accountfare,jdbcType=DECIMAL},
+      </if>
+      <if test="isprotected != null" >
+        ISPROTECTED = #{isprotected,jdbcType=DECIMAL},
+      </if>
+      <if test="protectedstandard != null" >
+        PROTECTEDSTANDARD = #{protectedstandard,jdbcType=DECIMAL},
+      </if>
+      <if test="protectedfee != null" >
+        PROTECTEDFEE = #{protectedfee,jdbcType=DECIMAL},
+      </if>
+      <if test="isreceive != null" >
+        ISRECEIVE = #{isreceive,jdbcType=DECIMAL},
+      </if>
+      <if test="receivestandard != null" >
+        RECEIVESTANDARD = #{receivestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="receivefee != null" >
+        RECEIVEFEE = #{receivefee,jdbcType=DECIMAL},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=DECIMAL},
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY = #{updateby,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null" >
+        ISDELETED = #{isdeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="transferpaytype != null" >
+        TRANSFERPAYTYPE = #{transferpaytype,jdbcType=DECIMAL},
+      </if>
+      <if test="deputizeamount != null" >
+        DEPUTIZEAMOUNT = #{deputizeamount,jdbcType=DECIMAL},
+      </if>
+      <if test="posreceivestandard != null" >
+        POSRECEIVESTANDARD = #{posreceivestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="posreceivefee != null" >
+        POSRECEIVEFEE = #{posreceivefee,jdbcType=DECIMAL},
+      </if>
+      <if test="cashreceiveservicestandard != null" >
+        CASHRECEIVESERVICESTANDARD = #{cashreceiveservicestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="cashreceiveservicefee != null" >
+        CASHRECEIVESERVICEFEE = #{cashreceiveservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="posreceiveservicestandard != null" >
+        POSRECEIVESERVICESTANDARD = #{posreceiveservicestandard,jdbcType=DECIMAL},
+      </if>
+      <if test="posreceiveservicefee != null" >
+        POSRECEIVESERVICEFEE = #{posreceiveservicefee,jdbcType=DECIMAL},
+      </if>
+      <if test="expressreceivebasicdeduct != null" >
+        EXPRESSRECEIVEBASICDEDUCT = #{expressreceivebasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="expresssendbasicdeduct != null" >
+        EXPRESSSENDBASICDEDUCT = #{expresssendbasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="expressareadeduct != null" >
+        EXPRESSAREADEDUCT = #{expressareadeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="expressweightdeduct != null" >
+        EXPRESSWEIGHTDEDUCT = #{expressweightdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="programreceivebasicdeduct != null" >
+        PROGRAMRECEIVEBASICDEDUCT = #{programreceivebasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="programsendbasicdeduct != null" >
+        PROGRAMSENDBASICDEDUCT = #{programsendbasicdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="programareadeduct != null" >
+        PROGRAMAREADEDUCT = #{programareadeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="programweightdeduct != null" >
+        PROGRAMWEIGHTDEDUCT = #{programweightdeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="isdeductacount != null" >
+        ISDEDUCTACOUNT = #{isdeductacount,jdbcType=DECIMAL},
+      </if>
+      <if test="ischange != null" >
+        ISCHANGE = #{ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="areatype != null" >
+        AREATYPE = #{areatype,jdbcType=DECIMAL},
+      </if>
+      <if test="iscod != null" >
+        ISCOD = #{iscod,jdbcType=DECIMAL},
+      </if>
+      <if test="ispreaccount != null" >
+        ISPREACCOUNT = #{ispreaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="preupdate != null" >
+        PREUPDATE = #{preupdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preaccountfare != null" >
+        PREACCOUNTFARE = #{preaccountfare,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where INCOMEFEEID = #{incomefeeid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itiaoling.dbdiff.models.IncomeFeeinfo" >
+    update RFD_FMS.FMS_INCOMEFEEINFO
+    set WAYBILLNO = #{waybillno,jdbcType=DECIMAL},
+      ISACCOUNT = #{isaccount,jdbcType=DECIMAL},
+      ACCOUNTSTANDARD = #{accountstandard,jdbcType=VARCHAR},
+      ACCOUNTFARE = #{accountfare,jdbcType=DECIMAL},
+      ISPROTECTED = #{isprotected,jdbcType=DECIMAL},
+      PROTECTEDSTANDARD = #{protectedstandard,jdbcType=DECIMAL},
+      PROTECTEDFEE = #{protectedfee,jdbcType=DECIMAL},
+      ISRECEIVE = #{isreceive,jdbcType=DECIMAL},
+      RECEIVESTANDARD = #{receivestandard,jdbcType=DECIMAL},
+      RECEIVEFEE = #{receivefee,jdbcType=DECIMAL},
+      CREATEBY = #{createby,jdbcType=DECIMAL},
+      UPDATEBY = #{updateby,jdbcType=DECIMAL},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      ISDELETED = #{isdeleted,jdbcType=DECIMAL},
+      TRANSFERPAYTYPE = #{transferpaytype,jdbcType=DECIMAL},
+      DEPUTIZEAMOUNT = #{deputizeamount,jdbcType=DECIMAL},
+      POSRECEIVESTANDARD = #{posreceivestandard,jdbcType=DECIMAL},
+      POSRECEIVEFEE = #{posreceivefee,jdbcType=DECIMAL},
+      CASHRECEIVESERVICESTANDARD = #{cashreceiveservicestandard,jdbcType=DECIMAL},
+      CASHRECEIVESERVICEFEE = #{cashreceiveservicefee,jdbcType=DECIMAL},
+      POSRECEIVESERVICESTANDARD = #{posreceiveservicestandard,jdbcType=DECIMAL},
+      POSRECEIVESERVICEFEE = #{posreceiveservicefee,jdbcType=DECIMAL},
+      EXPRESSRECEIVEBASICDEDUCT = #{expressreceivebasicdeduct,jdbcType=DECIMAL},
+      EXPRESSSENDBASICDEDUCT = #{expresssendbasicdeduct,jdbcType=DECIMAL},
+      EXPRESSAREADEDUCT = #{expressareadeduct,jdbcType=DECIMAL},
+      EXPRESSWEIGHTDEDUCT = #{expressweightdeduct,jdbcType=DECIMAL},
+      PROGRAMRECEIVEBASICDEDUCT = #{programreceivebasicdeduct,jdbcType=DECIMAL},
+      PROGRAMSENDBASICDEDUCT = #{programsendbasicdeduct,jdbcType=DECIMAL},
+      PROGRAMAREADEDUCT = #{programareadeduct,jdbcType=DECIMAL},
+      PROGRAMWEIGHTDEDUCT = #{programweightdeduct,jdbcType=DECIMAL},
+      ISDEDUCTACOUNT = #{isdeductacount,jdbcType=DECIMAL},
+      ISCHANGE = #{ischange,jdbcType=DECIMAL},
+      AREATYPE = #{areatype,jdbcType=DECIMAL},
+      ISCOD = #{iscod,jdbcType=DECIMAL},
+      ISPREACCOUNT = #{ispreaccount,jdbcType=DECIMAL},
+      PREUPDATE = #{preupdate,jdbcType=TIMESTAMP},
+      PREACCOUNTFARE = #{preaccountfare,jdbcType=DECIMAL}
+    where INCOMEFEEID = #{incomefeeid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </update>
+</mapper>

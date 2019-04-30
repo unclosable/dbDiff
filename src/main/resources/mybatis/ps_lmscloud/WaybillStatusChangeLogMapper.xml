@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itiaoling.dbdiff.mappers.WaybillStatusChangeLogMapper" >
+  <resultMap id="BaseResultMap" type="com.itiaoling.dbdiff.models.WaybillStatusChangeLog" >
+    <result column="WAYBILLSTATUSCHANGELOGID" property="waybillstatuschangelogid" jdbcType="DECIMAL" />
+    <result column="WAYBILLNO" property="waybillno" jdbcType="DECIMAL" />
+    <result column="CURNODE" property="curnode" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="SUBSTATUS" property="substatus" jdbcType="DECIMAL" />
+    <result column="MERCHANTID" property="merchantid" jdbcType="DECIMAL" />
+    <result column="DISTRIBUTIONCODE" property="distributioncode" jdbcType="VARCHAR" />
+    <result column="DELIVERSTATIONID" property="deliverstationid" jdbcType="DECIMAL" />
+    <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="CREATEBY" property="createby" jdbcType="DECIMAL" />
+    <result column="CREATESTATION" property="createstation" jdbcType="DECIMAL" />
+    <result column="ISSYN" property="issyn" jdbcType="DECIMAL" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+    <result column="CUSTOMERORDER" property="customerorder" jdbcType="VARCHAR" />
+    <result column="ISBISYN" property="isbisyn" jdbcType="DECIMAL" />
+    <result column="LMS_WAYBILLSTATUSCHANGELOGKID" property="lmsWaybillstatuschangelogkid" jdbcType="VARCHAR" />
+    <result column="ISM2SSYN" property="ism2ssyn" jdbcType="VARCHAR" />
+    <result column="OPERATETYPE" property="operatetype" jdbcType="DECIMAL" />
+    <result column="TMSSYNCSTATUS" property="tmssyncstatus" jdbcType="DECIMAL" />
+    <result column="ISSYNFMS" property="issynfms" jdbcType="DECIMAL" />
+    <result column="ISSYNEFFICIENCY" property="issynefficiency" jdbcType="DECIMAL" />
+    <result column="ISSYNMONITOR" property="issynmonitor" jdbcType="DECIMAL" />
+    <result column="ISCHANGE" property="ischange" jdbcType="DECIMAL" />
+    <result column="TODISTRIBUTIONCODE" property="todistributioncode" jdbcType="VARCHAR" />
+    <result column="TOEXPRESSCOMPANYID" property="toexpresscompanyid" jdbcType="DECIMAL" />
+    <result column="OPERATION" property="operation" jdbcType="VARCHAR" />
+    <result column="ISCLOUDSYN" property="iscloudsyn" jdbcType="DECIMAL" />
+    <result column="ISSYNEDI" property="issynedi" jdbcType="DECIMAL" />
+    <result column="WAYBILLDEALID" property="waybilldealid" jdbcType="DECIMAL" />
+    <result column="ISSYNDEDUCT" property="issyndeduct" jdbcType="DECIMAL" />
+    <result column="ISSYNLIFECYCLE" property="issynlifecycle" jdbcType="DECIMAL" />
+    <result column="ISSYNBRAVETROOPS" property="issynbravetroops" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WAYBILLSTATUSCHANGELOGID, WAYBILLNO, CURNODE, STATUS, SUBSTATUS, MERCHANTID, DISTRIBUTIONCODE, 
+    DELIVERSTATIONID, CREATETIME, CREATEBY, CREATESTATION, ISSYN, NOTE, CUSTOMERORDER, 
+    ISBISYN, LMS_WAYBILLSTATUSCHANGELOGKID, ISM2SSYN, OPERATETYPE, TMSSYNCSTATUS, ISSYNFMS, 
+    ISSYNEFFICIENCY, ISSYNMONITOR, ISCHANGE, TODISTRIBUTIONCODE, TOEXPRESSCOMPANYID, 
+    OPERATION, ISCLOUDSYN, ISSYNEDI, WAYBILLDEALID, ISSYNDEDUCT, ISSYNLIFECYCLE, ISSYNBRAVETROOPS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itiaoling.dbdiff.models.WaybillStatusChangeLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from PS_LMSCLOUD.LMS_WAYBILLSTATUSCHANGELOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.itiaoling.dbdiff.models.WaybillStatusChangeLogExample" >
+    delete from PS_LMSCLOUD.LMS_WAYBILLSTATUSCHANGELOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itiaoling.dbdiff.models.WaybillStatusChangeLog" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="waybillstatuschangelogid" order="BEFORE" >
+      select ps_lmscloud.lms_waybillstatuschangelog.nextval from dual
+    </selectKey>
+    insert into PS_LMSCLOUD.LMS_WAYBILLSTATUSCHANGELOG (WAYBILLSTATUSCHANGELOGID, WAYBILLNO, 
+      CURNODE, STATUS, SUBSTATUS, 
+      MERCHANTID, DISTRIBUTIONCODE, DELIVERSTATIONID, 
+      CREATETIME, CREATEBY, CREATESTATION, 
+      ISSYN, NOTE, CUSTOMERORDER, 
+      ISBISYN, LMS_WAYBILLSTATUSCHANGELOGKID, 
+      ISM2SSYN, OPERATETYPE, TMSSYNCSTATUS, 
+      ISSYNFMS, ISSYNEFFICIENCY, ISSYNMONITOR, 
+      ISCHANGE, TODISTRIBUTIONCODE, TOEXPRESSCOMPANYID, 
+      OPERATION, ISCLOUDSYN, ISSYNEDI, 
+      WAYBILLDEALID, ISSYNDEDUCT, ISSYNLIFECYCLE, 
+      ISSYNBRAVETROOPS)
+    values (#{waybillstatuschangelogid,jdbcType=DECIMAL}, #{waybillno,jdbcType=DECIMAL}, 
+      #{curnode,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR}, #{substatus,jdbcType=DECIMAL}, 
+      #{merchantid,jdbcType=DECIMAL}, #{distributioncode,jdbcType=VARCHAR}, #{deliverstationid,jdbcType=DECIMAL}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{createby,jdbcType=DECIMAL}, #{createstation,jdbcType=DECIMAL}, 
+      #{issyn,jdbcType=DECIMAL}, #{note,jdbcType=VARCHAR}, #{customerorder,jdbcType=VARCHAR}, 
+      #{isbisyn,jdbcType=DECIMAL}, #{lmsWaybillstatuschangelogkid,jdbcType=VARCHAR}, 
+      #{ism2ssyn,jdbcType=VARCHAR}, #{operatetype,jdbcType=DECIMAL}, #{tmssyncstatus,jdbcType=DECIMAL}, 
+      #{issynfms,jdbcType=DECIMAL}, #{issynefficiency,jdbcType=DECIMAL}, #{issynmonitor,jdbcType=DECIMAL}, 
+      #{ischange,jdbcType=DECIMAL}, #{todistributioncode,jdbcType=VARCHAR}, #{toexpresscompanyid,jdbcType=DECIMAL}, 
+      #{operation,jdbcType=VARCHAR}, #{iscloudsyn,jdbcType=DECIMAL}, #{issynedi,jdbcType=DECIMAL}, 
+      #{waybilldealid,jdbcType=DECIMAL}, #{issyndeduct,jdbcType=DECIMAL}, #{issynlifecycle,jdbcType=DECIMAL}, 
+      #{issynbravetroops,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itiaoling.dbdiff.models.WaybillStatusChangeLog" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="waybillstatuschangelogid" order="BEFORE" >
+      select ps_lmscloud.lms_waybillstatuschangelog.nextval from dual
+    </selectKey>
+    insert into PS_LMSCLOUD.LMS_WAYBILLSTATUSCHANGELOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      WAYBILLSTATUSCHANGELOGID,
+      <if test="waybillno != null" >
+        WAYBILLNO,
+      </if>
+      <if test="curnode != null" >
+        CURNODE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="substatus != null" >
+        SUBSTATUS,
+      </if>
+      <if test="merchantid != null" >
+        MERCHANTID,
+      </if>
+      <if test="distributioncode != null" >
+        DISTRIBUTIONCODE,
+      </if>
+      <if test="deliverstationid != null" >
+        DELIVERSTATIONID,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="createstation != null" >
+        CREATESTATION,
+      </if>
+      <if test="issyn != null" >
+        ISSYN,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+      <if test="customerorder != null" >
+        CUSTOMERORDER,
+      </if>
+      <if test="isbisyn != null" >
+        ISBISYN,
+      </if>
+      <if test="lmsWaybillstatuschangelogkid != null" >
+        LMS_WAYBILLSTATUSCHANGELOGKID,
+      </if>
+      <if test="ism2ssyn != null" >
+        ISM2SSYN,
+      </if>
+      <if test="operatetype != null" >
+        OPERATETYPE,
+      </if>
+      <if test="tmssyncstatus != null" >
+        TMSSYNCSTATUS,
+      </if>
+      <if test="issynfms != null" >
+        ISSYNFMS,
+      </if>
+      <if test="issynefficiency != null" >
+        ISSYNEFFICIENCY,
+      </if>
+      <if test="issynmonitor != null" >
+        ISSYNMONITOR,
+      </if>
+      <if test="ischange != null" >
+        ISCHANGE,
+      </if>
+      <if test="todistributioncode != null" >
+        TODISTRIBUTIONCODE,
+      </if>
+      <if test="toexpresscompanyid != null" >
+        TOEXPRESSCOMPANYID,
+      </if>
+      <if test="operation != null" >
+        OPERATION,
+      </if>
+      <if test="iscloudsyn != null" >
+        ISCLOUDSYN,
+      </if>
+      <if test="issynedi != null" >
+        ISSYNEDI,
+      </if>
+      <if test="waybilldealid != null" >
+        WAYBILLDEALID,
+      </if>
+      <if test="issyndeduct != null" >
+        ISSYNDEDUCT,
+      </if>
+      <if test="issynlifecycle != null" >
+        ISSYNLIFECYCLE,
+      </if>
+      <if test="issynbravetroops != null" >
+        ISSYNBRAVETROOPS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{waybillstatuschangelogid,jdbcType=DECIMAL},
+      <if test="waybillno != null" >
+        #{waybillno,jdbcType=DECIMAL},
+      </if>
+      <if test="curnode != null" >
+        #{curnode,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="substatus != null" >
+        #{substatus,jdbcType=DECIMAL},
+      </if>
+      <if test="merchantid != null" >
+        #{merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="distributioncode != null" >
+        #{distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverstationid != null" >
+        #{deliverstationid,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=DECIMAL},
+      </if>
+      <if test="createstation != null" >
+        #{createstation,jdbcType=DECIMAL},
+      </if>
+      <if test="issyn != null" >
+        #{issyn,jdbcType=DECIMAL},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="customerorder != null" >
+        #{customerorder,jdbcType=VARCHAR},
+      </if>
+      <if test="isbisyn != null" >
+        #{isbisyn,jdbcType=DECIMAL},
+      </if>
+      <if test="lmsWaybillstatuschangelogkid != null" >
+        #{lmsWaybillstatuschangelogkid,jdbcType=VARCHAR},
+      </if>
+      <if test="ism2ssyn != null" >
+        #{ism2ssyn,jdbcType=VARCHAR},
+      </if>
+      <if test="operatetype != null" >
+        #{operatetype,jdbcType=DECIMAL},
+      </if>
+      <if test="tmssyncstatus != null" >
+        #{tmssyncstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="issynfms != null" >
+        #{issynfms,jdbcType=DECIMAL},
+      </if>
+      <if test="issynefficiency != null" >
+        #{issynefficiency,jdbcType=DECIMAL},
+      </if>
+      <if test="issynmonitor != null" >
+        #{issynmonitor,jdbcType=DECIMAL},
+      </if>
+      <if test="ischange != null" >
+        #{ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="todistributioncode != null" >
+        #{todistributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="toexpresscompanyid != null" >
+        #{toexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="iscloudsyn != null" >
+        #{iscloudsyn,jdbcType=DECIMAL},
+      </if>
+      <if test="issynedi != null" >
+        #{issynedi,jdbcType=DECIMAL},
+      </if>
+      <if test="waybilldealid != null" >
+        #{waybilldealid,jdbcType=DECIMAL},
+      </if>
+      <if test="issyndeduct != null" >
+        #{issyndeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="issynlifecycle != null" >
+        #{issynlifecycle,jdbcType=DECIMAL},
+      </if>
+      <if test="issynbravetroops != null" >
+        #{issynbravetroops,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itiaoling.dbdiff.models.WaybillStatusChangeLogExample" resultType="java.lang.Integer" >
+    select count(*) from PS_LMSCLOUD.LMS_WAYBILLSTATUSCHANGELOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update PS_LMSCLOUD.LMS_WAYBILLSTATUSCHANGELOG
+    <set >
+      <if test="record.waybillstatuschangelogid != null" >
+        WAYBILLSTATUSCHANGELOGID = #{record.waybillstatuschangelogid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.waybillno != null" >
+        WAYBILLNO = #{record.waybillno,jdbcType=DECIMAL},
+      </if>
+      <if test="record.curnode != null" >
+        CURNODE = #{record.curnode,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.substatus != null" >
+        SUBSTATUS = #{record.substatus,jdbcType=DECIMAL},
+      </if>
+      <if test="record.merchantid != null" >
+        MERCHANTID = #{record.merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.distributioncode != null" >
+        DISTRIBUTIONCODE = #{record.distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deliverstationid != null" >
+        DELIVERSTATIONID = #{record.deliverstationid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createtime != null" >
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CREATEBY = #{record.createby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createstation != null" >
+        CREATESTATION = #{record.createstation,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issyn != null" >
+        ISSYN = #{record.issyn,jdbcType=DECIMAL},
+      </if>
+      <if test="record.note != null" >
+        NOTE = #{record.note,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerorder != null" >
+        CUSTOMERORDER = #{record.customerorder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isbisyn != null" >
+        ISBISYN = #{record.isbisyn,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lmsWaybillstatuschangelogkid != null" >
+        LMS_WAYBILLSTATUSCHANGELOGKID = #{record.lmsWaybillstatuschangelogkid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ism2ssyn != null" >
+        ISM2SSYN = #{record.ism2ssyn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operatetype != null" >
+        OPERATETYPE = #{record.operatetype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tmssyncstatus != null" >
+        TMSSYNCSTATUS = #{record.tmssyncstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issynfms != null" >
+        ISSYNFMS = #{record.issynfms,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issynefficiency != null" >
+        ISSYNEFFICIENCY = #{record.issynefficiency,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issynmonitor != null" >
+        ISSYNMONITOR = #{record.issynmonitor,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ischange != null" >
+        ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="record.todistributioncode != null" >
+        TODISTRIBUTIONCODE = #{record.todistributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.toexpresscompanyid != null" >
+        TOEXPRESSCOMPANYID = #{record.toexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.operation != null" >
+        OPERATION = #{record.operation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iscloudsyn != null" >
+        ISCLOUDSYN = #{record.iscloudsyn,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issynedi != null" >
+        ISSYNEDI = #{record.issynedi,jdbcType=DECIMAL},
+      </if>
+      <if test="record.waybilldealid != null" >
+        WAYBILLDEALID = #{record.waybilldealid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issyndeduct != null" >
+        ISSYNDEDUCT = #{record.issyndeduct,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issynlifecycle != null" >
+        ISSYNLIFECYCLE = #{record.issynlifecycle,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issynbravetroops != null" >
+        ISSYNBRAVETROOPS = #{record.issynbravetroops,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update PS_LMSCLOUD.LMS_WAYBILLSTATUSCHANGELOG
+    set WAYBILLSTATUSCHANGELOGID = #{record.waybillstatuschangelogid,jdbcType=DECIMAL},
+      WAYBILLNO = #{record.waybillno,jdbcType=DECIMAL},
+      CURNODE = #{record.curnode,jdbcType=DECIMAL},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      SUBSTATUS = #{record.substatus,jdbcType=DECIMAL},
+      MERCHANTID = #{record.merchantid,jdbcType=DECIMAL},
+      DISTRIBUTIONCODE = #{record.distributioncode,jdbcType=VARCHAR},
+      DELIVERSTATIONID = #{record.deliverstationid,jdbcType=DECIMAL},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      CREATEBY = #{record.createby,jdbcType=DECIMAL},
+      CREATESTATION = #{record.createstation,jdbcType=DECIMAL},
+      ISSYN = #{record.issyn,jdbcType=DECIMAL},
+      NOTE = #{record.note,jdbcType=VARCHAR},
+      CUSTOMERORDER = #{record.customerorder,jdbcType=VARCHAR},
+      ISBISYN = #{record.isbisyn,jdbcType=DECIMAL},
+      LMS_WAYBILLSTATUSCHANGELOGKID = #{record.lmsWaybillstatuschangelogkid,jdbcType=VARCHAR},
+      ISM2SSYN = #{record.ism2ssyn,jdbcType=VARCHAR},
+      OPERATETYPE = #{record.operatetype,jdbcType=DECIMAL},
+      TMSSYNCSTATUS = #{record.tmssyncstatus,jdbcType=DECIMAL},
+      ISSYNFMS = #{record.issynfms,jdbcType=DECIMAL},
+      ISSYNEFFICIENCY = #{record.issynefficiency,jdbcType=DECIMAL},
+      ISSYNMONITOR = #{record.issynmonitor,jdbcType=DECIMAL},
+      ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      TODISTRIBUTIONCODE = #{record.todistributioncode,jdbcType=VARCHAR},
+      TOEXPRESSCOMPANYID = #{record.toexpresscompanyid,jdbcType=DECIMAL},
+      OPERATION = #{record.operation,jdbcType=VARCHAR},
+      ISCLOUDSYN = #{record.iscloudsyn,jdbcType=DECIMAL},
+      ISSYNEDI = #{record.issynedi,jdbcType=DECIMAL},
+      WAYBILLDEALID = #{record.waybilldealid,jdbcType=DECIMAL},
+      ISSYNDEDUCT = #{record.issyndeduct,jdbcType=DECIMAL},
+      ISSYNLIFECYCLE = #{record.issynlifecycle,jdbcType=DECIMAL},
+      ISSYNBRAVETROOPS = #{record.issynbravetroops,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

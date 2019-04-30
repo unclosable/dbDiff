@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itiaoling.dbdiff.mappers.IncomeBaseinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.itiaoling.dbdiff.models.IncomeBaseinfo" >
+    <id column="INCOMEID" property="incomeid" jdbcType="DECIMAL" />
+    <id column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="WAYBILLNO" property="waybillno" jdbcType="DECIMAL" />
+    <result column="WAYBILLTYPE" property="waybilltype" jdbcType="VARCHAR" />
+    <result column="MERCHANTID" property="merchantid" jdbcType="DECIMAL" />
+    <result column="EXPRESSCOMPANYID" property="expresscompanyid" jdbcType="DECIMAL" />
+    <result column="FINALEXPRESSCOMPANYID" property="finalexpresscompanyid" jdbcType="DECIMAL" />
+    <result column="DELIVERSTATIONID" property="deliverstationid" jdbcType="DECIMAL" />
+    <result column="TOPCODCOMPANYID" property="topcodcompanyid" jdbcType="DECIMAL" />
+    <result column="RFDACCEPTTIME" property="rfdaccepttime" jdbcType="TIMESTAMP" />
+    <result column="DELIVERTIME" property="delivertime" jdbcType="TIMESTAMP" />
+    <result column="RETURNTIME" property="returntime" jdbcType="TIMESTAMP" />
+    <result column="RETURNEXPRESSCOMPANYID" property="returnexpresscompanyid" jdbcType="DECIMAL" />
+    <result column="BACKSTATIONTIME" property="backstationtime" jdbcType="TIMESTAMP" />
+    <result column="BACKSTATIONSTATUS" property="backstationstatus" jdbcType="VARCHAR" />
+    <result column="PROTECTEDAMOUNT" property="protectedamount" jdbcType="DECIMAL" />
+    <result column="TOTALAMOUNT" property="totalamount" jdbcType="DECIMAL" />
+    <result column="PAIDAMOUNT" property="paidamount" jdbcType="DECIMAL" />
+    <result column="NEEDPAYAMOUNT" property="needpayamount" jdbcType="DECIMAL" />
+    <result column="BACKAMOUNT" property="backamount" jdbcType="DECIMAL" />
+    <result column="NEEDBACKAMOUNT" property="needbackamount" jdbcType="DECIMAL" />
+    <result column="ACCOUNTWEIGHT" property="accountweight" jdbcType="DECIMAL" />
+    <result column="AREAID" property="areaid" jdbcType="VARCHAR" />
+    <result column="RECEIVEADDRESS" property="receiveaddress" jdbcType="VARCHAR" />
+    <result column="SIGNTYPE" property="signtype" jdbcType="DECIMAL" />
+    <result column="INEFFICACYSTATUS" property="inefficacystatus" jdbcType="DECIMAL" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="RECEIVESTATIONID" property="receivestationid" jdbcType="DECIMAL" />
+    <result column="RECEIVEDELIVERMANID" property="receivedelivermanid" jdbcType="DECIMAL" />
+    <result column="DISTRIBUTIONCODE" property="distributioncode" jdbcType="VARCHAR" />
+    <result column="CURRENTDISTRIBUTIONCODE" property="currentdistributioncode" jdbcType="VARCHAR" />
+    <result column="WAYBILLINFOWEIGHT" property="waybillinfoweight" jdbcType="DECIMAL" />
+    <result column="SUBSTATUS" property="substatus" jdbcType="DECIMAL" />
+    <result column="ACCEPTTYPE" property="accepttype" jdbcType="VARCHAR" />
+    <result column="CUSTOMERORDER" property="customerorder" jdbcType="VARCHAR" />
+    <result column="ORIGINDEPOTNO" property="origindepotno" jdbcType="VARCHAR" />
+    <result column="ISCHANGE" property="ischange" jdbcType="DECIMAL" />
+    <result column="PERIODACCOUNTCODE" property="periodaccountcode" jdbcType="VARCHAR" />
+    <result column="WAYBILLCATEGORY" property="waybillcategory" jdbcType="VARCHAR" />
+    <result column="DELIVERCODE" property="delivercode" jdbcType="VARCHAR" />
+    <result column="ISDELETED" property="isdeleted" jdbcType="DECIMAL" />
+    <result column="ISMANUALMODIFY" property="ismanualmodify" jdbcType="DECIMAL" />
+    <result column="ACCOUNTORDERNO" property="accountorderno" jdbcType="VARCHAR" />
+    <result column="PACKAGECOUNT" property="packagecount" jdbcType="DECIMAL" />
+    <result column="SENDPROVINCE" property="sendprovince" jdbcType="VARCHAR" />
+    <result column="SENDCITY" property="sendcity" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="AREA" property="area" jdbcType="VARCHAR" />
+    <result column="COUNTRY" property="country" jdbcType="VARCHAR" />
+    <result column="PAYEE" property="payee" jdbcType="VARCHAR" />
+    <result column="TRANSFEROPERATOR" property="transferoperator" jdbcType="DECIMAL" />
+    <result column="BANKCARDNUMBER" property="bankcardnumber" jdbcType="VARCHAR" />
+    <result column="BANKCARDNAME" property="bankcardname" jdbcType="VARCHAR" />
+    <result column="ACTUALTRANSFERTIME" property="actualtransfertime" jdbcType="TIMESTAMP" />
+    <result column="TRANSFERSTATE" property="transferstate" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    INCOMEID, CREATETIME, WAYBILLNO, WAYBILLTYPE, MERCHANTID, EXPRESSCOMPANYID, FINALEXPRESSCOMPANYID, 
+    DELIVERSTATIONID, TOPCODCOMPANYID, RFDACCEPTTIME, DELIVERTIME, RETURNTIME, RETURNEXPRESSCOMPANYID, 
+    BACKSTATIONTIME, BACKSTATIONSTATUS, PROTECTEDAMOUNT, TOTALAMOUNT, PAIDAMOUNT, NEEDPAYAMOUNT, 
+    BACKAMOUNT, NEEDBACKAMOUNT, ACCOUNTWEIGHT, AREAID, RECEIVEADDRESS, SIGNTYPE, INEFFICACYSTATUS, 
+    UPDATETIME, RECEIVESTATIONID, RECEIVEDELIVERMANID, DISTRIBUTIONCODE, CURRENTDISTRIBUTIONCODE, 
+    WAYBILLINFOWEIGHT, SUBSTATUS, ACCEPTTYPE, CUSTOMERORDER, ORIGINDEPOTNO, ISCHANGE, 
+    PERIODACCOUNTCODE, WAYBILLCATEGORY, DELIVERCODE, ISDELETED, ISMANUALMODIFY, ACCOUNTORDERNO, 
+    PACKAGECOUNT, SENDPROVINCE, SENDCITY, PROVINCE, CITY, AREA, COUNTRY, PAYEE, TRANSFEROPERATOR, 
+    BANKCARDNUMBER, BANKCARDNAME, ACTUALTRANSFERTIME, TRANSFERSTATE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.itiaoling.dbdiff.models.IncomeBaseinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from RFD_FMS.FMS_INCOMEBASEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from RFD_FMS.FMS_INCOMEBASEINFO
+    where INCOMEID = #{incomeid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from RFD_FMS.FMS_INCOMEBASEINFO
+    where INCOMEID = #{incomeid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itiaoling.dbdiff.models.IncomeBaseinfoExample" >
+    delete from RFD_FMS.FMS_INCOMEBASEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itiaoling.dbdiff.models.IncomeBaseinfo" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="incomeid" order="BEFORE" >
+      select RFD_FMS.SEQ_FMS_INCOMEBASEINFO.nextval from dual
+    </selectKey>
+    insert into RFD_FMS.FMS_INCOMEBASEINFO (INCOMEID, CREATETIME, WAYBILLNO, 
+      WAYBILLTYPE, MERCHANTID, EXPRESSCOMPANYID, 
+      FINALEXPRESSCOMPANYID, DELIVERSTATIONID, 
+      TOPCODCOMPANYID, RFDACCEPTTIME, DELIVERTIME, 
+      RETURNTIME, RETURNEXPRESSCOMPANYID, BACKSTATIONTIME, 
+      BACKSTATIONSTATUS, PROTECTEDAMOUNT, TOTALAMOUNT, 
+      PAIDAMOUNT, NEEDPAYAMOUNT, BACKAMOUNT, 
+      NEEDBACKAMOUNT, ACCOUNTWEIGHT, AREAID, 
+      RECEIVEADDRESS, SIGNTYPE, INEFFICACYSTATUS, 
+      UPDATETIME, RECEIVESTATIONID, RECEIVEDELIVERMANID, 
+      DISTRIBUTIONCODE, CURRENTDISTRIBUTIONCODE, 
+      WAYBILLINFOWEIGHT, SUBSTATUS, ACCEPTTYPE, 
+      CUSTOMERORDER, ORIGINDEPOTNO, ISCHANGE, 
+      PERIODACCOUNTCODE, WAYBILLCATEGORY, DELIVERCODE, 
+      ISDELETED, ISMANUALMODIFY, ACCOUNTORDERNO, 
+      PACKAGECOUNT, SENDPROVINCE, SENDCITY, 
+      PROVINCE, CITY, AREA, 
+      COUNTRY, PAYEE, TRANSFEROPERATOR, 
+      BANKCARDNUMBER, BANKCARDNAME, ACTUALTRANSFERTIME, 
+      TRANSFERSTATE)
+    values (#{incomeid,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, #{waybillno,jdbcType=DECIMAL}, 
+      #{waybilltype,jdbcType=VARCHAR}, #{merchantid,jdbcType=DECIMAL}, #{expresscompanyid,jdbcType=DECIMAL}, 
+      #{finalexpresscompanyid,jdbcType=DECIMAL}, #{deliverstationid,jdbcType=DECIMAL}, 
+      #{topcodcompanyid,jdbcType=DECIMAL}, #{rfdaccepttime,jdbcType=TIMESTAMP}, #{delivertime,jdbcType=TIMESTAMP}, 
+      #{returntime,jdbcType=TIMESTAMP}, #{returnexpresscompanyid,jdbcType=DECIMAL}, #{backstationtime,jdbcType=TIMESTAMP}, 
+      #{backstationstatus,jdbcType=VARCHAR}, #{protectedamount,jdbcType=DECIMAL}, #{totalamount,jdbcType=DECIMAL}, 
+      #{paidamount,jdbcType=DECIMAL}, #{needpayamount,jdbcType=DECIMAL}, #{backamount,jdbcType=DECIMAL}, 
+      #{needbackamount,jdbcType=DECIMAL}, #{accountweight,jdbcType=DECIMAL}, #{areaid,jdbcType=VARCHAR}, 
+      #{receiveaddress,jdbcType=VARCHAR}, #{signtype,jdbcType=DECIMAL}, #{inefficacystatus,jdbcType=DECIMAL}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{receivestationid,jdbcType=DECIMAL}, #{receivedelivermanid,jdbcType=DECIMAL}, 
+      #{distributioncode,jdbcType=VARCHAR}, #{currentdistributioncode,jdbcType=VARCHAR}, 
+      #{waybillinfoweight,jdbcType=DECIMAL}, #{substatus,jdbcType=DECIMAL}, #{accepttype,jdbcType=VARCHAR}, 
+      #{customerorder,jdbcType=VARCHAR}, #{origindepotno,jdbcType=VARCHAR}, #{ischange,jdbcType=DECIMAL}, 
+      #{periodaccountcode,jdbcType=VARCHAR}, #{waybillcategory,jdbcType=VARCHAR}, #{delivercode,jdbcType=VARCHAR}, 
+      #{isdeleted,jdbcType=DECIMAL}, #{ismanualmodify,jdbcType=DECIMAL}, #{accountorderno,jdbcType=VARCHAR}, 
+      #{packagecount,jdbcType=DECIMAL}, #{sendprovince,jdbcType=VARCHAR}, #{sendcity,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{payee,jdbcType=VARCHAR}, #{transferoperator,jdbcType=DECIMAL}, 
+      #{bankcardnumber,jdbcType=VARCHAR}, #{bankcardname,jdbcType=VARCHAR}, #{actualtransfertime,jdbcType=TIMESTAMP}, 
+      #{transferstate,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itiaoling.dbdiff.models.IncomeBaseinfo" >
+    <selectKey resultType="java.math.BigDecimal" keyProperty="incomeid" order="BEFORE" >
+      select RFD_FMS.SEQ_FMS_INCOMEBASEINFO.nextval from dual
+    </selectKey>
+    insert into RFD_FMS.FMS_INCOMEBASEINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      INCOMEID,
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="waybillno != null" >
+        WAYBILLNO,
+      </if>
+      <if test="waybilltype != null" >
+        WAYBILLTYPE,
+      </if>
+      <if test="merchantid != null" >
+        MERCHANTID,
+      </if>
+      <if test="expresscompanyid != null" >
+        EXPRESSCOMPANYID,
+      </if>
+      <if test="finalexpresscompanyid != null" >
+        FINALEXPRESSCOMPANYID,
+      </if>
+      <if test="deliverstationid != null" >
+        DELIVERSTATIONID,
+      </if>
+      <if test="topcodcompanyid != null" >
+        TOPCODCOMPANYID,
+      </if>
+      <if test="rfdaccepttime != null" >
+        RFDACCEPTTIME,
+      </if>
+      <if test="delivertime != null" >
+        DELIVERTIME,
+      </if>
+      <if test="returntime != null" >
+        RETURNTIME,
+      </if>
+      <if test="returnexpresscompanyid != null" >
+        RETURNEXPRESSCOMPANYID,
+      </if>
+      <if test="backstationtime != null" >
+        BACKSTATIONTIME,
+      </if>
+      <if test="backstationstatus != null" >
+        BACKSTATIONSTATUS,
+      </if>
+      <if test="protectedamount != null" >
+        PROTECTEDAMOUNT,
+      </if>
+      <if test="totalamount != null" >
+        TOTALAMOUNT,
+      </if>
+      <if test="paidamount != null" >
+        PAIDAMOUNT,
+      </if>
+      <if test="needpayamount != null" >
+        NEEDPAYAMOUNT,
+      </if>
+      <if test="backamount != null" >
+        BACKAMOUNT,
+      </if>
+      <if test="needbackamount != null" >
+        NEEDBACKAMOUNT,
+      </if>
+      <if test="accountweight != null" >
+        ACCOUNTWEIGHT,
+      </if>
+      <if test="areaid != null" >
+        AREAID,
+      </if>
+      <if test="receiveaddress != null" >
+        RECEIVEADDRESS,
+      </if>
+      <if test="signtype != null" >
+        SIGNTYPE,
+      </if>
+      <if test="inefficacystatus != null" >
+        INEFFICACYSTATUS,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+      <if test="receivestationid != null" >
+        RECEIVESTATIONID,
+      </if>
+      <if test="receivedelivermanid != null" >
+        RECEIVEDELIVERMANID,
+      </if>
+      <if test="distributioncode != null" >
+        DISTRIBUTIONCODE,
+      </if>
+      <if test="currentdistributioncode != null" >
+        CURRENTDISTRIBUTIONCODE,
+      </if>
+      <if test="waybillinfoweight != null" >
+        WAYBILLINFOWEIGHT,
+      </if>
+      <if test="substatus != null" >
+        SUBSTATUS,
+      </if>
+      <if test="accepttype != null" >
+        ACCEPTTYPE,
+      </if>
+      <if test="customerorder != null" >
+        CUSTOMERORDER,
+      </if>
+      <if test="origindepotno != null" >
+        ORIGINDEPOTNO,
+      </if>
+      <if test="ischange != null" >
+        ISCHANGE,
+      </if>
+      <if test="periodaccountcode != null" >
+        PERIODACCOUNTCODE,
+      </if>
+      <if test="waybillcategory != null" >
+        WAYBILLCATEGORY,
+      </if>
+      <if test="delivercode != null" >
+        DELIVERCODE,
+      </if>
+      <if test="isdeleted != null" >
+        ISDELETED,
+      </if>
+      <if test="ismanualmodify != null" >
+        ISMANUALMODIFY,
+      </if>
+      <if test="accountorderno != null" >
+        ACCOUNTORDERNO,
+      </if>
+      <if test="packagecount != null" >
+        PACKAGECOUNT,
+      </if>
+      <if test="sendprovince != null" >
+        SENDPROVINCE,
+      </if>
+      <if test="sendcity != null" >
+        SENDCITY,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="area != null" >
+        AREA,
+      </if>
+      <if test="country != null" >
+        COUNTRY,
+      </if>
+      <if test="payee != null" >
+        PAYEE,
+      </if>
+      <if test="transferoperator != null" >
+        TRANSFEROPERATOR,
+      </if>
+      <if test="bankcardnumber != null" >
+        BANKCARDNUMBER,
+      </if>
+      <if test="bankcardname != null" >
+        BANKCARDNAME,
+      </if>
+      <if test="actualtransfertime != null" >
+        ACTUALTRANSFERTIME,
+      </if>
+      <if test="transferstate != null" >
+        TRANSFERSTATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{incomeid,jdbcType=DECIMAL},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="waybillno != null" >
+        #{waybillno,jdbcType=DECIMAL},
+      </if>
+      <if test="waybilltype != null" >
+        #{waybilltype,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantid != null" >
+        #{merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="expresscompanyid != null" >
+        #{expresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="finalexpresscompanyid != null" >
+        #{finalexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverstationid != null" >
+        #{deliverstationid,jdbcType=DECIMAL},
+      </if>
+      <if test="topcodcompanyid != null" >
+        #{topcodcompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="rfdaccepttime != null" >
+        #{rfdaccepttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delivertime != null" >
+        #{delivertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returntime != null" >
+        #{returntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnexpresscompanyid != null" >
+        #{returnexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="backstationtime != null" >
+        #{backstationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backstationstatus != null" >
+        #{backstationstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedamount != null" >
+        #{protectedamount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalamount != null" >
+        #{totalamount,jdbcType=DECIMAL},
+      </if>
+      <if test="paidamount != null" >
+        #{paidamount,jdbcType=DECIMAL},
+      </if>
+      <if test="needpayamount != null" >
+        #{needpayamount,jdbcType=DECIMAL},
+      </if>
+      <if test="backamount != null" >
+        #{backamount,jdbcType=DECIMAL},
+      </if>
+      <if test="needbackamount != null" >
+        #{needbackamount,jdbcType=DECIMAL},
+      </if>
+      <if test="accountweight != null" >
+        #{accountweight,jdbcType=DECIMAL},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveaddress != null" >
+        #{receiveaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="signtype != null" >
+        #{signtype,jdbcType=DECIMAL},
+      </if>
+      <if test="inefficacystatus != null" >
+        #{inefficacystatus,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receivestationid != null" >
+        #{receivestationid,jdbcType=DECIMAL},
+      </if>
+      <if test="receivedelivermanid != null" >
+        #{receivedelivermanid,jdbcType=DECIMAL},
+      </if>
+      <if test="distributioncode != null" >
+        #{distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="currentdistributioncode != null" >
+        #{currentdistributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillinfoweight != null" >
+        #{waybillinfoweight,jdbcType=DECIMAL},
+      </if>
+      <if test="substatus != null" >
+        #{substatus,jdbcType=DECIMAL},
+      </if>
+      <if test="accepttype != null" >
+        #{accepttype,jdbcType=VARCHAR},
+      </if>
+      <if test="customerorder != null" >
+        #{customerorder,jdbcType=VARCHAR},
+      </if>
+      <if test="origindepotno != null" >
+        #{origindepotno,jdbcType=VARCHAR},
+      </if>
+      <if test="ischange != null" >
+        #{ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="periodaccountcode != null" >
+        #{periodaccountcode,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcategory != null" >
+        #{waybillcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="delivercode != null" >
+        #{delivercode,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null" >
+        #{isdeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="ismanualmodify != null" >
+        #{ismanualmodify,jdbcType=DECIMAL},
+      </if>
+      <if test="accountorderno != null" >
+        #{accountorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="packagecount != null" >
+        #{packagecount,jdbcType=DECIMAL},
+      </if>
+      <if test="sendprovince != null" >
+        #{sendprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="sendcity != null" >
+        #{sendcity,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="payee != null" >
+        #{payee,jdbcType=VARCHAR},
+      </if>
+      <if test="transferoperator != null" >
+        #{transferoperator,jdbcType=DECIMAL},
+      </if>
+      <if test="bankcardnumber != null" >
+        #{bankcardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcardname != null" >
+        #{bankcardname,jdbcType=VARCHAR},
+      </if>
+      <if test="actualtransfertime != null" >
+        #{actualtransfertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transferstate != null" >
+        #{transferstate,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itiaoling.dbdiff.models.IncomeBaseinfoExample" resultType="java.lang.Integer" >
+    select count(*) from RFD_FMS.FMS_INCOMEBASEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update RFD_FMS.FMS_INCOMEBASEINFO
+    <set >
+      <if test="record.incomeid != null" >
+        INCOMEID = #{record.incomeid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createtime != null" >
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.waybillno != null" >
+        WAYBILLNO = #{record.waybillno,jdbcType=DECIMAL},
+      </if>
+      <if test="record.waybilltype != null" >
+        WAYBILLTYPE = #{record.waybilltype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchantid != null" >
+        MERCHANTID = #{record.merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.expresscompanyid != null" >
+        EXPRESSCOMPANYID = #{record.expresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.finalexpresscompanyid != null" >
+        FINALEXPRESSCOMPANYID = #{record.finalexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deliverstationid != null" >
+        DELIVERSTATIONID = #{record.deliverstationid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.topcodcompanyid != null" >
+        TOPCODCOMPANYID = #{record.topcodcompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rfdaccepttime != null" >
+        RFDACCEPTTIME = #{record.rfdaccepttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.delivertime != null" >
+        DELIVERTIME = #{record.delivertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.returntime != null" >
+        RETURNTIME = #{record.returntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.returnexpresscompanyid != null" >
+        RETURNEXPRESSCOMPANYID = #{record.returnexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.backstationtime != null" >
+        BACKSTATIONTIME = #{record.backstationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.backstationstatus != null" >
+        BACKSTATIONSTATUS = #{record.backstationstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.protectedamount != null" >
+        PROTECTEDAMOUNT = #{record.protectedamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.totalamount != null" >
+        TOTALAMOUNT = #{record.totalamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.paidamount != null" >
+        PAIDAMOUNT = #{record.paidamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.needpayamount != null" >
+        NEEDPAYAMOUNT = #{record.needpayamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.backamount != null" >
+        BACKAMOUNT = #{record.backamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.needbackamount != null" >
+        NEEDBACKAMOUNT = #{record.needbackamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.accountweight != null" >
+        ACCOUNTWEIGHT = #{record.accountweight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.areaid != null" >
+        AREAID = #{record.areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveaddress != null" >
+        RECEIVEADDRESS = #{record.receiveaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signtype != null" >
+        SIGNTYPE = #{record.signtype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.inefficacystatus != null" >
+        INEFFICACYSTATUS = #{record.inefficacystatus,jdbcType=DECIMAL},
+      </if>
+      <if test="record.updatetime != null" >
+        UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.receivestationid != null" >
+        RECEIVESTATIONID = #{record.receivestationid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receivedelivermanid != null" >
+        RECEIVEDELIVERMANID = #{record.receivedelivermanid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.distributioncode != null" >
+        DISTRIBUTIONCODE = #{record.distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currentdistributioncode != null" >
+        CURRENTDISTRIBUTIONCODE = #{record.currentdistributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.waybillinfoweight != null" >
+        WAYBILLINFOWEIGHT = #{record.waybillinfoweight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.substatus != null" >
+        SUBSTATUS = #{record.substatus,jdbcType=DECIMAL},
+      </if>
+      <if test="record.accepttype != null" >
+        ACCEPTTYPE = #{record.accepttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerorder != null" >
+        CUSTOMERORDER = #{record.customerorder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.origindepotno != null" >
+        ORIGINDEPOTNO = #{record.origindepotno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ischange != null" >
+        ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="record.periodaccountcode != null" >
+        PERIODACCOUNTCODE = #{record.periodaccountcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.waybillcategory != null" >
+        WAYBILLCATEGORY = #{record.waybillcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delivercode != null" >
+        DELIVERCODE = #{record.delivercode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdeleted != null" >
+        ISDELETED = #{record.isdeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ismanualmodify != null" >
+        ISMANUALMODIFY = #{record.ismanualmodify,jdbcType=DECIMAL},
+      </if>
+      <if test="record.accountorderno != null" >
+        ACCOUNTORDERNO = #{record.accountorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.packagecount != null" >
+        PACKAGECOUNT = #{record.packagecount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sendprovince != null" >
+        SENDPROVINCE = #{record.sendprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendcity != null" >
+        SENDCITY = #{record.sendcity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null" >
+        PROVINCE = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        CITY = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null" >
+        AREA = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null" >
+        COUNTRY = #{record.country,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payee != null" >
+        PAYEE = #{record.payee,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transferoperator != null" >
+        TRANSFEROPERATOR = #{record.transferoperator,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bankcardnumber != null" >
+        BANKCARDNUMBER = #{record.bankcardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankcardname != null" >
+        BANKCARDNAME = #{record.bankcardname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.actualtransfertime != null" >
+        ACTUALTRANSFERTIME = #{record.actualtransfertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.transferstate != null" >
+        TRANSFERSTATE = #{record.transferstate,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update RFD_FMS.FMS_INCOMEBASEINFO
+    set INCOMEID = #{record.incomeid,jdbcType=DECIMAL},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      WAYBILLNO = #{record.waybillno,jdbcType=DECIMAL},
+      WAYBILLTYPE = #{record.waybilltype,jdbcType=VARCHAR},
+      MERCHANTID = #{record.merchantid,jdbcType=DECIMAL},
+      EXPRESSCOMPANYID = #{record.expresscompanyid,jdbcType=DECIMAL},
+      FINALEXPRESSCOMPANYID = #{record.finalexpresscompanyid,jdbcType=DECIMAL},
+      DELIVERSTATIONID = #{record.deliverstationid,jdbcType=DECIMAL},
+      TOPCODCOMPANYID = #{record.topcodcompanyid,jdbcType=DECIMAL},
+      RFDACCEPTTIME = #{record.rfdaccepttime,jdbcType=TIMESTAMP},
+      DELIVERTIME = #{record.delivertime,jdbcType=TIMESTAMP},
+      RETURNTIME = #{record.returntime,jdbcType=TIMESTAMP},
+      RETURNEXPRESSCOMPANYID = #{record.returnexpresscompanyid,jdbcType=DECIMAL},
+      BACKSTATIONTIME = #{record.backstationtime,jdbcType=TIMESTAMP},
+      BACKSTATIONSTATUS = #{record.backstationstatus,jdbcType=VARCHAR},
+      PROTECTEDAMOUNT = #{record.protectedamount,jdbcType=DECIMAL},
+      TOTALAMOUNT = #{record.totalamount,jdbcType=DECIMAL},
+      PAIDAMOUNT = #{record.paidamount,jdbcType=DECIMAL},
+      NEEDPAYAMOUNT = #{record.needpayamount,jdbcType=DECIMAL},
+      BACKAMOUNT = #{record.backamount,jdbcType=DECIMAL},
+      NEEDBACKAMOUNT = #{record.needbackamount,jdbcType=DECIMAL},
+      ACCOUNTWEIGHT = #{record.accountweight,jdbcType=DECIMAL},
+      AREAID = #{record.areaid,jdbcType=VARCHAR},
+      RECEIVEADDRESS = #{record.receiveaddress,jdbcType=VARCHAR},
+      SIGNTYPE = #{record.signtype,jdbcType=DECIMAL},
+      INEFFICACYSTATUS = #{record.inefficacystatus,jdbcType=DECIMAL},
+      UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      RECEIVESTATIONID = #{record.receivestationid,jdbcType=DECIMAL},
+      RECEIVEDELIVERMANID = #{record.receivedelivermanid,jdbcType=DECIMAL},
+      DISTRIBUTIONCODE = #{record.distributioncode,jdbcType=VARCHAR},
+      CURRENTDISTRIBUTIONCODE = #{record.currentdistributioncode,jdbcType=VARCHAR},
+      WAYBILLINFOWEIGHT = #{record.waybillinfoweight,jdbcType=DECIMAL},
+      SUBSTATUS = #{record.substatus,jdbcType=DECIMAL},
+      ACCEPTTYPE = #{record.accepttype,jdbcType=VARCHAR},
+      CUSTOMERORDER = #{record.customerorder,jdbcType=VARCHAR},
+      ORIGINDEPOTNO = #{record.origindepotno,jdbcType=VARCHAR},
+      ISCHANGE = #{record.ischange,jdbcType=DECIMAL},
+      PERIODACCOUNTCODE = #{record.periodaccountcode,jdbcType=VARCHAR},
+      WAYBILLCATEGORY = #{record.waybillcategory,jdbcType=VARCHAR},
+      DELIVERCODE = #{record.delivercode,jdbcType=VARCHAR},
+      ISDELETED = #{record.isdeleted,jdbcType=DECIMAL},
+      ISMANUALMODIFY = #{record.ismanualmodify,jdbcType=DECIMAL},
+      ACCOUNTORDERNO = #{record.accountorderno,jdbcType=VARCHAR},
+      PACKAGECOUNT = #{record.packagecount,jdbcType=DECIMAL},
+      SENDPROVINCE = #{record.sendprovince,jdbcType=VARCHAR},
+      SENDCITY = #{record.sendcity,jdbcType=VARCHAR},
+      PROVINCE = #{record.province,jdbcType=VARCHAR},
+      CITY = #{record.city,jdbcType=VARCHAR},
+      AREA = #{record.area,jdbcType=VARCHAR},
+      COUNTRY = #{record.country,jdbcType=VARCHAR},
+      PAYEE = #{record.payee,jdbcType=VARCHAR},
+      TRANSFEROPERATOR = #{record.transferoperator,jdbcType=DECIMAL},
+      BANKCARDNUMBER = #{record.bankcardnumber,jdbcType=VARCHAR},
+      BANKCARDNAME = #{record.bankcardname,jdbcType=VARCHAR},
+      ACTUALTRANSFERTIME = #{record.actualtransfertime,jdbcType=TIMESTAMP},
+      TRANSFERSTATE = #{record.transferstate,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itiaoling.dbdiff.models.IncomeBaseinfo" >
+    update RFD_FMS.FMS_INCOMEBASEINFO
+    <set >
+      <if test="waybillno != null" >
+        WAYBILLNO = #{waybillno,jdbcType=DECIMAL},
+      </if>
+      <if test="waybilltype != null" >
+        WAYBILLTYPE = #{waybilltype,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantid != null" >
+        MERCHANTID = #{merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="expresscompanyid != null" >
+        EXPRESSCOMPANYID = #{expresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="finalexpresscompanyid != null" >
+        FINALEXPRESSCOMPANYID = #{finalexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverstationid != null" >
+        DELIVERSTATIONID = #{deliverstationid,jdbcType=DECIMAL},
+      </if>
+      <if test="topcodcompanyid != null" >
+        TOPCODCOMPANYID = #{topcodcompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="rfdaccepttime != null" >
+        RFDACCEPTTIME = #{rfdaccepttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delivertime != null" >
+        DELIVERTIME = #{delivertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returntime != null" >
+        RETURNTIME = #{returntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnexpresscompanyid != null" >
+        RETURNEXPRESSCOMPANYID = #{returnexpresscompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="backstationtime != null" >
+        BACKSTATIONTIME = #{backstationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backstationstatus != null" >
+        BACKSTATIONSTATUS = #{backstationstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedamount != null" >
+        PROTECTEDAMOUNT = #{protectedamount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalamount != null" >
+        TOTALAMOUNT = #{totalamount,jdbcType=DECIMAL},
+      </if>
+      <if test="paidamount != null" >
+        PAIDAMOUNT = #{paidamount,jdbcType=DECIMAL},
+      </if>
+      <if test="needpayamount != null" >
+        NEEDPAYAMOUNT = #{needpayamount,jdbcType=DECIMAL},
+      </if>
+      <if test="backamount != null" >
+        BACKAMOUNT = #{backamount,jdbcType=DECIMAL},
+      </if>
+      <if test="needbackamount != null" >
+        NEEDBACKAMOUNT = #{needbackamount,jdbcType=DECIMAL},
+      </if>
+      <if test="accountweight != null" >
+        ACCOUNTWEIGHT = #{accountweight,jdbcType=DECIMAL},
+      </if>
+      <if test="areaid != null" >
+        AREAID = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveaddress != null" >
+        RECEIVEADDRESS = #{receiveaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="signtype != null" >
+        SIGNTYPE = #{signtype,jdbcType=DECIMAL},
+      </if>
+      <if test="inefficacystatus != null" >
+        INEFFICACYSTATUS = #{inefficacystatus,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receivestationid != null" >
+        RECEIVESTATIONID = #{receivestationid,jdbcType=DECIMAL},
+      </if>
+      <if test="receivedelivermanid != null" >
+        RECEIVEDELIVERMANID = #{receivedelivermanid,jdbcType=DECIMAL},
+      </if>
+      <if test="distributioncode != null" >
+        DISTRIBUTIONCODE = #{distributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="currentdistributioncode != null" >
+        CURRENTDISTRIBUTIONCODE = #{currentdistributioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillinfoweight != null" >
+        WAYBILLINFOWEIGHT = #{waybillinfoweight,jdbcType=DECIMAL},
+      </if>
+      <if test="substatus != null" >
+        SUBSTATUS = #{substatus,jdbcType=DECIMAL},
+      </if>
+      <if test="accepttype != null" >
+        ACCEPTTYPE = #{accepttype,jdbcType=VARCHAR},
+      </if>
+      <if test="customerorder != null" >
+        CUSTOMERORDER = #{customerorder,jdbcType=VARCHAR},
+      </if>
+      <if test="origindepotno != null" >
+        ORIGINDEPOTNO = #{origindepotno,jdbcType=VARCHAR},
+      </if>
+      <if test="ischange != null" >
+        ISCHANGE = #{ischange,jdbcType=DECIMAL},
+      </if>
+      <if test="periodaccountcode != null" >
+        PERIODACCOUNTCODE = #{periodaccountcode,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcategory != null" >
+        WAYBILLCATEGORY = #{waybillcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="delivercode != null" >
+        DELIVERCODE = #{delivercode,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null" >
+        ISDELETED = #{isdeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="ismanualmodify != null" >
+        ISMANUALMODIFY = #{ismanualmodify,jdbcType=DECIMAL},
+      </if>
+      <if test="accountorderno != null" >
+        ACCOUNTORDERNO = #{accountorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="packagecount != null" >
+        PACKAGECOUNT = #{packagecount,jdbcType=DECIMAL},
+      </if>
+      <if test="sendprovince != null" >
+        SENDPROVINCE = #{sendprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="sendcity != null" >
+        SENDCITY = #{sendcity,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        AREA = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        COUNTRY = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="payee != null" >
+        PAYEE = #{payee,jdbcType=VARCHAR},
+      </if>
+      <if test="transferoperator != null" >
+        TRANSFEROPERATOR = #{transferoperator,jdbcType=DECIMAL},
+      </if>
+      <if test="bankcardnumber != null" >
+        BANKCARDNUMBER = #{bankcardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcardname != null" >
+        BANKCARDNAME = #{bankcardname,jdbcType=VARCHAR},
+      </if>
+      <if test="actualtransfertime != null" >
+        ACTUALTRANSFERTIME = #{actualtransfertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transferstate != null" >
+        TRANSFERSTATE = #{transferstate,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where INCOMEID = #{incomeid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itiaoling.dbdiff.models.IncomeBaseinfo" >
+    update RFD_FMS.FMS_INCOMEBASEINFO
+    set WAYBILLNO = #{waybillno,jdbcType=DECIMAL},
+      WAYBILLTYPE = #{waybilltype,jdbcType=VARCHAR},
+      MERCHANTID = #{merchantid,jdbcType=DECIMAL},
+      EXPRESSCOMPANYID = #{expresscompanyid,jdbcType=DECIMAL},
+      FINALEXPRESSCOMPANYID = #{finalexpresscompanyid,jdbcType=DECIMAL},
+      DELIVERSTATIONID = #{deliverstationid,jdbcType=DECIMAL},
+      TOPCODCOMPANYID = #{topcodcompanyid,jdbcType=DECIMAL},
+      RFDACCEPTTIME = #{rfdaccepttime,jdbcType=TIMESTAMP},
+      DELIVERTIME = #{delivertime,jdbcType=TIMESTAMP},
+      RETURNTIME = #{returntime,jdbcType=TIMESTAMP},
+      RETURNEXPRESSCOMPANYID = #{returnexpresscompanyid,jdbcType=DECIMAL},
+      BACKSTATIONTIME = #{backstationtime,jdbcType=TIMESTAMP},
+      BACKSTATIONSTATUS = #{backstationstatus,jdbcType=VARCHAR},
+      PROTECTEDAMOUNT = #{protectedamount,jdbcType=DECIMAL},
+      TOTALAMOUNT = #{totalamount,jdbcType=DECIMAL},
+      PAIDAMOUNT = #{paidamount,jdbcType=DECIMAL},
+      NEEDPAYAMOUNT = #{needpayamount,jdbcType=DECIMAL},
+      BACKAMOUNT = #{backamount,jdbcType=DECIMAL},
+      NEEDBACKAMOUNT = #{needbackamount,jdbcType=DECIMAL},
+      ACCOUNTWEIGHT = #{accountweight,jdbcType=DECIMAL},
+      AREAID = #{areaid,jdbcType=VARCHAR},
+      RECEIVEADDRESS = #{receiveaddress,jdbcType=VARCHAR},
+      SIGNTYPE = #{signtype,jdbcType=DECIMAL},
+      INEFFICACYSTATUS = #{inefficacystatus,jdbcType=DECIMAL},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      RECEIVESTATIONID = #{receivestationid,jdbcType=DECIMAL},
+      RECEIVEDELIVERMANID = #{receivedelivermanid,jdbcType=DECIMAL},
+      DISTRIBUTIONCODE = #{distributioncode,jdbcType=VARCHAR},
+      CURRENTDISTRIBUTIONCODE = #{currentdistributioncode,jdbcType=VARCHAR},
+      WAYBILLINFOWEIGHT = #{waybillinfoweight,jdbcType=DECIMAL},
+      SUBSTATUS = #{substatus,jdbcType=DECIMAL},
+      ACCEPTTYPE = #{accepttype,jdbcType=VARCHAR},
+      CUSTOMERORDER = #{customerorder,jdbcType=VARCHAR},
+      ORIGINDEPOTNO = #{origindepotno,jdbcType=VARCHAR},
+      ISCHANGE = #{ischange,jdbcType=DECIMAL},
+      PERIODACCOUNTCODE = #{periodaccountcode,jdbcType=VARCHAR},
+      WAYBILLCATEGORY = #{waybillcategory,jdbcType=VARCHAR},
+      DELIVERCODE = #{delivercode,jdbcType=VARCHAR},
+      ISDELETED = #{isdeleted,jdbcType=DECIMAL},
+      ISMANUALMODIFY = #{ismanualmodify,jdbcType=DECIMAL},
+      ACCOUNTORDERNO = #{accountorderno,jdbcType=VARCHAR},
+      PACKAGECOUNT = #{packagecount,jdbcType=DECIMAL},
+      SENDPROVINCE = #{sendprovince,jdbcType=VARCHAR},
+      SENDCITY = #{sendcity,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      AREA = #{area,jdbcType=VARCHAR},
+      COUNTRY = #{country,jdbcType=VARCHAR},
+      PAYEE = #{payee,jdbcType=VARCHAR},
+      TRANSFEROPERATOR = #{transferoperator,jdbcType=DECIMAL},
+      BANKCARDNUMBER = #{bankcardnumber,jdbcType=VARCHAR},
+      BANKCARDNAME = #{bankcardname,jdbcType=VARCHAR},
+      ACTUALTRANSFERTIME = #{actualtransfertime,jdbcType=TIMESTAMP},
+      TRANSFERSTATE = #{transferstate,jdbcType=DECIMAL}
+    where INCOMEID = #{incomeid,jdbcType=DECIMAL}
+      and CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+  </update>
+  <select id="selectDirtyData" parameterType="map" resultMap="BaseResultMap">
+  	SELECT <include refid="Base_Column_List"></include> FROM RFD_FMS.FMS_INCOMEBASEINFO 
+  	WHERE
+  	CREATETIME BETWEEN #{start,jdbcType=TIMESTAMP}
+  	AND #{end,jdbcType=TIMESTAMP}
+  </select>
+</mapper>
